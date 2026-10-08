@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manvir Jaswal</title>
+<meta name="description" content="Manvir Jaswal, independent researcher in number theory, Toronto. Preprints on generalized Fermat equations.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Manvir Jaswal">
+<meta property="og:description" content="Independent researcher in number theory, Toronto. Preprints on generalized Fermat equations.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#f9f4ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1816" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f1d1a'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' text-anchor='middle' fill='%23f9f4ec'%3EMJ%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Manvir Jaswal","jobTitle":"Independent researcher in number theory","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressCountry":"CA"},"sameAs":["https://orcid.org/0009-0001-2880-9528"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  color-scheme: light dark;
+  --bg: #f9f4ec; --panel: #fdfaf6; --ink: #1f1d1a; --muted: #5b5750; --faint: #716c65; --rule: #e4ddd3;
+  --accent: #8d621d; --link: #1f1d1a; --body: #5b5750;
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a1816; --panel: #23211f; --ink: #ebe6df; --muted: #c8c3bb; --faint: #a7a29b; --rule: #34322f;
+    --accent: #d8b069; --link: #ebe6df; --body: #c8c3bb;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1a1816; --panel: #23211f; --ink: #ebe6df; --muted: #c8c3bb; --faint: #a7a29b; --rule: #34322f;
+  --accent: #d8b069; --link: #ebe6df; --body: #c8c3bb;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.65 var(--serif);
+  -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; border-radius: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.skip { position: absolute; left: 16px; top: -48px; z-index: 10; background: var(--panel); color: var(--ink); padding: 8px 12px;
+  border: 1px solid var(--rule); font: 500 13px/1.4 var(--sans); }
+.skip:focus { top: 12px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; display: grid;
+  grid-template-columns: 300px 1fr; gap: 72px; }
+
+
+aside { position: sticky; top: 0; align-self: start; height: 100vh; padding: 72px 0 40px;
+  display: flex; flex-direction: column; }
+h1 { font: 500 38px/1.1 var(--serif); margin: 0 0 16px; letter-spacing: -.015em; }
+.role { font: 400 14px/1.6 var(--sans); color: var(--muted); margin: 0 0 32px; }
+nav a { display: flex; align-items: center; gap: 16px; font: 500 11px/1 var(--sans); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--faint); padding: 8px 0; transition: color .2s; }
+nav a::before { content: ""; width: 28px; height: 1px; background: currentColor; transition: width .2s; }
+nav a:hover, nav a.on { color: var(--ink); }
+nav a:hover::before, nav a.on::before { width: 56px; }
+.contact { margin-top: auto; font: 400 13px/1 var(--sans); }
+.contact a { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--rule);
+  color: var(--muted); transition: color .2s; }
+.contact a:last-child { border-bottom: 1px solid var(--rule); }
+.contact a span:last-child { color: var(--faint); }
+.contact a:hover { color: var(--ink); }
+.contact a:hover span:last-child { color: var(--accent); }
+
+
+main { padding: 72px 0 40px; min-width: 0; }
+section { scroll-margin-top: 48px; }
+h2 { font: 500 11px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--faint);
+  margin: 0 0 32px; display: flex; align-items: center; gap: 16px; }
+h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.lede { font-size: 23px; line-height: 1.5; margin: 0 0 24px; letter-spacing: -.005em; }
+.lede .eq { color: var(--accent); }
+p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
+.lede { color: var(--ink); }
+#about { margin-bottom: 72px; }
+#about p:not(.lede) { font-size: 16px; line-height: 1.65; margin-bottom: 16px; max-width: 37em; }
+
+.paper { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 0 24px; padding: 32px 0; border-top: 1px solid var(--rule); }
+#preprints .paper:first-of-type { border-top: 0; padding-top: 0; }
+.paper:last-child { border-bottom: 1px solid var(--rule); }
+.num { font: 500 11px/1.6 var(--sans); color: var(--faint); letter-spacing: .08em; padding-top: 2px; font-variant-numeric: tabular-nums; }
+.ttl { display: block; }
+.ttl .eyebrow { display: block; font: 400 14px/1.5 var(--sans); color: var(--muted); margin-bottom: 8px; text-wrap: pretty; }
+.ttl .big { display: block; font: 400 34px/1.2 var(--serif); letter-spacing: -.01em; transition: color .2s; }
+.ttl .big.words { font-size: 26px; line-height: 1.3; white-space: normal; }
+.ttl:hover .big { color: var(--accent); }
+.sum { margin: 12px 0 0; font: 400 17px/1.6 var(--serif); color: var(--body); max-width: 40em; text-wrap: pretty; }
+.sum i { font-style: italic; }
+:root { interpolate-size: allow-keywords; }
+.abs::details-content { height: 0; overflow: clip; transition: height .35s ease, content-visibility .35s allow-discrete; }
+.abs[open]::details-content { height: auto; }
+.abs[open] p { animation: absin .35s ease both; }
+@keyframes absin { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.abs { margin-top: 12px; font: 400 14px/1.65 var(--sans); color: var(--muted); }
+.abs summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; font: 500 11px/1 var(--sans);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--faint); padding: 8px 0; }
+.abs summary::-webkit-details-marker { display: none; }
+.abs summary::after { content: "+"; display: inline-block; font-size: 13px; letter-spacing: 0; transition: transform .2s; }
+.abs[open] summary::after { transform: rotate(45deg); }
+.abs summary:hover { color: var(--ink); }
+.abs summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.abs p { margin: 8px 0 4px; padding-left: 16px; border-left: 1px solid var(--rule); max-width: 46em; text-wrap: pretty; }
+.meta { margin: 12px 0 16px; font: 400 14px/1.6 var(--sans); color: var(--faint); text-wrap: pretty; }
+.meta .sep { margin: 0 4px; }
+.meta a { border-bottom: 1px solid currentColor; }
+.meta a:hover { color: var(--ink); }
+.tag { display: inline-block; font: 500 11px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); border-radius: 999px; padding: 4px 8px;
+  margin-left: 8px; vertical-align: 1px; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; }
+.links a { font: 500 13px/1 var(--sans); color: var(--ink); padding: 8px 16px; border-radius: 999px;
+  background: var(--panel); border: 1px solid var(--rule); transition: border-color .2s, color .2s; }
+.links a::after { content: " ↗"; color: var(--faint); transition: color .2s; }
+.links a:hover { border-color: var(--accent); }
+.links a:hover::after { color: var(--accent); }
+sup { line-height: 0; font-size: .62em; }
+.eq { white-space: nowrap; }
+footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); }
+
+@media (max-width: 900px) {
+  .wrap { grid-template-columns: 1fr; gap: 0; padding: 0 16px; }
+  aside { position: static; height: auto; padding: 48px 0 8px; }
+  nav { display: none; }
+  .contact { margin-top: 0; }
+  main { padding: 56px 0 64px; }
+  .lede { font-size: 20px; }
+  .paper { grid-template-columns: 1fr; }
+  .num { padding: 0 0 8px; }
+  .ttl .big { font-size: 28px; }
+  .ttl .big.words { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } .abs[open] p { animation: none; } }
+@media print {
+  html, body { background: #fff; color: #000; }
+  .wrap { display: block; padding: 0; }
+  aside { position: static; height: auto; padding: 0 0 12pt; }
+  nav, .skip, .pv { display: none !important; }
+  main { padding: 0; }
+  .links a { border: 0; padding: 0; background: none; }
+  .links a::after { content: "  " attr(href); color: #444; font-size: 8pt; }
+  .paper { break-inside: avoid; padding: 12pt 0; }
+  .ttl .big { color: #000; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#preprints">Skip to preprints</a>
+<div class="wrap">
+  <aside>
+    <h1>Manvir Jaswal</h1>
+    <p class="role">Independent researcher in number theory<br>Toronto, Canada</p>
+    <nav>
+      <a href="#about" class="on">About</a>
+      <a href="#preprints">Preprints</a>
+    </nav>
+    <div class="contact">
+      <a href="mailto:manvirjaswal@icloud.com"><span>Email</span><span>manvirjaswal@icloud.com</span></a>
+      <a href="https://orcid.org/0009-0001-2880-9528"><span>ORCID</span><span>0009-0001-2880-9528</span></a>
+    </div>
+  </aside>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p class="lede">I work on Diophantine equations, in particular the generalized Fermat equations
+        <span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>q</sup></i> = <i>z<sup>r</sup></i></span>: finding all primitive solutions by descent over
+        number fields, Chabauty's method, modular methods and Galois representations, and explicit computation.</p>
+      <p>My background is in software engineering. I designed and built the multi-agent AI system that does
+        the research, verification and writing behind these papers. Before anything is posted, fresh agents check each claim and its
+        proof from scratch, without seeing what the agent that produced it concluded. Most computations are redone by a separate,
+        freshly started AI agent that writes its own program, usually by a different method or in a different language, and compares
+        with the original code only after its own run. Where possible, the main theorems are also checked in Lean.</p>
+      <p>The papers are written for people to read. Each one goes through several rounds of review and revision before it is
+        posted; conditions are stated in the theorems, earlier work is credited precisely, and every computation comes with its code
+        and data. Each paper aims at a result specialists have asked about, or at a method they can reuse.</p>
+    </section>
+
+    <section id="preprints">
+      <h2>Preprints</h2>
+
+      <article class="paper">
+        <div class="num">08</div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.23149242"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>11</sup> + <i>y</i><sup>11</sup> = <i>z</i><sup>5</sup></span></a>
+          <p class="sum">We prove that <span class="eq"><i>x</i><sup>11</sup> + <i>y</i><sup>11</sup> = <i>z</i><sup>5</sup></span> has no solution in nonzero coprime integers, and that for every prime <i>p</i> ≥ 11 the solutions of <span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>p</sup></i> = <i>z</i><sup>5</sup></span> in nonzero coprime integers with <i>xy</i> prime to 10 have <span class="eq"><i>xy</i> ≡ −1 (mod 5)</span>.</p>
+          <p class="meta">Preprint, 2026</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23149242">Paper</a><a href="https://doi.org/10.5281/zenodo.23149240">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove that x¹¹ + y¹¹ = z⁵ has no solution in nonzero coprime integers, and that for every prime p ≥ 11 the solutions of xᵖ + yᵖ = z⁵ in nonzero coprime integers with xy prime to 10 have xy ≡ −1 (mod 5). To a solution Darmon attaches a Frey abelian surface over Q(√5), a twist of the member at t = xᵖ/z⁵ of a one-parameter family. For p = 11, results of Chen and Koutsianas and of Billerey, Chen, Dieulefait and Freitas leave only the solutions with 10 | xy and 11 ∤ z. For these, t gives a point on a quotient of Darmon&#x27;s modular curve X₀(𝔭), 𝔭 | 11, that is an elliptic curve of rank 1 over Q(√5), and Chabauty&#x27;s method in the restriction of scalars excludes such points. For general p and xy prime to 10, Chen and Koutsianas show that the Frey surface is congruent modulo p, up to a quadratic twist, to one of four surfaces with complex multiplication (or, for p = 19, to one more modular form); we test this congruence at the prime √5. When xy ≡ ±2 (mod 5), the fields cut out by inertia there differ or, in one subcase, a Frobenius trace does. When xy ≡ 1 (mod 5), the reduction at 2 determines the twist, and Frobenius traces exclude the congruence: at an auxiliary prime, and on the special fiber over F₅ that the genus-2 curves defining these surfaces share over a totally ramified extension of Q₅(√5). For 10 | xy, a uniform bound on rational points of order p on abelian surfaces over Q(√5) with real multiplication would exclude this class for large p.</p></details>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="num">07</div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.23149238"><span class="eyebrow">Real multiplication and the generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>5</sup> + <i>y</i><sup>3</sup> = <i>z<sup>p</sup></i></span></a>
+          <p class="sum">Assuming statements of a preprint of Pacetti and Villagra Torcomian, we show that for every prime <i>p</i> outside an explicit finite set, <span class="eq"><i>x</i><sup>5</sup> + <i>y</i><sup>3</sup> = <i>z<sup>p</sup></i></span> has no primitive solutions in several families, among them those with 3 ∤ <i>xyz</i>.</p>
+          <p class="meta">Preprint, 2026</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23149238">Paper</a><a href="https://doi.org/10.5281/zenodo.23149236">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Let (X, Y, Z) be a primitive solution of x⁵ + y³ = zᵖ with p ≥ 7 prime. Pacetti and Villagra Torcomian attach to it a genus-2 Frey curve whose Jacobian Jₜ, t = −X⁵/Y³, has real multiplication by the integers of Q(√5). In a preprint they show that, if p lies outside an explicit finite set and 𝔭 is a prime above p, the mod-𝔭 representation of Jₜ is reducible, or congruent to a Hilbert newform with complex multiplication, or congruent to the Jacobian at t = −1/8 or t = 9/8, the parameters of 1⁵ + 2³ = 3² and (−3)⁵ + 6³ = (−3)³. Comparing the fields cut out by inertia at √5, we show that this last congruence forces 5 ∤ XYZ and restricts t to eight classes modulo 25, and, by comparing traces of Frobenius at an auxiliary prime, to four classes when p ≥ 17. A congruence multiplies the Weil pairings by a scalar, and by comparing this scalar at 3 and at √5 we show that the congruence cannot occur when 3 | Y and p ≡ 19, 29, 31, 41 (mod 60). Assuming statements of the preprint, we deduce that, for every prime p outside that explicit finite set, there are no solutions in several families of classes, among them those with 3 ∤ XYZ.</p></details>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="num">06</div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.23096423"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span></a>
+          <p class="sum">We prove that the equations <span class="eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span> and <span class="eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = 3<i>z<sup>n</sup></i></span> have no solution in coprime nonzero integers for any <i>n</i> ≥ 3.</p>
+          <p class="meta">Preprint, 2026 <span class="tag">Submitted</span></p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23096423">Paper and Supplement</a><a href="https://doi.org/10.5281/zenodo.23096421">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove that the equations x³ + y³ = zⁿ and x³ + y³ = 3zⁿ have no solution in coprime nonzero integers for any n ≥ 3. For the first equation the open cases were prime exponents p ≡ 1 (mod 3) above 10⁹ outside a set of congruence classes treated by Chen and Siksek; in these cases the solution 1³ + 2³ = 3² blocks the modular method. We replace Kraus&#x27;s Frey curve by a hypergeometric motive of rank three over K = Q(√−3), whose parameter at a solution is 3-adically close enough to a point of maximally unipotent monodromy for inertia at √−3 to act unipotently; the parameter of 1³ + 2³ = 3² is not. By a theorem of Calegari, Emerton and Gee, the mod p representation of the fiber, twisted by a cubic character, is the reduction of a member of a compatible system of minimal ramification, and we show that the member at a prime above 3 is irreducible and ordinary at √−3. Ramification and unconditional discriminant bounds show that its reductions have trivial semisimplification, and as the Galois group of the maximal pro-3 extension of K unramified outside √−3 is generated by one inertia group, the member stabilizes its ordinary line, a contradiction. For x³ + y³ = 3zⁿ the same argument also works at the primes p ≡ 2 (mod 3), which are inert in K, and Frey curves and descents treat the remaining exponents.</p></details>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="num">05</div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.23088579"><span class="eyebrow">New exponents for the generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span></a>
+          <p class="sum">We determine the primitive solutions of <span class="eq"><i>x</i><sup>2</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span> for <i>n</i> = 11, 17 and 19 unconditionally; for <i>n</i> = 11 Freitas, Naskręcki and Stoll did so under the generalized Riemann hypothesis (GRH).</p>
+          <p class="meta">Preprint, 2026 <span class="sep" aria-hidden="true">·</span> Some exponents assume GRH; one uses a preprint of Freitas and Stoll.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23088579">Paper and Supplement</a><a href="https://doi.org/10.5281/zenodo.23088537">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We determine the primitive solutions of x² + y³ = zⁿ for n = 11, 17 and 19 unconditionally; for n = 11 Freitas, Naskręcki and Stoll did so under the generalized Riemann hypothesis (GRH). For n = 25 we do not assume GRH but use a reduction of Freitas and Stoll that is available as a preprint, and for n = 13, 23, 26 and 29 we assume GRH. GRH enters only through the class numbers of eight fields of degree 24 and 30 and four of degree 56. The solutions are the trivial ones, with xyz = 0, and those coming from 3² − 2³ = 1. With earlier work this settles every exponent 6 ≤ n ≤ 36 except 31, under the same conditions. Following Freitas, Naskręcki and Stoll, and Freitas and Stoll for n = 25, we reduce to points over number fields on modular curves or on curves Y² = X⁵ + β. The new step is to find these points by descents that need only the class groups of their fields of definition or of small extensions, mostly along isogenies with kernel μ_ℓ, along 1 − σ for a diamond automorphism σ, and along 1 − ζ₅.</p></details>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="num">04</div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.23055670"><span class="eyebrow">The primitive solutions of</span> <span class="big words">seven small generalized Fermat equations</span></a>
+          <p class="sum">Besides solutions with entries 0 and ±1, the only ones are (11, ±29, ±538) of <span class="eq"><i>x</i><sup>5</sup> + <i>y</i><sup>4</sup> = 3<i>z</i><sup>2</sup></span> and (±895, −6202, 4199) of <span class="eq"><i>x</i><sup>4</sup> + 3<i>y</i><sup>3</sup> + <i>z</i><sup>3</sup> = 0</span>.</p>
+          <p class="meta">Preprint, 2026 <span class="sep" aria-hidden="true">·</span> Table 4 of version 9 of Grechuk's list of open problems (<a href="https://arxiv.org/abs/2404.08518v9">arXiv:2404.08518</a>).</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23055670">Paper</a><a href="https://doi.org/10.5281/zenodo.23055562">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Version 9 of Grechuk&#x27;s list of open Diophantine equations contains seven equations ax^p+by^q+cz^r=0 with 1/p+1/q+1/r&lt;1 and |a|2^p+|b|2^q+|c|2^r&lt;=60 for which the complete list of primitive solutions was not known. We determine the primitive solutions of all seven: x^5+y^4-2z^2=0, x^5+y^4-3z^2=0, x^5+y^4+3z^2=0, 2x^4-y^4+z^3=0, x^4+3y^3+2z^3=0, x^4+4y^3+z^3=0 and x^4+3y^3+z^3=0. Besides solutions with entries 0 and ±1, the only ones are (11,±29,±538) of x^5+y^4=3z^2 and (±895,-6202,4199) of x^4+3y^3+z^3=0. For the last equation this answers a question of Grechuk; J. Agbanwa has announced a proof in an unpublished manuscript, and ours is by a different method. The proofs combine descent over number fields of small degree with elliptic Chabauty and the Mordell-Weil sieve. For x^4+3y^3+z^3=0 we also use a covering by a curve of genus one over a number field of degree 12, whose Jacobian has unknown rank, and Stoll&#x27;s form of Chabauty&#x27;s method at the prime 2, which uses a Selmer group of a 2-isogeny in place of the Mordell-Weil group. No step assumes the generalized Riemann hypothesis. Programs and data: https://doi.org/10.5281/zenodo.23055562.</p></details>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="num">03</div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.23004660"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>9</sup></span></a>
+          <p class="sum">We show that the equation <span class="eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>9</sup></span> has no solution in coprime nonzero integers. No step assumes the generalized Riemann hypothesis.</p>
+          <p class="meta">Preprint, 2026</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23004660">Paper</a><a href="https://doi.org/10.5281/zenodo.23004600">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We show that the equation x^2+y^5=z^9 has no solution in coprime nonzero integers. Equivalently, none of the equations x^2+y^5=z^9, x^2+y^9=z^5 and x^5+y^9=z^2 has such a solution. By Edwards&#x27; parametrization of the coprime solutions of a^2+b^3+c^5=0, a solution gives coprime integers u, v at which one of 27 binary forms g_i of degree 20 takes the value -z^3. A 2-adic argument and a descent modulo cubes over number fields of degree at most 10 exclude 22 of the 27 forms and, for each of the other five, determine the values of the factors of g_i up to cubes. These five forms lead to rational points on an elliptic curve over Q, on a curve of genus 2 over Q, and on elliptic curves over Q(5^(1/3)) and over Q(sqrt(-5)). We determine the relevant points by a 2-descent over Q, by elliptic Chabauty over a cubic field together with a Mordell-Weil sieve, by a descent via 3-isogeny over Q(5^(1/3)), and by elliptic Chabauty over Q(sqrt(-5)). No step assumes the generalized Riemann hypothesis. Programs and data: https://doi.org/10.5281/zenodo.23004600.</p></details>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="num">02</div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.22983878"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>7</sup></span></a>
+          <p class="sum">We show that the equation <span class="eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>7</sup></span> has no solution in nonzero coprime integers, assuming a classification theorem from Putz's thesis, which has not appeared in a refereed journal.</p>
+          <p class="meta">Preprint, 2026</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.22983878">Paper</a><a href="https://doi.org/10.5281/zenodo.22983849">Programs and data</a><a href="https://doi.org/10.5281/zenodo.23065698">Lean formalization</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We show that the equation x² + y⁵ = z⁷ has no solution in nonzero coprime integers, assuming a classification theorem from Putz&#x27;s thesis, which has not appeared in a refereed journal. Equivalently, none of the equations x² + y⁵ = z⁷, x² + y⁷ = z⁵, x⁵ + y⁷ = z² has a solution in nonzero coprime integers. Putz attaches to a solution an octic algebra, the fibre of a Belyi map of degree 8, and proves that it is always isomorphic to one fixed octic field L₈. We prove unconditionally that no solution has fibre isomorphic to L₈, by a fifth-power descent over a field L₂₄ of degree 24 that Putz introduced, completed by fifth-power residue symbols at five auxiliary primes. We also prove, without assuming the generalized Riemann hypothesis, that L₂₄ has class number 1, using a criterion of Belabas, Diaz y Diaz and Friedman.</p></details>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="num">01</div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.22949749"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>X</i><sup>5</sup> + <i>Y</i><sup>3</sup> = <i>Z</i><sup>7</sup></span></a>
+          <p class="sum">Assuming the classification of Dahmen–Siksek and Putz, we show that <span class="eq"><i>X</i><sup>5</sup> + <i>Y</i><sup>3</sup> = <i>Z</i><sup>7</sup></span> has no solution in nonzero coprime integers.</p>
+          <p class="meta">Preprint, 2026 <span class="tag">Submitted</span></p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.22949749">Paper</a><a href="https://doi.org/10.5281/zenodo.22949370">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Assuming the classification of Dahmen–Siksek and Putz, we show that X^5+Y^3=Z^7 has no solution in nonzero coprime integers; equivalently, the generalized Fermat equation of signature (3,5,7) has no nontrivial primitive solution in any arrangement of the exponents. By that classification, a solution determines one of seven septic fields: six pure fields Q((3^a·5)^(1/7)), 1 ≤ a ≤ 6, and an exceptional field F. We exclude F by a fifth-power descent over F(√−35), where the equation becomes a norm identity for an explicit element; the identity and the element&#x27;s valuations above 3, 5 and 7 confine it to 125 classes modulo fifth powers, none compatible with its possible fifth-power residue symbols above 11 and 19. For the pure fields we use results from recent preprints on the genus-2 Frey curves of Pacetti and Villagra Torcomian, whose Jacobians have real multiplication by Q(√5). Level lowering shows that their 7-torsion is reducible, giving a rational point on a genus-15 double cover of the genus-8 curve of F_49-lines in the 7-torsion. The Prym variety of this cover contains an abelian surface of rank one, and Chabauty&#x27;s method at 13 confines the point to two explicit rational points, neither coming from a solution. Supplementary data and programs: https://doi.org/10.5281/zenodo.22949370. P. Chocian (arXiv:2609.26996) has proved the same theorem independently, by different methods.</p></details>
+        </div>
+      </article>
+    </section>
+
+    <footer>Updated 8 October 2026</footer>
+  </main>
+</div>
+<script>
+  const links = document.querySelectorAll('nav a'), secs = [...document.querySelectorAll('main section')];
+  function spy() {
+    let cur = secs[0];
+    for (const s of secs) if (s.getBoundingClientRect().top <= innerHeight * .34) cur = s;
+    links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + cur.id));
+  }
+  let ticking = false;
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { spy(); ticking = false; }); } }, { passive: true });
+  spy();
+</script>
+</body>
+</html>
