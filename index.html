@@ -75,9 +75,24 @@ h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
 .lede .eq { color: var(--accent); }
 p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
 .lede { color: var(--ink); }
-#about { margin-bottom: 72px; }
+#about, #selected, #preprints { margin-bottom: 72px; }
 #about p:not(.lede) { font-size: 16px; line-height: 1.65; margin-bottom: 16px; max-width: 37em; }
 
+.picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.pick { display: flex; flex-direction: column; gap: 14px; padding: 24px 24px 28px; position: relative; }
+.pick + .pick { border-left: 1px solid var(--rule); }
+.pick::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left; transition: transform .35s ease; }
+.pick:hover::before, .pick:focus-visible::before { transform: scaleX(1); }
+.pick .top { display: flex; justify-content: space-between; font: 500 11px/1 var(--sans); letter-spacing: .08em; color: var(--faint);
+  font-variant-numeric: tabular-nums; }
+.pick .go { transition: transform .25s ease, color .2s; }
+.pick:hover .go { transform: translateY(3px); color: var(--accent); }
+.pick .pk { font: 400 30px/1.15 var(--serif); color: var(--ink); white-space: nowrap; transition: color .2s; }
+.pick:hover .pk { color: var(--accent); }
+.pick .why { font: 400 14px/1.6 var(--sans); color: var(--muted); text-wrap: pretty; }
+@media (max-width: 900px) { .picks { grid-template-columns: 1fr; } .pick + .pick { border-left: 0; border-top: 1px solid var(--rule); } .pick { padding: 20px 4px 24px; } }
+.paper { scroll-margin-top: 48px; }
 .paper { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 0 24px; padding: 32px 0; border-top: 1px solid var(--rule); }
 #preprints .paper:first-of-type { border-top: 0; padding-top: 0; }
 .paper:last-child { border-bottom: 1px solid var(--rule); }
@@ -89,17 +104,13 @@ p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
 .ttl:hover .big { color: var(--accent); }
 .sum { margin: 12px 0 0; font: 400 17px/1.6 var(--serif); color: var(--body); max-width: 40em; text-wrap: pretty; }
 .sum i { font-style: italic; }
-:root { interpolate-size: allow-keywords; }
-.abs::details-content { height: 0; overflow: clip; transition: height .35s ease, content-visibility .35s allow-discrete; }
-.abs[open]::details-content { height: auto; }
-.abs[open] p { animation: absin .35s ease both; }
-@keyframes absin { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 .abs { margin-top: 12px; font: 400 14px/1.65 var(--sans); color: var(--muted); }
 .abs summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; font: 500 11px/1 var(--sans);
   letter-spacing: .12em; text-transform: uppercase; color: var(--faint); padding: 8px 0; }
 .abs summary::-webkit-details-marker { display: none; }
 .abs summary::after { content: "+"; display: inline-block; font-size: 13px; letter-spacing: 0; transition: transform .2s; }
 .abs[open] summary::after { transform: rotate(45deg); }
+.abs.closing summary::after { transform: none; }
 .abs summary:hover { color: var(--ink); }
 .abs summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 .abs p { margin: 8px 0 4px; padding-left: 16px; border-left: 1px solid var(--rule); max-width: 46em; text-wrap: pretty; }
@@ -132,7 +143,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
   .ttl .big { font-size: 28px; }
   .ttl .big.words { font-size: 22px; }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } .abs[open] p { animation: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 @media print {
   html, body { background: #fff; color: #000; }
   .wrap { display: block; padding: 0; }
@@ -154,7 +165,9 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
     <p class="role">Independent researcher in number theory<br>Toronto, Canada</p>
     <nav>
       <a href="#about" class="on">About</a>
+      <a href="#selected">Selected</a>
       <a href="#preprints">Preprints</a>
+      <a href="#results">Other results</a>
     </nav>
     <div class="contact">
       <a href="mailto:manvirjaswal@icloud.com"><span>Email</span><span>manvirjaswal@icloud.com</span></a>
@@ -178,10 +191,28 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         and data. Each paper aims at a result specialists have asked about, or at a method they can reuse.</p>
     </section>
 
+    <section id="selected">
+      <h2>Selected</h2>
+      <div class="picks">
+        <a class="pick" href="#p06">
+          <span class="top"><span class="n">06</span><span class="go" aria-hidden="true">↓</span></span>
+          <span class="pk eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span>
+          <span class="why">No solution in coprime nonzero integers for any <i>n</i> ≥ 3.</span></a>
+        <a class="pick" href="#p02">
+          <span class="top"><span class="n">02</span><span class="go" aria-hidden="true">↓</span></span>
+          <span class="pk eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>7</sup></span>
+          <span class="why">Formalized in Lean, with two inputs as stated assumptions.</span></a>
+        <a class="pick" href="#p09">
+          <span class="top"><span class="n">09</span><span class="go" aria-hidden="true">↓</span></span>
+          <span class="pk"><i>h</i>(<i>D</i>) ≤ 3000</span>
+          <span class="why">All 36 993 853 imaginary quadratic fields, assuming a zero-free interval for real Dirichlet <i>L</i>-functions.</span></a>
+      </div>
+    </section>
+
     <section id="preprints">
       <h2>Preprints</h2>
 
-      <article class="paper">
+      <article class="paper" id="p09">
         <div class="num">09</div>
         <div>
           <a class="ttl" href="https://doi.org/10.5281/zenodo.23251443"><span class="eyebrow">Imaginary quadratic fields of</span> <span class="big words">class number at most 3000, assuming a zero-free interval for real Dirichlet <span style="white-space:nowrap"><i>L</i>-functions</span></span></a>
@@ -192,7 +223,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         </div>
       </article>
 
-      <article class="paper">
+      <article class="paper" id="p08">
         <div class="num">08</div>
         <div>
           <a class="ttl" href="https://doi.org/10.5281/zenodo.23149242"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>11</sup> + <i>y</i><sup>11</sup> = <i>z</i><sup>5</sup></span></a>
@@ -203,7 +234,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         </div>
       </article>
 
-      <article class="paper">
+      <article class="paper" id="p07">
         <div class="num">07</div>
         <div>
           <a class="ttl" href="https://doi.org/10.5281/zenodo.23149238"><span class="eyebrow">Real multiplication and the generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>5</sup> + <i>y</i><sup>3</sup> = <i>z<sup>p</sup></i></span></a>
@@ -214,7 +245,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         </div>
       </article>
 
-      <article class="paper">
+      <article class="paper" id="p06">
         <div class="num">06</div>
         <div>
           <a class="ttl" href="https://doi.org/10.5281/zenodo.23096423"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span></a>
@@ -225,7 +256,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         </div>
       </article>
 
-      <article class="paper">
+      <article class="paper" id="p05">
         <div class="num">05</div>
         <div>
           <a class="ttl" href="https://doi.org/10.5281/zenodo.23088579"><span class="eyebrow">New exponents for the generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span></a>
@@ -236,7 +267,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         </div>
       </article>
 
-      <article class="paper">
+      <article class="paper" id="p04">
         <div class="num">04</div>
         <div>
           <a class="ttl" href="https://doi.org/10.5281/zenodo.23055670"><span class="eyebrow">The primitive solutions of</span> <span class="big words">seven small generalized Fermat equations</span></a>
@@ -247,7 +278,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         </div>
       </article>
 
-      <article class="paper">
+      <article class="paper" id="p03">
         <div class="num">03</div>
         <div>
           <a class="ttl" href="https://doi.org/10.5281/zenodo.23004660"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>9</sup></span></a>
@@ -258,7 +289,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         </div>
       </article>
 
-      <article class="paper">
+      <article class="paper" id="p02">
         <div class="num">02</div>
         <div>
           <a class="ttl" href="https://doi.org/10.5281/zenodo.22983878"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>7</sup></span></a>
@@ -269,7 +300,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         </div>
       </article>
 
-      <article class="paper">
+      <article class="paper" id="p01">
         <div class="num">01</div>
         <div>
           <a class="ttl" href="https://doi.org/10.5281/zenodo.22949749"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>X</i><sup>5</sup> + <i>Y</i><sup>3</sup> = <i>Z</i><sup>7</sup></span></a>
@@ -281,7 +312,22 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
       </article>
     </section>
 
-    <footer>Updated 8 October 2026</footer>
+    <section id="results">
+      <h2>Other results</h2>
+
+      <article class="paper" id="r3c">
+        <div class="num">3c</div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.23289305"><span class="eyebrow">A lower bound for a sums–differences constant</span> <span class="big words"><i>C</i><sub>3c</sub> ≥ 1.674894211307116</span></a>
+          <p class="sum">An explicit entropy certificate for problem 3c of Tao's optimization-constants repository, a four-slope constant related to the arithmetic Kakeya conjecture. The listed record was 1.6747338950414058.</p>
+          <p class="meta">Certificate, 2026 · submitted to the repository</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23289305">Certificate and checks</a><a href="https://github.com/teorth/optimizationproblems/pull/221">Submission</a></div>
+        </div>
+      </article>
+    </section>
+
+
+    <footer>Updated 10 October 2026</footer>
   </main>
 </div>
 <script>
@@ -294,6 +340,26 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
   let ticking = false;
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { spy(); ticking = false; }); } }, { passive: true });
   spy();
+
+  // Abstracts open and close smoothly in every browser (Safari and Firefox lack ::details-content).
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('details.abs').forEach(d => {
+    const p = d.querySelector('p'); let anim = null;
+    d.querySelector('summary').addEventListener('click', e => {
+      if (still.matches) return;
+      e.preventDefault();
+      const opening = !d.open || d.classList.contains('closing');
+      const from = d.open ? p.getBoundingClientRect().height : 0;
+      if (anim) anim.cancel();
+      d.classList.toggle('closing', !opening);
+      d.open = true;
+      const to = opening ? p.scrollHeight : 0;
+      p.style.overflow = 'hidden';
+      anim = p.animate([{ height: from + 'px', opacity: opening ? 0 : 1 }, { height: to + 'px', opacity: opening ? 1 : 0 }],
+                       { duration: 320, easing: 'ease' });
+      anim.onfinish = () => { anim = null; p.style.overflow = ''; if (!opening) { d.open = false; d.classList.remove('closing'); } };
+    });
+  });
 </script>
 </body>
 </html>
