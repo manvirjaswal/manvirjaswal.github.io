@@ -172,6 +172,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
     <div class="contact">
       <a href="mailto:manvirjaswal@icloud.com"><span>Email</span><span>manvirjaswal@icloud.com</span></a>
       <a href="https://orcid.org/0009-0001-2880-9528"><span>ORCID</span><span>0009-0001-2880-9528</span></a>
+      <a href="https://github.com/manvirjaswal"><span>GitHub</span><span>manvirjaswal</span></a>
     </div>
   </aside>
 
@@ -211,6 +212,28 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
 
     <section id="preprints">
       <h2>Preprints</h2>
+
+      <article class="paper" id="p11">
+        <div class="num">11</div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.23364156"><span class="eyebrow">Infinitely many elliptic curves with</span> <span class="big words">torsion ℤ/2ℤ × ℤ/6ℤ and rank at least four</span></a>
+          <p class="sum">We show that there are infinitely many elliptic curves over ℚ with torsion subgroup ℤ/2ℤ × ℤ/6ℤ and rank at least 4, one more than the largest rank previously known to occur infinitely often with this torsion.</p>
+          <p class="meta">Preprint, 2026</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23364156">Paper</a><a href="https://doi.org/10.5281/zenodo.23364150">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We show that there are infinitely many elliptic curves over ℚ with torsion subgroup ℤ/2ℤ × ℤ/6ℤ and rank at least 4, one more than the largest rank previously known to occur infinitely often with this torsion. The universal elliptic curve with this torsion acquires four independent points over the function field of an explicit elliptic curve of rank one, and Silverman's specialisation theorem gives the family. Three of the points come from quadratic twists by polynomials that become squares on that curve, as in the rank-3 constructions of Dujella and Peral and of Dujella, Kazalicki and Peral. The fourth comes from the twist by the product of two of them; it is pulled back from a quadratic twist of a rational elliptic surface, of which the universal curve is a base change along a double cover of the line. The family is sparse, but it contradicts the prediction of Park, Poonen, Voight and Wood that only finitely many curves with this torsion have rank greater than 3.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p10">
+        <div class="num">10</div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.23255857"><span class="eyebrow">An independent certified computation excluding</span> <span class="big words">four mutually unbiased bases in dimension six</span></a>
+          <p class="sum">We show that there are no four mutually unbiased bases in ℂ<sup>6</sup>, so that the maximum number of such bases is three. The proof is computer-assisted, assumes that binary64 arithmetic was carried out correctly, and carries out the discretization proof of a recent preprint by OpenAI.</p>
+          <p class="meta">Preprint, 2026</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23255857">Paper</a><a href="https://doi.org/10.5281/zenodo.23255816">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We show that there are no four mutually unbiased bases in ℂ⁶, so that the maximum number of such bases is three. The proof is computer-assisted and assumes that the machine on which the computation ran carried out binary64 arithmetic correctly, as made precise in Section 3.1. It carries out the discretization proof of a recent preprint by OpenAI, which has not appeared in a refereed journal. Our programs are written from the text of the preprint, and we prove every statement of the preprint that our proof uses. Four mutually unbiased bases could be taken to consist of the standard basis, the columns of a complex Hadamard matrix divided by √6, and two further bases. Finitely many balls in phase coordinates cover all complex Hadamard matrices of order six up to equivalence, and on each small ball a finite search shows that these two further bases do not exist. Every inequality that the programs decide in order to reject a case or to cover a set of matrices is decided in exact integer arithmetic or in interval arithmetic with outward rounding. The programs, with the logs and data of the computation, are deposited.</p></details>
+        </div>
+      </article>
 
       <article class="paper" id="p09">
         <div class="num">09</div>
@@ -327,7 +350,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
     </section>
 
 
-    <footer>Updated 10 October 2026</footer>
+    <footer>Updated 14 October 2026</footer>
   </main>
 </div>
 <script>
@@ -335,6 +358,8 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
   function spy() {
     let cur = secs[0];
     for (const s of secs) if (s.getBoundingClientRect().top <= innerHeight * .34) cur = s;
+    // At the bottom of the page the last section may be too short to reach the line above, so it counts as current.
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) cur = secs[secs.length - 1];
     links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + cur.id));
   }
   let ticking = false;
