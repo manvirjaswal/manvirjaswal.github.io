@@ -75,8 +75,10 @@ h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
 .lede .eq { color: var(--accent); }
 p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
 .lede { color: var(--ink); }
-#about, #selected, #preprints { margin-bottom: 72px; }
-#about p:not(.lede) { font-size: 16px; line-height: 1.65; margin-bottom: 16px; max-width: 37em; }
+#about, #selected, #preprints, #results { margin-bottom: 72px; }
+#about p:not(.lede), #faq p { font-size: 16px; line-height: 1.65; margin-bottom: 16px; max-width: 37em; }
+#faq h3 { font: 500 20px/1.4 var(--serif); color: var(--ink); margin: 0 0 8px; }
+#faq p { margin-bottom: 32px; }
 
 .picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .pick { display: flex; flex-direction: column; gap: 14px; padding: 24px 24px 28px; position: relative; }
@@ -130,6 +132,10 @@ p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
 sup { line-height: 0; font-size: .62em; }
 .eq { white-space: nowrap; }
 footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); }
+.ripple { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.wrap { position: relative; z-index: 1; }
+.rippling .w, .rippling .eq.u { position: relative; }
+@media print { .ripple { display: none; } }
 
 @media (max-width: 900px) {
   .wrap { grid-template-columns: 1fr; gap: 0; padding: 0 16px; }
@@ -168,6 +174,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
       <a href="#selected">Selected</a>
       <a href="#preprints">Preprints</a>
       <a href="#results">Other results</a>
+      <a href="#faq">FAQ</a>
     </nav>
     <div class="contact">
       <a href="mailto:manvirjaswal@icloud.com"><span>Email</span><span>manvirjaswal@icloud.com</span></a>
@@ -179,17 +186,12 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
   <main>
     <section id="about">
       <h2>About</h2>
-      <p class="lede">I work on Diophantine equations, in particular the generalized Fermat equations
-        <span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>q</sup></i> = <i>z<sup>r</sup></i></span>: finding all primitive solutions by descent over
-        number fields, Chabauty's method, modular methods and Galois representations, and explicit computation.</p>
-      <p>My background is in software engineering. I designed and built the multi-agent AI system that does
-        the research, verification and writing behind these papers. Before anything is posted, fresh agents check each claim and its
-        proof from scratch, without seeing what the agent that produced it concluded. Most computations are redone by a separate,
-        freshly started AI agent that writes its own program, usually by a different method or in a different language, and compares
-        with the original code only after its own run. Where possible, the main theorems are also checked in Lean.</p>
-      <p>The papers are written for people to read. Each one goes through several rounds of review and revision before it is
-        posted; conditions are stated in the theorems, earlier work is credited precisely, and every computation comes with its code
-        and data. Each paper aims at a result specialists have asked about, or at a method they can reuse.</p>
+      <p class="lede">I work on Diophantine equations, mainly the generalized Fermat equations
+        <span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>q</sup></i> = <i>z<sup>r</sup></i></span>, and on elliptic curves of large rank.
+        I also work in other areas, such as additive combinatorics and mutually unbiased bases.</p>
+      <p>I'm a software engineer by background, and I built the AI system behind this work. I'm also interested in getting
+        more involved in AI research, building on what I've learned from developing the system. There's more in the
+        FAQ below.</p>
     </section>
 
     <section id="selected">
@@ -206,7 +208,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         <a class="pick" href="#p09">
           <span class="top"><span class="n">09</span><span class="go" aria-hidden="true">↓</span></span>
           <span class="pk"><i>h</i>(<i>D</i>) ≤ 3000</span>
-          <span class="why">All 36 993 853 imaginary quadratic fields, assuming a zero-free interval for real Dirichlet <i>L</i>-functions.</span></a>
+          <span class="why">All 36 993 853 imaginary quadratic fields, assuming Kimura's bound for real zeros of Dirichlet <i>L</i>-functions.</span></a>
       </div>
     </section>
 
@@ -249,11 +251,11 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
       <article class="paper" id="p09">
         <div class="num">09</div>
         <div>
-          <a class="ttl" href="https://doi.org/10.5281/zenodo.23251443"><span class="eyebrow">Imaginary quadratic fields of</span> <span class="big words">class number at most 3000, assuming a zero-free interval for real Dirichlet <span style="white-space:nowrap"><i>L</i>-functions</span></span></a>
-          <p class="sum">Assuming that <i>L</i>(<i>σ</i>, <i>χ</i>) ≠ 0 for every real <i>σ</i> with 7/8 &lt; <i>σ</i> &lt; 1 and every real primitive Dirichlet character <i>χ</i>, we determine the imaginary quadratic fields of class number at most 3000: there are 36 993 853 of them, and the largest absolute discriminant among them is 2 562 211 723, of class number 2976.</p>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.23251443"><span class="eyebrow">Imaginary quadratic fields of</span> <span class="big words">class number at most 3000</span></a>
+          <p class="sum">Assume Kimura's explicit bound for real zeros of Dirichlet <i>L</i>-functions, which follows from the hypothesis that <i>L</i>(<i>σ</i>, <i>χ</i>) ≠ 0 for 7/8 &lt; <i>σ</i> &lt; 1 and every real primitive character <i>χ</i>. Then exactly 36 993 853 imaginary quadratic fields have class number at most 3000, and the largest absolute discriminant among them is 2 562 211 723.</p>
           <p class="meta">Preprint, 2026</p>
           <div class="links"><a href="https://doi.org/10.5281/zenodo.23251443">Paper</a><a href="https://doi.org/10.5281/zenodo.23251366">Programs and data</a></div>
-          <details class="abs"><summary>Abstract</summary><p>Assume that L(σ, χ) ≠ 0 for every real σ with 7/8 &lt; σ &lt; 1 and every real primitive Dirichlet character χ. This assumption follows from the generalized Riemann hypothesis. It is also the special case, for real s and real primitive characters, of the zero-free half-plane Re s &gt; 7/8 for Dirichlet L-functions announced by OpenAI in October 2026, whose Lean formalization is machine-checked but whose proof has not been refereed. Under this assumption we determine the imaginary quadratic fields of class number at most 3000: there are 36 993 853 of them, and the largest absolute discriminant is 2 562 211 723, of class number 2976. The assumption gives h(D) ≥ 3002 for |D| ≥ 1.98·10¹⁰ through Hecke&#x27;s integral representation of the Dedekind zeta function, and an unconditional computation with binary quadratic forms treats the smaller discriminants. It also gives h(D) &gt; √|D|/(5 log|D|) for every imaginary quadratic field. Cremona and Sutherland determined the fields and orders of class number at most 1000 under the generalized Riemann hypothesis, and a computation posted on 8 October 2026 in the public repository zeta-lab determined the fields of class number at most 1500 assuming that no L(s, χ_D) has a zero with Re s &gt; 7/8; our lists agree with both. Several classifications known only up to one possible exception, or only under the generalized Riemann hypothesis or the absence of Siegel zeros, become complete under our assumption, among them those of the imaginary quadratic fields with class group of exponent 2, 4 or 8 and of the real quadratic fields of extended Richaud–Degert type with class number 1. Finally, we list the imaginary quadratic orders of class number at most 1095, whose fields have |D| &lt; 2·10⁹, and so obtain the singular moduli of degree at most 1095.</p></details>
+          <details class="abs"><summary>Abstract</summary><p>Assume Kimura's explicit bound for real zeros of Dirichlet L-functions (the second part of Theorem 1 of his preprint, Lean-checked according to its author but not refereed), which follows from the hypothesis (H) that L(σ, χ) ≠ 0 for 7/8 &lt; σ &lt; 1 and every real primitive character χ. Then exactly 36 993 853 imaginary quadratic fields have class number at most 3000, and the largest absolute discriminant among them is 2 562 211 723. We also list the imaginary quadratic orders of class number at most 1095, and so the singular moduli of degree at most 1095. Kimura's bound gives h(D) ≥ 3562 for |D| ≥ e^35.0131 by Hecke's integral representation of the Dedekind zeta function, and a sieve in the manner of Watkins, the tabulation of Mosunov and Jacobson and an unconditional computation with binary quadratic forms treat smaller |D|. Hypothesis (H) follows from the generalized Riemann hypothesis and is the real case of the zero-free half-plane Re s &gt; 7/8 announced by OpenAI in October 2026, whose Lean formalization is machine-checked but whose proof has not been refereed. Under (H) the sieve and the tabulation are not needed, h(D) &gt; √|D|/(5 log|D|) for every imaginary quadratic field, and several classifications known only up to one possible exception become complete, among them those of the imaginary quadratic fields with class group of exponent 2, 4 or 8 and of the real quadratic fields of extended Richaud–Degert type with class number 1. Our lists agree with those of Kimura (h ≤ 2000), of Cremona and Sutherland (h ≤ 1000, under the generalized Riemann hypothesis) and of a computation posted on October 8, 2026, in the repository zeta-lab (h ≤ 1500, assuming that L(s, χ_D) ≠ 0 for Re s &gt; 7/8), and with the counts of Garcia, Grenié, Lee and Molteni (h ≤ 2000, under the generalized Riemann hypothesis).</p></details>
         </div>
       </article>
 
@@ -361,6 +363,32 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
     </section>
 
 
+    <section id="faq">
+      <h2>FAQ</h2>
+      <h3>Why AI for mathematics?</h3>
+      <p>I've been interested in both for a long time, so putting them together was natural. I ended up focusing on
+        generalized Fermat equations because I made a lot of progress there while working on a larger problem, but I still
+        work in other areas too.</p>
+      <h3>What is your part?</h3>
+      <p>I work on the system itself, mostly research and experiments, and I set the direction of the work. Sometimes I weigh in on mathematical strategy. The system is built from standard multi-agent techniques. Most of the effort
+        goes into filling their gaps and adapting them to mathematics.</p>
+      <h3>Which AI models do you use?</h3>
+      <p>The latest frontier models, at their highest reasoning settings when it helps. Mostly Claude Code or Codex, and
+        sometimes both, since different models catch different mistakes and come up with different ideas.</p>
+      <h3>How are the results checked?</h3>
+      <p>Several times, in different ways. Some checks go through a whole proof, others a single step. Not all of them are
+        independent, and some try to break a result instead of confirming it. Computations get the same treatment. When I
+        can, I also get outside checks, so I know how well things are working. Let me know if you find a problem.</p>
+      <h3>How do you decide what to post?</h3>
+      <p>I only post results that have been checked carefully and that I believe are new and useful. Usually that means
+        answering a question people have actually asked, or giving others a method or computation they can use.</p>
+      <h3>Is the writing final?</h3>
+      <p>Not yet. It's one of the main things I'm working on. The ones on arXiv are in a good spot, and the others are
+        still being improved.</p>
+      <h3>Do you collaborate? Can I ask you something?</h3>
+      <p>Sure, email me.</p>
+    </section>
+
     <footer>Updated 21 October 2026</footer>
   </main>
 </div>
@@ -396,6 +424,273 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
       anim.onfinish = () => { anim = null; p.style.overflow = ''; if (!opening) { d.open = false; d.classList.remove('closing'); } };
     });
   });
+
+  // Ripple: a click on empty page drops a stone into a pool of characters. A damped 2D wave spreads, leaves the window and
+  // fades, and words under it shift and swell a little, as if seen through water.
+  {
+    const fx = { text: 'words', glyphs: 'random', light: true, clock: true, open: false, smooth: true, wake: true, glint: false, ink: 1, motion: 1.5 };
+    const C = 12, PAD = 12, HZ = 120, DAMP = .982, C2 = .45, LX = .61, LY = .79;
+    const RAMP = '.:-=+*#%@', GLYPHS = [...RAMP, '·', 'xp', '+', 'yq', '=', 'zr'], DOT = RAMP.length, SEQ = [10, 11, 12, 13, 14, DOT, DOT];
+    const WHOLE = 'h2, nav a, .pk, .ttl .big.eq, .links a, .abs summary, .tag';
+    const BLOCKS = 'h1, .role, nav a, .contact a, h2, main p, h3, .pick, .num, .ttl, .links, .abs summary, footer';
+    const root = document.documentElement, cv = document.createElement('canvas'), cx = cv.getContext('2d');
+    const clamp = (v, r) => Math.max(-r, Math.min(r, v));
+    cv.className = 'ripple'; cv.setAttribute('aria-hidden', 'true'); document.body.prepend(cv);
+    let W, H, a, b, damp, jit, rows, atlas, atlasKey = '', S = C, accent = '';
+    let running = false, last = 0, acc = 0, units = [], wrapped = false, stirring = false, moved = false, lx = 0, ly = 0;
+
+    function size() {
+      const dpr = devicePixelRatio || 1;
+      W = Math.ceil(innerWidth / C) + 2 * PAD; H = Math.ceil(innerHeight / C) + 2 * PAD;
+      a = new Float32Array(W * H); b = new Float32Array(W * H); damp = new Float32Array(W * H);
+      jit = Float32Array.from(a, () => Math.random() * 2 - 1);
+      rows = Uint8Array.from({ length: H }, () => Math.random() * 7 | 0);
+      // The grid reaches PAD cells past each edge of the window. There a sponge soaks up the waves, so they leave the
+      // window instead of bouncing back.
+      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+        const d = Math.max(PAD - x, x - (W - 1 - PAD), PAD - y, y - (H - 1 - PAD), 0) / PAD;
+        damp[y * W + x] = DAMP * (1 - .3 * d * d);
+      }
+      cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    size();
+    addEventListener('resize', () => { if (running) stop(); size(); });
+
+    // Glyphs are drawn once into a strip and stamped from it each frame, which is far faster than drawing text.
+    function glyphs() {
+      const dpr = devicePixelRatio || 1, key = accent + dpr, serif = 'Newsreader, Georgia, serif';
+      if (key === atlasKey) return;
+      atlasKey = key; S = C * dpr;
+      atlas = document.createElement('canvas'); atlas.width = Math.ceil(S * GLYPHS.length); atlas.height = Math.ceil(S);
+      const g = atlas.getContext('2d');
+      g.scale(dpr, dpr); g.fillStyle = accent;
+      GLYPHS.forEach((t, k) => {
+        const ox = k * C;
+        if (t.length === 2) {
+          // A letter with its exponent, set like the equations on the page.
+          const base = `italic 400 ${C}px ${serif}`, sup = `italic 400 ${C * .62}px ${serif}`;
+          g.font = base; const w1 = g.measureText(t[0]).width;
+          g.font = sup; const w2 = g.measureText(t[1]).width;
+          const x0 = ox + (C - w1 - w2) / 2, y0 = C * .74;
+          g.textAlign = 'left'; g.textBaseline = 'alphabetic';
+          g.font = base; g.fillText(t[0], x0, y0);
+          g.font = sup; g.fillText(t[1], x0 + w1, y0 - C * .4);
+        } else {
+          g.font = k < DOT ? `500 ${C - 1}px ui-monospace, SFMono-Regular, Menlo, monospace` : `400 ${C}px ${serif}`;
+          g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(t, ox + C / 2, C / 2);
+        }
+      });
+    }
+
+    function sim() {
+      for (let y = 1; y < H - 1; y++) for (let x = 1; x < W - 1; x++) {
+        const i = y * W + x;
+        // Nine-point Laplacian, so rings stay round instead of turning into diamonds.
+        const lap = (4 * (a[i - 1] + a[i + 1] + a[i - W] + a[i + W]) + a[i - W - 1] + a[i - W + 1] + a[i + W - 1] + a[i + W + 1] - 20 * a[i]) / 6;
+        b[i] = (2 * a[i] - b[i] + C2 * lap) * (fx.open ? damp[i] : DAMP);
+      }
+      if (!fx.open) for (let y = 0; y < H; y++) for (let x = 0; x < W; x++)
+        if (x < PAD || y < PAD || x >= W - PAD || y >= H - PAD) b[y * W + x] = 0;
+      [a, b] = [b, a];
+    }
+
+    // Height of the water at a point in the window: blended between cell centres when smooth, else the nearest cell's.
+    function hAt(px, py) {
+      const gx = Math.max(0, Math.min(W - 1.001, px / C + PAD - .5)), gy = Math.max(0, Math.min(H - 1.001, py / C + PAD - .5));
+      if (!fx.smooth) return a[Math.round(gy) * W + Math.round(gx)];
+      const x0 = gx | 0, y0 = gy | 0, u = gx - x0, v = gy - y0, i = y0 * W + x0;
+      return (a[i] * (1 - u) + a[i + 1] * u) * (1 - v) + (a[i + W] * (1 - u) + a[i + W + 1] * u) * v;
+    }
+
+    function draw() {
+      cx.clearRect(0, 0, innerWidth, innerHeight);
+      let peak = 0;
+      for (let y = PAD; y < H - PAD; y++) for (let x = PAD; x < W - PAD; x++) {
+        const i = y * W + x, m = Math.abs(a[i]);
+        if (m > peak) peak = m;
+        if (m < .08) continue;
+        let v = (m - .08) * .8;
+        // Light from the top left: slopes that face it are drawn brighter and denser, the far sides fainter.
+        if (fx.light) v *= Math.max(.15, Math.min(2.2, 1 + 1.25 * (LX * (a[i + 1] - a[i - 1]) + LY * (a[i + W] - a[i - W]))));
+        const alpha = Math.min(.4, v) * fx.ink * (.75 + .25 * jit[i]);
+        if (alpha < .01) continue;
+        // Equation: the water reveals a hidden field of x^p + y^q = z^r, with dots where it is shallow. Random: denser
+        // characters where it is higher. Both flicker now and then.
+        const k = fx.glyphs === 'equation'
+          ? (Math.random() < .015 ? SEQ[Math.random() * 5 | 0] : v < .14 ? DOT : SEQ[(x + rows[y]) % 7])
+          : (Math.random() < .03 ? Math.random() * RAMP.length | 0 : Math.max(0, Math.min(RAMP.length - 1, v * 6 + jit[i] * 1.5 | 0)));
+        cx.globalAlpha = Math.min(1, alpha);
+        cx.drawImage(atlas, k * S, 0, S, S, (x - PAD) * C, (y - PAD) * C, C, C);
+      }
+      cx.globalAlpha = 1;
+      return peak;
+    }
+
+    // Every word gets its own span, so the water can move words one by one. The spans stay inline and move by relative
+    // offsets, which never change the layout: line breaks, spacing, copying and reading are exactly as before.
+    function wrap() {
+      if (wrapped) return;
+      wrapped = true;
+      document.querySelectorAll('main .eq').forEach(el => { if (!el.matches(WHOLE) && !el.closest(WHOLE)) el.classList.add('u'); });
+      const list = [], tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      for (let n; (n = tw.nextNode());) {
+        const el = n.parentElement;
+        if (/\S/.test(n.data) && el.closest('aside, main') && !el.closest('script, style, .eq, ' + WHOLE)) list.push(n);
+      }
+      for (const n of list) {
+        const frag = document.createDocumentFragment();
+        for (const p of n.data.split(/(\s+)/)) {
+          if (!p) continue;
+          if (/\s/.test(p[0])) { frag.append(p); continue; }
+          const w = document.createElement('span');
+          w.className = 'w'; w.textContent = p; frag.append(w);
+        }
+        n.replaceWith(frag);
+      }
+    }
+
+    // Only what lies within a screen of the window is measured and moved: reading every word's position would stall the
+    // first frame. Words in the main column follow the page from top to bottom, so two binary searches find that stretch.
+    function nearby(list) {
+      const lo = -innerHeight, hi = 2 * innerHeight, find = ok => {
+        let i = 0, j = list.length;
+        while (i < j) { const m = i + j >> 1; if (ok(list[m].getBoundingClientRect())) j = m; else i = m + 1; }
+        return i;
+      };
+      return list.slice(find(r => r.bottom > lo), find(r => r.top >= hi));
+    }
+
+    function measure() {
+      const sticky = getComputedStyle(document.querySelector('aside')).position === 'sticky';
+      const sel = fx.text === 'words' ? WHOLE + ', .w, .eq.u' : fx.text === 'blocks' ? BLOCKS : '';
+      if (!sel) { units = []; return; }
+      const side = [...document.querySelectorAll('aside')].flatMap(el => [...el.querySelectorAll(sel)]);
+      units = side.concat(nearby([...document.querySelectorAll('main')].flatMap(el => [...el.querySelectorAll(sel)]))).map(el => {
+        const r = el.getBoundingClientRect();
+        if (!r.width) return null;
+        // Positions are kept relative to the page, so scrolling during a ripple needs no new measurements; the sidebar
+        // stays put while it is sticky.
+        const fixed = sticky && !!el.closest('aside');
+        return { el, fixed, inline: el.matches('.w, .eq.u'), x: r.left + r.width / 2 + (fixed ? 0 : scrollX),
+                 y: r.top + r.height / 2 + (fixed ? 0 : scrollY), c: '', t: '', k: '' };
+      }).filter(Boolean);
+    }
+
+    function clearText() {
+      for (const u of units) { u.el.style.transform = u.el.style.left = u.el.style.top = u.el.style.color = ''; }
+      units = []; root.classList.remove('rippling');
+    }
+
+    function prepText() {
+      clearText();
+      accent = getComputedStyle(root).getPropertyValue('--accent').trim();
+      if (fx.text === 'words') wrap();
+      measure();
+      if (fx.text === 'words') root.classList.add('rippling');
+    }
+
+    // A raised patch of water is a weak lens: words under it shift away from its top, and the larger pieces (headings,
+    // equations, buttons) also grow a little. Inline words can only shift, since scaling them would need a layout change.
+    function moveText() {
+      const m = fx.motion, sx = scrollX, sy = scrollY;
+      for (const u of units) {
+        const px = u.fixed ? u.x : u.x - sx, py = u.fixed ? u.y : u.y - sy;
+        let t = '', c = '';
+        if (px > -C && py > -C && px < innerWidth + C && py < innerHeight + C) {
+          const h = hAt(px, py), e = hAt(px + C, py), w = hAt(px - C, py), s = hAt(px, py + C), n = hAt(px, py - C);
+          const gx = (e - w) / 2, gy = (s - n) / 2;
+          if (fx.text === 'blocks') {
+            const dx = clamp(gx * 6 * m, 6 * m), dy = clamp(gy * 6 * m, 6 * m);
+            if (Math.abs(dx) + Math.abs(dy) > .05) t = `translate(${dx.toFixed(2)}px, ${dy.toFixed(2)}px)`;
+          } else {
+            const dx = clamp(-gx * 3 * m, 3 * m), dy = clamp(-gy * 3 * m, 3 * m), z = 1 + clamp(-(e + w + s + n - 4 * h) * .05 * m, .04 * m);
+            if (u.inline) { if (Math.abs(dx) + Math.abs(dy) > .05) t = `${dx.toFixed(2)}px ${dy.toFixed(2)}px`; }
+            else if (Math.abs(dx) + Math.abs(dy) > .05 || Math.abs(z - 1) > .001) t = `translate(${dx.toFixed(2)}px, ${dy.toFixed(2)}px) scale(${z.toFixed(4)})`;
+          }
+          // Glint: words on slopes that face the light catch a little gold.
+          if (fx.glint) {
+            const g = Math.round(Math.min(.7, Math.max(0, 1.6 * (LX * gx + LY * gy))) * 20) * 5;
+            if (g) c = `color-mix(in srgb, ${accent} ${g}%, ${u.c || (u.c = getComputedStyle(u.el).color)})`;
+          }
+        }
+        if (t !== u.t) {
+          u.t = t;
+          if (!u.inline) u.el.style.transform = t;
+          else { const [l, tp] = t ? t.split(' ') : ['', '']; u.el.style.left = l; u.el.style.top = tp; }
+        }
+        if (c !== u.k) u.el.style.color = u.k = c;
+      }
+    }
+
+    function stop() {
+      running = false; last = acc = 0; a.fill(0); b.fill(0);
+      cx.clearRect(0, 0, innerWidth, innerHeight); clearText();
+    }
+
+    function frame(now) {
+      if (!running) return;
+      const dt = last ? Math.min(100, now - last) : 1000 / 60;
+      last = now;
+      // Same speed on every screen: the water steps at a fixed rate, however often the screen redraws.
+      if (fx.clock) { acc += dt; for (let n = 0; acc >= 1000 / HZ && n < 12; n++) { sim(); acc -= 1000 / HZ; } }
+      else sim();
+      const peak = draw();
+      moveText();
+      if (peak > .08 || stirring) requestAnimationFrame(frame);
+      else stop();
+    }
+
+    function drop(x, y, amp, sp) {
+      if (!running) { running = true; prepText(); glyphs(); requestAnimationFrame(frame); }
+      const px = Math.floor(x / C) + PAD, py = Math.floor(y / C) + PAD, r = Math.ceil(2 * Math.sqrt(sp));
+      for (let j = -r; j <= r; j++) for (let i = -r; i <= r; i++) {
+        const X = px + i, Y = py + j;
+        if (X > 0 && Y > 0 && X < W - 1 && Y < H - 1) a[Y * W + X] -= amp * Math.exp(-(i * i + j * j) / sp);
+      }
+    }
+
+    // True when the point is over an actual glyph, not just inside a text block's empty margin.
+    function onText(x, y) {
+      let node, off;
+      if (document.caretPositionFromPoint) { const c = document.caretPositionFromPoint(x, y); if (c) { node = c.offsetNode; off = c.offset; } }
+      else if (document.caretRangeFromPoint) { const r = document.caretRangeFromPoint(x, y); if (r) { node = r.startContainer; off = r.startOffset; } }
+      if (!node || node.nodeType !== 3) return false;
+      const r = document.createRange();
+      for (const o of [off - 1, off]) {
+        if (o < 0 || o >= node.length) continue;
+        r.setStart(node, o); r.setEnd(node, o + 1);
+        for (const q of r.getClientRects()) if (x >= q.left - 2 && x <= q.right + 2 && y >= q.top - 2 && y <= q.bottom + 2) return true;
+      }
+      return false;
+    }
+    const blocked = e => e.target.closest('a, button, summary, input, label') || onText(e.clientX, e.clientY);
+
+    addEventListener('click', e => {
+      if (moved) { moved = false; return; }
+      if (still.matches || e.button !== 0 || !getSelection().isCollapsed || blocked(e)) return;
+      drop(e.clientX, e.clientY, 3.5 + Math.random() * 2.5, 3 + Math.random() * 3);
+    });
+    // Dragging across empty page stirs the water: a line of small stones leaves a wake.
+    addEventListener('mousedown', e => {
+      moved = false;
+      if (!fx.wake || still.matches || e.button !== 0 || blocked(e)) return;
+      stirring = true; lx = e.clientX; ly = e.clientY;
+      e.preventDefault();
+    });
+    addEventListener('mousemove', e => {
+      if (!stirring) return;
+      if (!(e.buttons & 1)) { stirring = false; return; }
+      const d = Math.hypot(e.clientX - lx, e.clientY - ly);
+      if (d < 8) return;
+      moved = true;
+      for (let k = 1, n = Math.ceil(d / 8); k <= n; k++) drop(lx + (e.clientX - lx) * k / n, ly + (e.clientY - ly) * k / n, .8, 2);
+      lx = e.clientX; ly = e.clientY;
+    });
+    addEventListener('mouseup', () => { stirring = false; });
+
+    // Wrap the words while the page is idle, so the first click starts at once.
+    (window.requestIdleCallback || setTimeout)(wrap);
+  }
 </script>
 </body>
 </html>
