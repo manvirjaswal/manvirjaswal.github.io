@@ -83,9 +83,10 @@ p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
 #faq h3 { font: 500 20px/1.4 var(--serif); color: var(--ink); margin: 0 0 8px; }
 #faq p { margin-bottom: 32px; }
 
-.picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.picks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .pick { display: flex; flex-direction: column; gap: 14px; padding: 24px 24px 28px; position: relative; }
-.pick + .pick { border-left: 1px solid var(--rule); }
+.pick:nth-child(even) { border-left: 1px solid var(--rule); }
+.pick:nth-child(n+3) { border-top: 1px solid var(--rule); }
 .pick::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--accent);
   transform: scaleX(0); transform-origin: left; transition: transform .35s ease; }
 .pick:hover::before, .pick:focus-visible::before { transform: scaleX(1); }
@@ -96,7 +97,7 @@ p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
 .pick .pk { font: 400 30px/1.15 var(--serif); color: var(--ink); white-space: nowrap; transition: color .2s; }
 .pick:hover .pk { color: var(--accent); }
 .pick .why { font: 400 14px/1.6 var(--sans); color: var(--muted); text-wrap: pretty; }
-@media (max-width: 900px) { .picks { grid-template-columns: 1fr; } .pick + .pick { border-left: 0; border-top: 1px solid var(--rule); } .pick { padding: 20px 4px 24px; } }
+@media (max-width: 900px) { .picks { grid-template-columns: 1fr; } .pick:nth-child(even) { border-left: 0; } .pick + .pick { border-top: 1px solid var(--rule); } .pick { padding: 20px 4px 24px; } }
 .paper { scroll-margin-top: 48px; }
 .paper { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 0 24px; padding: 32px 0; border-top: 1px solid var(--rule); }
 #preprints .paper:first-of-type { border-top: 0; padding-top: 0; }
@@ -132,7 +133,7 @@ p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
 .links a::after { content: " ↗"; color: var(--faint); transition: color .2s; }
 .links a:hover { border-color: var(--accent); }
 .links a:hover::after { color: var(--accent); }
-sup { line-height: 0; font-size: .62em; }
+sup, sub { line-height: 0; font-size: .62em; }
 .eq { white-space: nowrap; }
 footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); }
 .ripple { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
@@ -200,23 +201,49 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
     <section id="selected">
       <h2>Selected</h2>
       <div class="picks">
+        <a class="pick" href="#p16">
+          <span class="top"><span class="n">16</span><span class="go" aria-hidden="true">↓</span></span>
+          <span class="pk eq"><i>X</i><sub>ns</sub><sup>+</sup>(121)</span>
+          <span class="why">Exactly seven rational points, all of them CM: the level 121 case of a conjecture of Rouse, Sutherland and Zureick-Brown. With their theorem it determines the 11-adic images of Galois of non-CM elliptic curves over ℚ.</span></a>
         <a class="pick" href="#p06">
           <span class="top"><span class="n">06</span><span class="go" aria-hidden="true">↓</span></span>
           <span class="pk eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span>
           <span class="why">No solution in coprime nonzero integers for any <i>n</i> ≥ 3.</span></a>
-        <a class="pick" href="#p12">
-          <span class="top"><span class="n">12</span><span class="go" aria-hidden="true">↓</span></span>
-          <span class="pk">rank ≥ 6</span>
-          <span class="why">Infinitely many elliptic curves with torsion ℤ/2ℤ × ℤ/4ℤ and rank at least 6, answering Problem 2.6 of Dujella's list.</span></a>
         <a class="pick" href="#p15">
           <span class="top"><span class="n">15</span><span class="go" aria-hidden="true">↓</span></span>
           <span class="pk">MUB triplets</span>
           <span class="why">Every triplet of mutually unbiased bases in ℂ<sup>6</sup> comes from Zauner's construction, up to equivalence, proving two conjectures of Matolcsi, Matszangosz, Varga and Weiner. Computer-assisted, assuming stated hypotheses.</span></a>
+        <a class="pick" href="#p12">
+          <span class="top"><span class="n">12</span><span class="go" aria-hidden="true">↓</span></span>
+          <span class="pk">rank ≥ 6</span>
+          <span class="why">Infinitely many elliptic curves with torsion ℤ/2ℤ × ℤ/4ℤ and rank at least 6, answering Problem 2.6 of Dujella's list.</span></a>
       </div>
     </section>
 
     <section id="preprints">
       <h2>Preprints</h2>
+
+      <article class="paper" id="p17">
+        <div class="num">17</div>
+        <div>
+          <a class="ttl" href="papers/xns-25/"><span class="eyebrow">The rational points of</span> <span class="big words">the non-split Cartan modular curve of level 25</span></a>
+          <p class="sum">We prove that the modular curve <span class="eq"><i>X</i><sub>ns</sub><sup>+</sup>(25)</span> of the normalizer of a non-split Cartan subgroup of level 25, of genus 14 and Jacobian rank 14, has exactly nine rational points, all of them CM. This is the level 25 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 5-adic images of Galois of elliptic curves over ℚ without complex multiplication.</p>
+          <p class="meta">Preprint, 2026</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24061910">Paper</a><a href="https://doi.org/10.5281/zenodo.24061908">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove that the modular curve X⁺ₙₛ(25) of the normalizer of a non-split Cartan subgroup of level 25, of genus 14 and Jacobian rank 14, has exactly nine rational points, all of them CM. This is the level 25 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 5-adic images of Galois of elliptic curves over ℚ without complex multiplication. A descent by the modular units of the curve, using no information on the Mordell–Weil group, places every rational point in the residue disc of a CM point at the prime 1151. Quadratic Chabauty at 1151, with two correspondences that change only the level structure, then shows that each of these discs holds one rational point. The local term at 5 of these correspondences vanishes, by a formula of Betts and Dogra, because their eigenvalues lie in √5 ℚ, and the height pairing is fixed by the nine CM points alone.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p16">
+        <div class="num">16</div>
+        <div>
+          <a class="ttl" href="papers/xns-121/"><span class="eyebrow">The rational points of</span> <span class="big words">the non-split Cartan modular curve of level 121</span></a>
+          <p class="sum">We prove that the modular curve <span class="eq"><i>X</i><sub>ns</sub><sup>+</sup>(121)</span> of the normalizer of a non-split Cartan subgroup of level 121, of genus 511, has exactly seven rational points, all of them CM. This is the level 121 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 11-adic images of Galois of non-CM elliptic curves over ℚ.</p>
+          <p class="meta">Preprint, 2026</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24061906">Paper</a><a href="https://doi.org/10.5281/zenodo.24061904">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove that the modular curve X⁺ₙₛ(121) of the normalizer of a non-split Cartan subgroup of level 121, of genus 511, has exactly seven rational points, all of them CM. This is the level 121 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 11-adic images of Galois of non-CM elliptic curves over ℚ. The Jacobian has rank equal to the genus. We work at the primes 17 and 43, at each of which one Hecke block of the Mordell–Weil group has logarithm divisible by p² while its p-adic height has valuation exactly one. A comparison of valuations in the quadratic Chabauty identity then shows that the residue disc of each CM point holds no other rational point, with no computation of the local height at p, no basis of the Mordell–Weil group and no model of the curve. The inputs come from expansions of differentials at CM points and from a formula we prove for intersection numbers of CM divisors under Hecke correspondences on X⁺ₙₛ(ℓᵉ), at every prime v ≠ ℓ, and at v = ℓ when ℓ ≥ 7, ℓ ≡ 3 mod 4 and e ≤ 2.</p></details>
+        </div>
+      </article>
 
       <article class="paper" id="p15">
         <div class="num">15</div>
@@ -426,7 +453,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
       <p>Sure, email me.</p>
     </section>
 
-    <footer>Updated 6 November 2026</footer>
+    <footer>Updated 8 November 2026</footer>
   </main>
 </div>
 <script>
