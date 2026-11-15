@@ -48,25 +48,6 @@ sub { line-height: 0; font-size: .7em; }
   font: 500 14px/1.4 var(--sans); border-bottom: 1px solid var(--rule); transition: border-color .2s; }
 .tool:hover { border-bottom-color: var(--accent); }
 
-/* The front: the abstract and links, folded above the pages so the paper starts on the first screen (15 Nov, the boss:
-   the title and abstract stood above a paper that opens with them). The text stays in the page for search engines. */
-.front { width: min(880px, calc(100vw - 32px)); margin: 0 auto; padding: 18px 0 0; }
-.front summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; font: 500 11px/1 var(--sans);
-  letter-spacing: .08em; text-transform: uppercase; color: var(--faint); transition: color .2s; }
-.front summary::-webkit-details-marker { display: none; }
-.front summary::after { content: "+"; display: inline-block; font-size: 13px; letter-spacing: 0; transition: transform .2s; }
-.front[open] summary::after { transform: rotate(45deg); }
-.front summary:hover { color: var(--ink); }
-.front[open] summary { margin-bottom: 14px; }
-.front .eq { white-space: nowrap; }
-.front p { font: 400 16px/1.6 var(--serif); color: var(--muted); margin: 0 0 14px; max-width: 44em; text-wrap: pretty; }
-.front .by { font: 400 13px/1.6 var(--sans); color: var(--faint); margin: 0 0 8px; }
-.front .by .sep { margin: 0 4px; }
-.front .row { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 8px; font: 500 14px/1.6 var(--sans); color: var(--ink); }
-.front .row a { padding-bottom: 2px; border-bottom: 1px solid var(--rule); border-radius: 0; transition: border-color .2s; }
-.front .row a:hover { border-bottom-color: var(--accent); }
-.front .row a.out::after { content: " ↗"; color: var(--faint); }
-@media print { .front { display: none; } }
 
 /* The pages */
 #pages { width: max-content; min-width: 100%; padding: 24px 16px 72px; display: flex; flex-direction: column; align-items: center; gap: 16px; --w: min(880px, calc(100vw - 32px)); --ar: .7727; }
