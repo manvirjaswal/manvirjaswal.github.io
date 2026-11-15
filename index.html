@@ -82,7 +82,11 @@ p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
 /* Other preprints: one line each (15 Nov) */
 #more .paper { padding: 14px 0; align-items: baseline; }
 #more .paper:first-of-type { padding-top: 0; }
-#more .sum, #more .abs, #more .meta, #more .links { display: none; }
+#more .sum, #more .abs, #more .meta { display: none; }
+/* 15 Nov, the boss: the paper pages no longer carry the links row, so each entry here shows its own */
+#more .links { gap: 4px 16px; margin: 2px 0 0; }
+#more .links a { padding: 0; border: 0; border-radius: 0; background: none; font: 400 13px/1.6 var(--sans); color: var(--muted); }
+#more .links a:hover { color: var(--ink); }
 #more .ttl .eyebrow { display: inline; font: inherit; color: var(--muted); margin: 0; }
 #more .ttl .big, #more .ttl .big.words { display: inline; font-size: 18px; line-height: 1.5; letter-spacing: 0; }
 #about p:not(.lede), #faq p { font-size: 16px; line-height: 1.65; margin-bottom: 16px; max-width: 37em; }
@@ -214,8 +218,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
       <a href="#about" class="on">About</a>
       <a href="#selected">Selected</a>
       <a href="#preprints">Preprints</a>
-      <a href="#more">Other preprints</a>
-      <a href="#results">Other results</a>
+      <a href="#more">Other results</a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="contact">
@@ -363,7 +366,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
     </section>
 
     <section id="more">
-      <h2>Other preprints</h2>
+      <h2>Other results</h2>
 
       <article class="paper" id="p20">
         <div class="num">20<span class="when">Nov 2026</span></div>
@@ -476,13 +479,9 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
           <details class="abs"><summary>Abstract</summary><p>Assuming the classification of Dahmen–Siksek and Putz, we show that X^5+Y^3=Z^7 has no solution in nonzero coprime integers; equivalently, the generalized Fermat equation of signature (3,5,7) has no nontrivial primitive solution in any arrangement of the exponents. By that classification, a solution determines one of seven septic fields: six pure fields Q((3^a·5)^(1/7)), 1 ≤ a ≤ 6, and an exceptional field F. We exclude F by a fifth-power descent over F(√−35), where the equation becomes a norm identity for an explicit element; the identity and the element&#x27;s valuations above 3, 5 and 7 confine it to 125 classes modulo fifth powers, none compatible with its possible fifth-power residue symbols above 11 and 19. For the pure fields we use results from recent preprints on the genus-2 Frey curves of Pacetti and Villagra Torcomian, whose Jacobians have real multiplication by Q(√5). Level lowering shows that their 7-torsion is reducible, giving a rational point on a genus-15 double cover of the genus-8 curve of F_49-lines in the 7-torsion. The Prym variety of this cover contains an abelian surface of rank one, and Chabauty&#x27;s method at 13 confines the point to two explicit rational points, neither coming from a solution. Supplementary data and programs: https://doi.org/10.5281/zenodo.22949370. P. Chocian (arXiv:2609.26996) has proved the same theorem independently, by different methods.</p></details>
         </div>
       </article>
-    </section>
-
-    <section id="results">
-      <h2>Other results</h2>
 
       <article class="paper" id="r3c">
-        <div class="num">3c</div>
+        <div class="num">00<span class="when">Oct 2026</span></div>
         <div>
           <a class="ttl" href="https://doi.org/10.5281/zenodo.23289305"><span class="eyebrow">A lower bound for a sums–differences constant</span> <span class="big words"><i>C</i><sub>3c</sub> ≥ 1.674894211307116</span></a>
           <p class="sum">An explicit entropy certificate for problem 3c of Tao's optimization-constants repository, a four-slope constant related to the arithmetic Kakeya conjecture. The previous record was 1.6747338950414058.</p>
@@ -573,7 +572,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
     const clamp = (v, r) => Math.max(-r, Math.min(r, v));
     cv.className = 'ripple'; cv.setAttribute('aria-hidden', 'true'); document.body.prepend(cv);
     let W, H, RW, RH, a, b, lap, lapOld, damp, hs, jit, rows, atlas, atlasKey = '', S = G, accent = '', tint = [0, 0, 0], shade, sg, shadeData;
-    let running = false, last = 0, acc = 0, mix = 1, power = WAKE, units = [], wrapped = false, stirring = false, gliding = false, moved = false, lx = 0, ly = 0, tx = 0, ty = 0, fx0 = 0, fy0 = 0;
+    let measuredAt = 0, running = false, last = 0, acc = 0, mix = 1, power = WAKE, units = [], wrapped = false, stirring = false, gliding = false, moved = false, lx = 0, ly = 0, tx = 0, ty = 0, fx0 = 0, fy0 = 0;
     const stones = [];
 
     function size() {
@@ -740,15 +739,13 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
       }
     }
 
-    // Only what lies within a screen of the window is measured and moved: reading every word's position would stall the
-    // first frame. Words in the main column follow the page from top to bottom, so two binary searches find that stretch.
+    // Only what lies within a screen of the window is measured and moved, and nothing inside a closed abstract (it is
+    // hidden but still has a box). A plain pass over the boxes: the page is not in one column from top to bottom (the
+    // Selected grid, the links rows), so a search that assumes it is skipped whole stretches of words.
+    const shown = el => { const d = el.closest('details:not([open])'); return !d || el.closest('summary'); };
     function nearby(list) {
-      const lo = -innerHeight, hi = 2 * innerHeight, find = ok => {
-        let i = 0, j = list.length;
-        while (i < j) { const m = i + j >> 1; if (ok(list[m].getBoundingClientRect())) j = m; else i = m + 1; }
-        return i;
-      };
-      return list.slice(find(r => r.bottom > lo), find(r => r.top >= hi));
+      const lo = -innerHeight, hi = 2 * innerHeight;
+      return list.filter(el => { if (!shown(el)) return false; const r = el.getBoundingClientRect(); return r.width && r.bottom > lo && r.top < hi; });
     }
 
     function measure() {
@@ -765,6 +762,7 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         return { el, fixed, inline: el.matches('.w, .eq.u'), x: r.left + r.width / 2 + (fixed ? 0 : scrollX),
                  y: r.top + r.height / 2 + (fixed ? 0 : scrollY), c: '', t: '', k: '' };
       }).filter(Boolean);
+      measuredAt = scrollY;
     }
 
     function clearText() {
@@ -812,6 +810,14 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
         if (c !== u.k) u.el.style.color = u.k = c;
       }
     }
+
+    // Scrolling far during a ripple brings in words that were not measured: measure again around the new view.
+    addEventListener('scroll', () => {
+      if (running && fx.text === 'words' && Math.abs(scrollY - measuredAt) > innerHeight / 2) {
+        for (const u of units) { u.el.style.transform = u.el.style.left = u.el.style.top = ''; }
+        measure();
+      }
+    }, { passive: true });
 
     function stop() {
       running = false; last = acc = 0; a.fill(0); b.fill(0); lap.fill(0); lapOld.fill(0); stones.length = 0; gliding = false;
@@ -869,19 +875,17 @@ footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); 
       e.preventDefault();
     });
     addEventListener('mousemove', e => {
-      // Once the water is moving, the pointer passing over it stirs it a little as well.
-      if (!stirring) {
-        if (!running || !fx.wake || e.buttons) return;
-        if (!gliding) { gliding = true; power = HOVER; fx0 = e.clientX; fy0 = e.clientY; }
-        tx = e.clientX; ty = e.clientY;
-        return;
-      }
+      // A pointer that only passes over the water leaves it alone (the boss, 15 Nov: new rings kept forming under it).
+      if (!stirring) return;
       if (!(e.buttons & 1)) { stirring = false; gliding = true; return; }
       tx = e.clientX; ty = e.clientY;
       if (!moved && Math.hypot(tx - lx, ty - ly) < 4) return;
       moved = true; start();
     });
     addEventListener('mouseup', () => { if (stirring) { stirring = false; gliding = moved; } });
+    // A press that ends outside the window, or when the window loses focus, ends the drag.
+    addEventListener('blur', () => { stirring = gliding = false; });
+    document.addEventListener('mouseleave', () => { stirring = gliding = false; });
 
     // Wrap the words while the page is idle, so the first click starts at once.
     (window.requestIdleCallback || setTimeout)(wrap);

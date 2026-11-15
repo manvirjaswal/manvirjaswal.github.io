@@ -35,7 +35,7 @@ sub { line-height: 0; font-size: .7em; }
 .home { flex: none; font: 500 19px/1 var(--serif); letter-spacing: -.01em; color: var(--ink); transition: color .2s; }
 .home:hover { color: var(--accent); }
 .home .arrow { font: 400 14px/1 var(--sans); color: var(--faint); margin-right: 8px; }
-.short { min-width: 0; flex: 0 1 auto; padding-left: 16px; border-left: 1px solid var(--rule); font: 400 17px/1.3 var(--serif); color: var(--muted);
+.short { margin: 0; min-width: 0; flex: 0 1 auto; padding-left: 16px; border-left: 1px solid var(--rule); font: 400 17px/1.3 var(--serif); color: var(--muted);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .tools { margin-left: auto; flex: none; display: flex; align-items: center; gap: 8px; font: 500 12px/1 var(--sans); color: var(--muted); }
 .count { font-variant-numeric: tabular-nums; color: var(--faint); margin-right: 8px; white-space: nowrap; }
@@ -48,18 +48,24 @@ sub { line-height: 0; font-size: .7em; }
   font: 500 14px/1.4 var(--sans); border-bottom: 1px solid var(--rule); transition: border-color .2s; }
 .tool:hover { border-bottom-color: var(--accent); }
 
-/* The front: what the paper is, before its pages (an abstract page, as on arXiv) */
-.front { width: min(880px, calc(100vw - 32px)); margin: 0 auto; padding: 48px 0 16px; }
-.front h1 { font: 400 32px/1.2 var(--serif); letter-spacing: -.01em; margin: 0 0 12px; max-width: 24em; text-wrap: balance; }
+/* The front: the abstract and links, folded above the pages so the paper starts on the first screen (15 Nov, the boss:
+   the title and abstract stood above a paper that opens with them). The text stays in the page for search engines. */
+.front { width: min(880px, calc(100vw - 32px)); margin: 0 auto; padding: 18px 0 0; }
+.front summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; font: 500 11px/1 var(--sans);
+  letter-spacing: .08em; text-transform: uppercase; color: var(--faint); transition: color .2s; }
+.front summary::-webkit-details-marker { display: none; }
+.front summary::after { content: "+"; display: inline-block; font-size: 13px; letter-spacing: 0; transition: transform .2s; }
+.front[open] summary::after { transform: rotate(45deg); }
+.front summary:hover { color: var(--ink); }
+.front[open] summary { margin-bottom: 14px; }
 .front .eq { white-space: nowrap; }
-.front .by { font: 400 14px/1.6 var(--sans); color: var(--faint); margin: 0 0 20px; }
+.front p { font: 400 16px/1.6 var(--serif); color: var(--muted); margin: 0 0 14px; max-width: 44em; text-wrap: pretty; }
+.front .by { font: 400 13px/1.6 var(--sans); color: var(--faint); margin: 0 0 8px; }
 .front .by .sep { margin: 0 4px; }
-.front p { font: 400 17px/1.6 var(--serif); color: var(--muted); margin: 0 0 20px; max-width: 44em; text-wrap: pretty; }
-.front .row { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; font: 500 14px/1.6 var(--sans); color: var(--ink); }
+.front .row { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 8px; font: 500 14px/1.6 var(--sans); color: var(--ink); }
 .front .row a { padding-bottom: 2px; border-bottom: 1px solid var(--rule); border-radius: 0; transition: border-color .2s; }
 .front .row a:hover { border-bottom-color: var(--accent); }
 .front .row a.out::after { content: " ↗"; color: var(--faint); }
-@media (max-width: 640px) { .front { padding: 28px 0 8px; } .front h1 { font-size: 25px; } }
 @media print { .front { display: none; } }
 
 /* The pages */
@@ -105,7 +111,9 @@ sub { line-height: 0; font-size: .7em; }
 .posted .sep { margin: 0 4px; }
 
 @media (max-width: 640px) {
-  .short, .zoom, .home .name { display: none; }
+  .zoom, .home .name { display: none; }
+  /* the page's h1: off the phone's bar but still read by screen readers and search engines */
+  .short { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .home .arrow { margin-right: 0; font-size: 18px; color: var(--ink); }
   #pages { padding: 8px 8px 48px; gap: 8px; }
 }
