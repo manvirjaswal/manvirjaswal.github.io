@@ -47,8 +47,8 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .skip { position: absolute; left: 16px; top: -48px; z-index: 10; background: var(--panel); color: var(--ink); padding: 8px 12px;
   border: 1px solid var(--rule); font: 500 13px/1.4 var(--sans); }
 .skip:focus { top: 12px; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; display: grid;
-  grid-template-columns: 300px 1fr; gap: 72px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; display: grid;
+  grid-template-columns: 300px 1fr; gap: 72px clamp(72px, 8vw, 112px); }
 
 
 aside { position: sticky; top: 0; align-self: start; height: 100vh; padding: 72px 0 40px;
