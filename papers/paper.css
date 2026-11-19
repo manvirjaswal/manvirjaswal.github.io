@@ -99,4 +99,10 @@ sub { line-height: 0; font-size: .7em; }
   #pages { padding: 8px 8px 48px; gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
-@media print { .bar, #cite { display: none !important; } body { padding: 0; } #pages { padding: 0; gap: 0; } .sheet { box-shadow: none; break-after: page; } }
+/* The abstract as page text under the paper (19 Nov): search engines and AI crawlers read the page's HTML, not the drawn PDF. */
+.foot { width: min(880px, calc(100vw - 32px)); margin: 0 auto; padding: 8px 0 72px; border-top: 1px solid var(--rule); }
+.foot h2 { font: 500 11px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--faint); margin: 24px 0 16px; }
+.foot p { margin: 0 0 16px; max-width: 68ch; color: var(--muted); }
+.foot .by { font: 400 14px/1.5 var(--sans); color: var(--faint); }
+.foot .by a { border-bottom: 1px solid var(--rule); }
+@media print { .bar, #cite, .foot { display: none !important; } body { padding: 0; } #pages { padding: 0; gap: 0; } .sheet { box-shadow: none; break-after: page; } }
