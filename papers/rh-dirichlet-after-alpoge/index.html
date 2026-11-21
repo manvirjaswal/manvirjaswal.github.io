@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f9f4ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1816" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f1d1a'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' text-anchor='middle' fill='%23f9f4ec'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../paper.css?v=2cb3a835">
+<title>The Riemann hypothesis for Dirichlet L-functions [after Levent Alpöge] · Manvir Jaswal</title>
+<meta name="description" content="A reader&#x27;s guide to L. Alpöge&#x27;s Lean 4 formalization of the Riemann hypothesis for ζ and for every Dirichlet L-function. It states in ordinary notation the five theorems of the archive&#x27;s Main.lean, then follows the chain of declarations behind them, compares the classical inputs with their archive forms and sets Alpöge&#x27;s twenty dated steps against the chain.">
+<link rel="canonical" href="https://manvirjaswal.github.io/papers/rh-dirichlet-after-alpoge/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Riemann hypothesis for Dirichlet L-functions [after Levent Alpöge]">
+<meta property="og:description" content="A reader&#x27;s guide to L. Alpöge&#x27;s Lean 4 formalization of the Riemann hypothesis for ζ and for every Dirichlet L-function. It states in ordinary notation the five theorems of the archive&#x27;s Main.lean, then follows the chain of declarations behind them, compares the classical inputs with their archive forms and sets Alpöge&#x27;s twenty dated steps against the chain.">
+<meta property="og:url" content="https://manvirjaswal.github.io/papers/rh-dirichlet-after-alpoge/">
+<meta name="twitter:card" content="summary">
+<meta name="citation_title" content="The Riemann hypothesis for Dirichlet L-functions [after Levent Alpöge]">
+<meta name="citation_author" content="Jaswal, Manvir">
+<meta name="citation_publication_date" content="2026/11/21">
+<meta name="citation_online_date" content="2026/11/21">
+<meta name="citation_doi" content="10.5281/zenodo.24410056">
+<meta name="citation_pdf_url" content="https://manvirjaswal.github.io/papers/rh-dirichlet-after-alpoge/jaswal-rh-dirichlet-after-alpoge.pdf">
+<meta name="citation_abstract_html_url" content="https://manvirjaswal.github.io/papers/rh-dirichlet-after-alpoge/">
+<meta name="citation_publisher" content="Zenodo">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="Riemann hypothesis">
+<meta name="citation_keywords" content="Dirichlet L-functions">
+<meta name="citation_keywords" content="Lean 4">
+<meta name="citation_keywords" content="formalized mathematics">
+<meta name="citation_keywords" content="Mathlib">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "headline": "The Riemann hypothesis for Dirichlet L-functions [after Levent Alpöge]", "name": "The Riemann hypothesis for Dirichlet L-functions [after Levent Alpöge]", "author": {"@type": "Person", "name": "Manvir Jaswal", "url": "https://manvirjaswal.github.io/", "sameAs": ["https://orcid.org/0009-0001-2880-9528"]}, "datePublished": "2026-11-21", "dateModified": "2026-11-21", "url": "https://manvirjaswal.github.io/papers/rh-dirichlet-after-alpoge/", "sameAs": ["https://doi.org/10.5281/zenodo.24410056"], "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.24410056"}, "abstract": "A reader's guide to L. Alpöge's Lean 4 formalization, announced on 20 November 2026, of the Riemann hypothesis for ζ and for every Dirichlet L-function. It states in ordinary notation the five theorems of the archive's Main.lean, then follows the chain of declarations behind them. The chain runs through the reduction to an inequality that excludes zeros to the right of 1/2, the analytic argument through ramp sums and Landau's theorem on windows, the origin of that inequality, and a bound for Tate–Shafarevich groups of Tate twists. The guide compares the classical inputs with their archive forms and sets Alpöge's twenty dated steps against the chain. The theorems and their proofs are Alpöge's, and the guide is a reading of his archive. A. Sutherland has compiled the archive and reports that Lean's kernel and two independent kernels accept it.", "keywords": ["Riemann hypothesis", "Dirichlet L-functions", "Lean 4", "formalized mathematics", "Mathlib"], "inLanguage": "en", "isAccessibleForFree": true, "encoding": {"@type": "MediaObject", "contentUrl": "https://manvirjaswal.github.io/papers/rh-dirichlet-after-alpoge/jaswal-rh-dirichlet-after-alpoge.pdf", "encodingFormat": "application/pdf"}, "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="../../#p27" aria-label="All preprints"><span class="arrow" aria-hidden="true">←</span><span class="name">Manvir Jaswal</span></a>
+  <h1 class="short">The Riemann hypothesis for Dirichlet <i>L</i>-functions [after Levent Alpöge]</h1>
+  <div class="tools">
+    <span class="count"><b id="at">1</b> / <span id="of">–</span></span>
+    <div class="zoom">
+      <button type="button" id="out" aria-label="Zoom out">−</button>
+      <button type="button" id="fit" aria-label="Fit to width">100%</button>
+      <button type="button" id="in" aria-label="Zoom in">+</button>
+    </div>
+    <button type="button" class="tool" popovertarget="cite">Cite</button>
+    <a class="tool" href="jaswal-rh-dirichlet-after-alpoge.pdf" data-goatcounter-click="pdf-rh-dirichlet-after-alpoge">PDF</a>
+  </div>
+</header>
+
+<main id="pages" data-pdf="jaswal-rh-dirichlet-after-alpoge.pdf">
+  <div class="sheet"></div>
+  <noscript><p class="nojs"><a href="jaswal-rh-dirichlet-after-alpoge.pdf">Read the paper (PDF)</a></p></noscript>
+</main>
+
+<section class="foot" aria-labelledby="abs-h">
+  <h2 id="abs-h">Abstract</h2>
+  <p>A reader's guide to L. Alpöge's Lean 4 formalization, announced on 20 November 2026, of the Riemann hypothesis for ζ and for every Dirichlet L-function. It states in ordinary notation the five theorems of the archive's Main.lean, then follows the chain of declarations behind them. The chain runs through the reduction to an inequality that excludes zeros to the right of 1/2, the analytic argument through ramp sums and Landau's theorem on windows, the origin of that inequality, and a bound for Tate–Shafarevich groups of Tate twists. The guide compares the classical inputs with their archive forms and sets Alpöge's twenty dated steps against the chain. The theorems and their proofs are Alpöge's, and the guide is a reading of his archive. A. Sutherland has compiled the archive and reports that Lean's kernel and two independent kernels accept it.</p>
+  <p class="by">Manvir Jaswal <span class="sep" aria-hidden="true">·</span> 21 November 2026 <span class="sep" aria-hidden="true">·</span> <a href="https://doi.org/10.5281/zenodo.24410056">doi:10.5281/zenodo.24410056</a></p>
+</section>
+
+<div id="cite" popover>
+  <h2>Cite</h2>
+  <p class="ref">M. Jaswal, The Riemann hypothesis for Dirichlet L-functions [after Levent Alpöge], preprint, 2026, doi:<a href="https://doi.org/10.5281/zenodo.24410056">10.5281/zenodo.24410056</a>.</p>
+  <div class="bib"><pre id="bib">@misc{jaswal2026rhdirichletafteralpoge,
+  author    = {Jaswal, Manvir},
+  title     = {The {Riemann} hypothesis for {Dirichlet} {$L$}-functions [after {Levent} {Alp{\&quot;o}ge}]},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.24410056},
+  url       = {https://doi.org/10.5281/zenodo.24410056},
+  note      = {Preprint}
+}</pre><button type="button" class="copy" data-goatcounter-click="bibtex-rh-dirichlet-after-alpoge">Copy BibTeX</button></div>
+  <p class="posted">Preprint <span class="sep" aria-hidden="true">·</span> 21 November 2026</p>
+</div>
+
+<script type="module" src="../reader.js?v=62b592a1"></script>
+<script data-goatcounter="https://manvirjaswal.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
