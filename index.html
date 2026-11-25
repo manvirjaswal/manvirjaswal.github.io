@@ -78,7 +78,7 @@ h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
 .lede .eq { color: var(--accent); }
 p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
 .lede { color: var(--ink); }
-#about, #selected, #more, #results { margin-bottom: 72px; }
+#about, #selected, #more, #results, #highlight { margin-bottom: 72px; }
 /* Other preprints: one line each (15 Nov) */
 #more .paper { padding: 14px 0; align-items: baseline; }
 #more .paper:first-of-type { padding-top: 0; }
@@ -128,24 +128,24 @@ p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
 .paper { grid-template-columns: 76px minmax(0, 1fr); gap: 0 28px; }
 .num .when { display: block; letter-spacing: .02em; white-space: nowrap; font-weight: 400; }
 #more .when { display: none; }
-#selected .meta, #results .meta { margin: 12px 0 0; }
-#selected .links, #results .links { gap: 18px; float: left; margin: 12px 18px 0 0; }
-#selected .paper > div::after, #results .paper > div::after { content: ""; display: block; clear: both; }
-#selected .links a, #results .links a { padding: 0 0 2px; border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; background: none;
+#selected .meta, #results .meta, #highlight .meta { margin: 12px 0 0; }
+#selected .links, #results .links, #highlight .links { gap: 18px; float: left; margin: 12px 18px 0 0; }
+#selected .paper > div::after, #results .paper > div::after, #highlight .paper > div::after { content: ""; display: block; clear: both; }
+#selected .links a, #results .links a, #highlight .links a { padding: 0 0 2px; border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; background: none;
   font: 500 14px/1.6 var(--sans); }
-#selected .links a:hover, #results .links a:hover { border-bottom-color: var(--accent); }
-#selected .abs, #results .abs { margin-top: 12px; }
-#selected .abs summary, #results .abs summary { font: 500 14px/1.6 var(--sans); letter-spacing: 0; text-transform: none; color: var(--ink);
+#selected .links a:hover, #results .links a:hover, #highlight .links a:hover { border-bottom-color: var(--accent); }
+#selected .abs, #results .abs, #highlight .abs { margin-top: 12px; }
+#selected .abs summary, #results .abs summary, #highlight .abs summary { font: 500 14px/1.6 var(--sans); letter-spacing: 0; text-transform: none; color: var(--ink);
   padding: 0 0 2px; gap: 6px; border-bottom: 1px solid var(--rule); transition: border-color .2s; }
-#selected .abs summary::after, #results .abs summary::after { font-size: 14px; color: var(--faint); }
-#selected .abs summary:hover, #results .abs summary:hover { border-bottom-color: var(--accent); }
-#selected .abs p, #results .abs p { clear: left; margin-top: 14px; }
+#selected .abs summary::after, #results .abs summary::after, #highlight .abs summary::after { font-size: 14px; color: var(--faint); }
+#selected .abs summary:hover, #results .abs summary:hover, #highlight .abs summary:hover { border-bottom-color: var(--accent); }
+#selected .abs p, #results .abs p, #highlight .abs p { clear: left; margin-top: 14px; }
 #selected .ttl .eyebrow, #selected .ttl .big, #selected .ttl .big.words,
-#results .ttl .eyebrow, #results .ttl .big, #results .ttl .big.words { display: inline; font: 400 26px/1.3 var(--serif);
+#results .ttl .eyebrow, #highlight .ttl .eyebrow, #results .ttl .big, #highlight .ttl .big, #results .ttl .big.words, #highlight .ttl .big.words { display: inline; font: 400 26px/1.3 var(--serif);
   letter-spacing: -.01em; color: var(--ink); margin: 0; transition: color .2s; }
 #more .ttl .eyebrow { color: var(--ink); transition: color .2s; }
 #selected .ttl:hover .eyebrow, #selected .ttl:hover .big, #selected .ttl:hover .big.words,
-#results .ttl:hover .eyebrow, #results .ttl:hover .big, #results .ttl:hover .big.words,
+#results .ttl:hover .eyebrow, #highlight .ttl:hover .eyebrow, #results .ttl:hover .big, #highlight .ttl:hover .big, #results .ttl:hover .big.words, #highlight .ttl:hover .big.words,
 #more .ttl:hover .eyebrow, #more .ttl:hover .big { color: var(--accent); }
 @media (max-width: 900px) {
   .paper { grid-template-columns: 1fr; }
@@ -153,7 +153,7 @@ p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
   #more .paper { grid-template-columns: 34px minmax(0, 1fr); gap: 0; }
   #more .num { padding: 0; line-height: 27px; }
   #selected .ttl .eyebrow, #selected .ttl .big, #selected .ttl .big.words,
-  #results .ttl .eyebrow, #results .ttl .big, #results .ttl .big.words { font-size: 22px; } }
+  #results .ttl .eyebrow, #highlight .ttl .eyebrow, #results .ttl .big, #highlight .ttl .big, #results .ttl .big.words, #highlight .ttl .big.words { font-size: 22px; } }
 .links a { font: 500 13px/1 var(--sans); color: var(--ink); padding: 8px 16px; border-radius: 999px;
   background: var(--panel); border: 1px solid var(--rule); transition: border-color .2s, color .2s; }
 .links a::after { content: " ↗"; color: var(--faint); transition: color .2s; }
@@ -206,6 +206,10 @@ details#more { margin: 28px 0 0; }
 #more .orcid { font: 400 14px/1.6 var(--sans); color: var(--muted); margin: 20px 0 0; }
 #more .orcid a { border-bottom: 1px solid var(--rule); }
 #more .orcid a:hover { border-bottom-color: var(--accent); }
+/* 25 Nov: one paper set apart above the list */
+#highlight .paper { border: 0; padding: 0; }
+#highlight .ttl .eyebrow, #highlight .ttl .big, #highlight .ttl .big.words { font-size: 32px; line-height: 1.22; }
+@media (max-width: 900px) { #highlight .ttl .eyebrow, #highlight .ttl .big, #highlight .ttl .big.words { font-size: 26px; } }
 </style>
 </head>
 <body>
@@ -216,6 +220,7 @@ details#more { margin: 28px 0 0; }
     <p class="role">Number theory<br>Toronto, Canada</p>
     <nav>
       <a href="#about" class="on">About</a>
+      <a href="#highlight">Highlight</a>
       <a href="#selected">Papers</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -234,6 +239,19 @@ details#more { margin: 28px 0 0; }
         I've also worked on elliptic curves of large rank, billiards in triangles, Shimura varieties, mutually unbiased bases and the Euler equations.</p>
       <p>I'm a software engineer by background, built the AI system behind this work, and am also interested in AI research,
         especially AI safety.</p>
+    </section>
+
+    <section id="highlight">
+      <h2>Highlight</h2>
+      <article class="paper" id="p19">
+        <div class="num">19<span class="when">11 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/effective-ao/"><span class="eyebrow">An effective</span> <span class="big words">André–Oort theorem for Shimura varieties</span></a>
+          <p class="sum">We give effective bounds for the special subvarieties that are maximal in a subvariety of a Shimura variety. The bounds on the field and the level assume a zero-free half-plane, which a preprint of Cureton and Thorner, formalized in Lean, establishes.</p>
+          <div class="links"><span class="tag">Submitted</span><a href="https://doi.org/10.5281/zenodo.24136437">Paper</a><a href="https://doi.org/10.5281/zenodo.24136430">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We give effective bounds for the special subvarieties V that are maximal in a subvariety Z of a Shimura variety, where Z is geometrically irreducible and defined over a number field and the level is neat and of product form: for the degree of V, with no hypothesis; and for the discriminant of a number field L_V attached to V and the Klingler–Yafaev invariant α_V of the level, if for some δ &gt; 0 the Dedekind zeta function of L_V has no zero with real part greater than 1 − δ. The bound for the degree depends only on the degree of Z, and the other two on the degree of Z, the degree of its field of definition and δ; all three are effectively computable, given representatives of the connected components of the adjoint Shimura variety. Cureton and Thorner prove that such a half-plane exists with δ = 1/32 for every number field; with their theorem, all these bounds hold with no further hypothesis. For abelian type, an algorithm lists these subvarieties from the bounds, given a finite étale cover by a Shimura variety of Hodge type inside one of Mumford&#x27;s moduli spaces and equations for the preimage of Z.</p></details>
+        </div>
+      </article>
     </section>
 
     <section id="selected">
@@ -276,16 +294,6 @@ details#more { margin: 28px 0 0; }
           <p class="sum">Answering a question of Hooper, we prove that an obtuse rational triangle is a lattice triangle if and only if its angles are (π/<i>n</i>, π/<i>n</i>, (<i>n</i> − 2)π/<i>n</i>) with <i>n</i> ≥ 5, (π/2<i>k</i>, π/<i>k</i>, (2<i>k</i> − 3)π/2<i>k</i>) with <i>k</i> ≥ 4, or (π/12, π/3, 7π/12).</p>
           <div class="links"><span class="tag">Submitted</span><a href="https://doi.org/10.5281/zenodo.24223593">Paper</a><a href="https://doi.org/10.5281/zenodo.24223587">Programs and data</a></div>
           <details class="abs"><summary>Abstract</summary><p>A rational triangle is a lattice triangle if the Veech group of its unfolding is a lattice. Answering a question of Hooper, we prove that an obtuse rational triangle is a lattice triangle if and only if its angles are (π/n, π/n, (n − 2)π/n) with n ≥ 5, (π/2k, π/k, (2k − 3)π/2k) with k ≥ 4, or (π/12, π/3, 7π/12). The idea is a first-order test on relative periods. By Möller&#x27;s theorem, on a Veech surface the difference of two zeros of the holomorphic form is torsion in the factor of the Jacobian with real multiplication, and stays torsion along the Teichmüller curve. So certain relative periods vanish along the Teichmüller disc, and on a triangle unfolding their first derivative is an integral over the plane that can be computed in closed form. For obtuse angle at most 2π/3 we determine for every denominator where the criterion of Mirzakhani and Wright is blind, and exclude all but four of the triangles there by relative periods and by cylinders whose moduli or areas cannot occur on a Veech surface. For obtuse angle above 2π/3 the proof uses a theorem of Larsen, Norton and Zykoski. Parts of the proof are computer-assisted.</p></details>
-        </div>
-      </article>
-
-      <article class="paper" id="p19">
-        <div class="num">19<span class="when">11 Nov 2026</span></div>
-        <div>
-          <a class="ttl" href="papers/effective-ao/"><span class="eyebrow">An effective</span> <span class="big words">André–Oort theorem for Shimura varieties</span></a>
-          <p class="sum">We give effective bounds for the special subvarieties that are maximal in a subvariety of a Shimura variety. The bounds on the field and the level assume a zero-free half-plane, which a preprint of Cureton and Thorner, formalized in Lean, establishes.</p>
-          <div class="links"><span class="tag">Submitted</span><a href="https://doi.org/10.5281/zenodo.24136437">Paper</a><a href="https://doi.org/10.5281/zenodo.24136430">Programs and data</a></div>
-          <details class="abs"><summary>Abstract</summary><p>We give effective bounds for the special subvarieties V that are maximal in a subvariety Z of a Shimura variety, where Z is geometrically irreducible and defined over a number field and the level is neat and of product form: for the degree of V, with no hypothesis; and for the discriminant of a number field L_V attached to V and the Klingler–Yafaev invariant α_V of the level, if for some δ &gt; 0 the Dedekind zeta function of L_V has no zero with real part greater than 1 − δ. The bound for the degree depends only on the degree of Z, and the other two on the degree of Z, the degree of its field of definition and δ; all three are effectively computable, given representatives of the connected components of the adjoint Shimura variety. Cureton and Thorner prove that such a half-plane exists with δ = 1/32 for every number field; with their theorem, all these bounds hold with no further hypothesis. For abelian type, an algorithm lists these subvarieties from the bounds, given a finite étale cover by a Shimura variety of Hodge type inside one of Mumford&#x27;s moduli spaces and equations for the preimage of Z.</p></details>
         </div>
       </article>
 
