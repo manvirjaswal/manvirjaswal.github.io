@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manvir Jaswal · Number theory</title>
+<meta name="description" content="Manvir Jaswal, number theory, Toronto. Preprints on generalized Fermat equations, rational points on curves, elliptic curves of large rank, billiards in triangles, Shimura varieties, mutually unbiased bases and the Euler equations.">
+<link rel="canonical" href="https://manvirjaswal.github.io/">
+<meta name="google-site-verification" content="3-j68Qs5nJnHF5J1XO53xIP7XqwpJFojRnXwMbMgoAo">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Manvir Jaswal">
+<meta property="og:description" content="Number theory, Toronto. Preprints on generalized Fermat equations, rational points on curves, elliptic curves of large rank, billiards in triangles, Shimura varieties, mutually unbiased bases and the Euler equations.">
+<meta property="og:url" content="https://manvirjaswal.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#f9f4ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1816" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f1d1a'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' text-anchor='middle' fill='%23f9f4ec'%3EMJ%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfilePage", "url": "https://manvirjaswal.github.io/", "mainEntity": {"@type": "Person", "name": "Manvir Jaswal", "url": "https://manvirjaswal.github.io/", "jobTitle": "Independent researcher in number theory", "address": {"@type": "PostalAddress", "addressLocality": "Toronto", "addressCountry": "CA"}, "sameAs": ["https://orcid.org/0009-0001-2880-9528", "https://github.com/manvirjaswal"], "knowsAbout": ["Number theory", "Diophantine equations", "Generalized Fermat equations", "Rational points on curves", "Elliptic curves", "Rational billiards", "Translation surfaces", "Shimura varieties", "Mutually unbiased bases", "Euler equations"]}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  color-scheme: light dark;
+  --bg: #f9f4ec; --panel: #fdfaf6; --ink: #1f1d1a; --muted: #5b5750; --faint: #716c65; --rule: #e4ddd3;
+  --accent: #8d621d; --link: #1f1d1a; --body: #5b5750;
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a1816; --panel: #23211f; --ink: #ebe6df; --muted: #c8c3bb; --faint: #a7a29b; --rule: #34322f;
+    --accent: #d8b069; --link: #ebe6df; --body: #c8c3bb;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1a1816; --panel: #23211f; --ink: #ebe6df; --muted: #c8c3bb; --faint: #a7a29b; --rule: #34322f;
+  --accent: #d8b069; --link: #ebe6df; --body: #c8c3bb;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.65 var(--serif);
+  -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; border-radius: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.skip { position: absolute; left: 16px; top: -48px; z-index: 10; background: var(--panel); color: var(--ink); padding: 8px 12px;
+  border: 1px solid var(--rule); font: 500 13px/1.4 var(--sans); }
+.skip:focus { top: 12px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; display: grid;
+  grid-template-columns: 300px 1fr; gap: 72px clamp(72px, 8vw, 112px); }
+
+
+aside { position: sticky; top: 0; align-self: start; height: 100vh; padding: 72px 0 40px;
+  display: flex; flex-direction: column; }
+h1 { font: 500 38px/1.1 var(--serif); margin: 0 0 16px; letter-spacing: -.015em; }
+.role { font: 400 14px/1.6 var(--sans); color: var(--muted); margin: 0 0 32px; }
+nav a { display: flex; align-items: center; gap: 16px; font: 500 12px/1 var(--sans); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted); padding: 8px 0; transition: color .2s; }
+nav a::before { content: ""; width: 28px; height: 1px; background: currentColor; transition: width .2s; }
+nav a:hover, nav a.on { color: var(--ink); }
+nav a:hover::before, nav a.on::before { width: 56px; }
+.contact { margin-top: auto; font: 400 13px/1 var(--sans); }
+.contact a { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--rule);
+  color: var(--muted); transition: color .2s; }
+.contact a:last-child { border-bottom: 1px solid var(--rule); }
+.contact a span:last-child { color: var(--faint); }
+.contact a:hover { color: var(--ink); }
+.contact a:hover span:last-child { color: var(--accent); }
+
+
+main { padding: 72px 0 40px; min-width: 0; }
+section { scroll-margin-top: 48px; }
+h2 { font: 500 12px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  margin: 0 0 32px; display: flex; align-items: center; gap: 16px; }
+h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.lede { font-size: 23px; line-height: 1.5; margin: 0 0 24px; letter-spacing: -.005em; }
+.lede .eq { color: var(--accent); }
+p { margin: 0 0 24px; color: var(--body); text-wrap: pretty; }
+.lede { color: var(--ink); }
+#about, #selected, #more, #results { margin-bottom: 72px; }
+/* Other preprints: one line each (15 Nov) */
+#more .paper { padding: 14px 0; align-items: baseline; }
+#more .paper:first-of-type { padding-top: 0; }
+#more .sum, #more .abs, #more .meta { display: none; }
+/* 15 Nov, the boss: the paper pages no longer carry the links row, so each entry here shows its own */
+#more .links { gap: 4px 16px; margin: 2px 0 0; }
+#more .links a { padding: 0; border: 0; border-radius: 0; background: none; font: 400 13px/1.6 var(--sans); color: var(--muted); }
+#more .links a:hover { color: var(--ink); }
+#more .ttl .eyebrow { display: inline; font: inherit; color: var(--muted); margin: 0; }
+#more .ttl .big, #more .ttl .big.words { display: inline; font-size: 18px; line-height: 1.5; letter-spacing: 0; }
+#about p:not(.lede), #faq p { font-size: 16px; line-height: 1.65; margin-bottom: 16px; max-width: 37em; }
+#faq h3 { font: 500 20px/1.4 var(--serif); color: var(--ink); margin: 0 0 8px; }
+#faq p { margin-bottom: 32px; }
+
+.paper { scroll-margin-top: 48px; }
+.paper { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 0 24px; padding: 32px 0; border-top: 1px solid var(--rule); }
+#selected .paper:first-of-type, #more .paper:first-of-type { border-top: 0; padding-top: 0; }
+.paper:last-child { border-bottom: 1px solid var(--rule); }
+.num { font: 500 11px/1.6 var(--sans); color: var(--faint); letter-spacing: .08em; padding-top: 2px; font-variant-numeric: tabular-nums; }
+.ttl { display: block; }
+.ttl .eyebrow { display: block; font: 400 14px/1.5 var(--sans); color: var(--muted); margin-bottom: 8px; text-wrap: pretty; }
+.ttl .big { display: block; font: 400 34px/1.2 var(--serif); letter-spacing: -.01em; transition: color .2s; }
+.ttl .big.words { font-size: 26px; line-height: 1.3; white-space: normal; }
+.ttl:hover .big { color: var(--accent); }
+.sum { margin: 12px 0 0; font: 400 17px/1.6 var(--serif); color: var(--body); max-width: 40em; text-wrap: pretty; }
+.sum i { font-style: italic; }
+.abs { margin-top: 12px; font: 400 14px/1.65 var(--sans); color: var(--muted); }
+.abs summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; font: 500 11px/1 var(--sans);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--faint); padding: 8px 0; }
+.abs summary::-webkit-details-marker { display: none; }
+.abs summary::after { content: "+"; display: inline-block; font-size: 13px; letter-spacing: 0; transition: transform .2s; }
+.abs[open] summary::after { transform: rotate(45deg); }
+.abs.closing summary::after { transform: none; }
+.abs summary:hover { color: var(--ink); }
+.abs summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.abs p { margin: 8px 0 4px; padding-left: 16px; border-left: 1px solid var(--rule); max-width: 46em; text-wrap: pretty; }
+.meta { margin: 12px 0 16px; font: 400 14px/1.6 var(--sans); color: var(--faint); text-wrap: pretty; }
+.meta .sep { margin: 0 4px; }
+.meta a { border-bottom: 1px solid currentColor; }
+.meta a:hover { color: var(--ink); }
+.tag { display: inline-block; font: 500 11px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); border-radius: 999px; padding: 4px 8px;
+  margin-left: 8px; vertical-align: 1px; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; }
+.links .tag { margin: 0; align-self: center; }
+/* 15 Nov: date in the number column, links as plain text, every title one size */
+.paper { grid-template-columns: 76px minmax(0, 1fr); gap: 0 28px; }
+.num .when { display: block; letter-spacing: .02em; white-space: nowrap; font-weight: 400; }
+#more .when { display: none; }
+#selected .meta, #results .meta { margin: 12px 0 0; }
+#selected .links, #results .links { gap: 18px; float: left; margin: 12px 18px 0 0; }
+#selected .paper > div::after, #results .paper > div::after { content: ""; display: block; clear: both; }
+#selected .links a, #results .links a { padding: 0 0 2px; border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; background: none;
+  font: 500 14px/1.6 var(--sans); }
+#selected .links a:hover, #results .links a:hover { border-bottom-color: var(--accent); }
+#selected .abs, #results .abs { margin-top: 12px; }
+#selected .abs summary, #results .abs summary { font: 500 14px/1.6 var(--sans); letter-spacing: 0; text-transform: none; color: var(--ink);
+  padding: 0 0 2px; gap: 6px; border-bottom: 1px solid var(--rule); transition: border-color .2s; }
+#selected .abs summary::after, #results .abs summary::after { font-size: 14px; color: var(--faint); }
+#selected .abs summary:hover, #results .abs summary:hover { border-bottom-color: var(--accent); }
+#selected .abs p, #results .abs p { clear: left; margin-top: 14px; }
+#selected .ttl .eyebrow, #selected .ttl .big, #selected .ttl .big.words,
+#results .ttl .eyebrow, #results .ttl .big, #results .ttl .big.words { display: inline; font: 400 26px/1.3 var(--serif);
+  letter-spacing: -.01em; color: var(--ink); margin: 0; transition: color .2s; }
+#more .ttl .eyebrow { color: var(--ink); transition: color .2s; }
+#selected .ttl:hover .eyebrow, #selected .ttl:hover .big, #selected .ttl:hover .big.words,
+#results .ttl:hover .eyebrow, #results .ttl:hover .big, #results .ttl:hover .big.words,
+#more .ttl:hover .eyebrow, #more .ttl:hover .big { color: var(--accent); }
+@media (max-width: 900px) {
+  .paper { grid-template-columns: 1fr; }
+  .num .when { display: inline; margin-left: 10px; }
+  #more .paper { grid-template-columns: 34px minmax(0, 1fr); gap: 0; }
+  #more .num { padding: 0; line-height: 27px; }
+  #selected .ttl .eyebrow, #selected .ttl .big, #selected .ttl .big.words,
+  #results .ttl .eyebrow, #results .ttl .big, #results .ttl .big.words { font-size: 22px; } }
+.links a { font: 500 13px/1 var(--sans); color: var(--ink); padding: 8px 16px; border-radius: 999px;
+  background: var(--panel); border: 1px solid var(--rule); transition: border-color .2s, color .2s; }
+.links a::after { content: " ↗"; color: var(--faint); transition: color .2s; }
+.links a:hover { border-color: var(--accent); }
+.links a:hover::after { color: var(--accent); }
+sup, sub { line-height: 0; font-size: .62em; }
+.eq { white-space: nowrap; }
+footer { margin-top: 40px; font: 400 13px/1.6 var(--sans); color: var(--faint); }
+.ripple { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.wrap { position: relative; z-index: 1; }
+.rippling .w, .rippling .eq.u { position: relative; }
+@media print { .ripple { display: none; } }
+
+@media (max-width: 900px) {
+  .wrap { grid-template-columns: 1fr; gap: 0; padding: 0 16px; }
+  aside { position: static; height: auto; padding: 48px 0 8px; }
+  nav { display: none; }
+  .contact { margin-top: 0; }
+  main { padding: 56px 0 64px; }
+  .lede { font-size: 20px; }
+  .paper { grid-template-columns: 1fr; }
+  .num { padding: 0 0 8px; }
+  .ttl .big { font-size: 28px; }
+  .ttl .big.words { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+@media print {
+  html, body { background: #fff; color: #000; }
+  .wrap { display: block; padding: 0; }
+  aside { position: static; height: auto; padding: 0 0 12pt; }
+  nav, .skip, .pv { display: none !important; }
+  main { padding: 0; }
+  .links a { border: 0; padding: 0; background: none; }
+  .links a::after { content: "  " attr(href); color: #444; font-size: 8pt; }
+  .paper { break-inside: avoid; padding: 12pt 0; }
+  .ttl .big { color: #000; }
+}
+/* 25 Nov: the other papers fold into one line */
+.all > summary { display: inline-block; cursor: pointer; list-style: none; font: 400 13px/1.6 var(--sans); color: var(--faint); padding: 0 0 2px; border-bottom: 1px solid transparent; }
+.all > summary:hover { color: var(--ink); }
+details#more { margin: 28px 0 0; }
+.all > summary::-webkit-details-marker { display: none; }
+.all > summary::after { content: "+"; display: inline-block; margin-left: 6px; font-size: 13px; color: var(--faint); transition: transform .2s; }
+.all[open] > summary::after { transform: rotate(45deg); }
+.all > summary:hover { border-bottom-color: var(--accent); }
+.all > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.all[open] > summary { margin-bottom: 24px; }
+.all > summary .l, .all[open] > summary .m { display: none; }
+.all[open] > summary .l { display: inline; }
+#more .orcid { font: 400 14px/1.6 var(--sans); color: var(--muted); margin: 20px 0 0; }
+#more .orcid a { border-bottom: 1px solid var(--rule); }
+#more .orcid a:hover { border-bottom-color: var(--accent); }
+</style>
+</head>
+<body>
+<a class="skip" href="#selected">Skip to papers</a>
+<div class="wrap">
+  <aside>
+    <h1>Manvir Jaswal</h1>
+    <p class="role">Number theory<br>Toronto, Canada</p>
+    <nav>
+      <a href="#about" class="on">About</a>
+      <a href="#selected">Papers</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="contact">
+      <a href="mailto:manvirjaswal@icloud.com"><span>Email</span><span>manvirjaswal@icloud.com</span></a>
+      <a href="https://orcid.org/0009-0001-2880-9528"><span>ORCID</span><span>0009-0001-2880-9528</span></a>
+      <a href="https://github.com/manvirjaswal"><span>GitHub</span><span>manvirjaswal</span></a>
+    </div>
+  </aside>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p class="lede">I work on Diophantine equations, mainly the generalized Fermat equations
+        <span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>q</sup></i> = <i>z<sup>r</sup></i></span>, and on rational points on curves.
+        I've also worked on elliptic curves of large rank, billiards in triangles, Shimura varieties, mutually unbiased bases and the Euler equations.
+        My main result so far is an <a href="#p19">effective André–Oort theorem</a> for Shimura varieties.</p>
+      <p>I'm a software engineer by background, built the AI system behind this work, and am also interested in AI research,
+        especially AI safety.</p>
+    </section>
+
+    <section id="selected">
+      <h2>Papers</h2>
+
+      <article class="paper" id="p31">
+        <div class="num">31<span class="when">25 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/z-totally-real/"><span class="eyebrow">Diophantine definitions of</span> <span class="big words">ℤ in totally real fields from rank-one elliptic curves</span></a>
+          <p class="sum">We prove that ℤ is Diophantine in a totally real field <i>K</i>, with 25 unknowns, if one of four explicit elliptic curves <i>E</i>: <i>y</i><sup>2</sup> = <i>x</i><sup>3</sup> − <i>Ax</i> over a real quadratic field <i>F</i> ⊈ <i>K</i> has rank one over <i>L</i> = <i>KF</i>, with torsion in <i>E</i>[2] and 2<i>E</i>(<i>L</i>) ⊆ <i>E</i>(<i>F</i>). For a suitable curve these conditions hold for every layer of the cyclotomic ℤ<sub>2</sub>-extension of ℚ and for infinitely many real quadratic fields.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24531540">Paper</a><a href="https://doi.org/10.5281/zenodo.24520749">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Let K be a totally real number field, let E: y² = x³ − Ax be one of four explicit elliptic curves over a real quadratic field F ⊈ K, and put L = KF. We prove that if E(L) has rank one and torsion in E[2], and 2E(L) ⊆ E(F), then ℤ is Diophantine in K, with 25 unknowns, so Hilbert&#x27;s tenth problem over K has a negative answer. For a suitable curve these conditions hold for every layer of the cyclotomic ℤ₂-extension of ℚ, for infinitely many real quadratic fields and for some further fields of degree at most 8. The construction is Z.-W. Sun&#x27;s, from his proofs for ℚ(√2), ℚ(√3) and ℚ(√6), except that our predicate excluding poles of odd order uses the congruent-number twists of our earlier proof for ℚ. Its main step is a height bound on a q-adic tube of a quaternionic Shimura curve. We prove it over every totally real field by Sun&#x27;s method, with a scalar cochain over K, a comparison with Shimura curves over K in every degree and, when √3 ∈ K, a second tube prime.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p30">
+        <div class="num">30<span class="when">24 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/generic-polygons/"><span class="eyebrow">Orbit closures of</span> <span class="big words">generic rational polygons with at least five sides</span></a>
+          <p class="sum">Mirzakhani and Wright ask whether, for more than four sides, the orbit closure of the unfolding of almost every rational polygon with given angles can be anything other than a connected component of a stratum of Abelian differentials or a locus of double covers of a component of a stratum of quadratic differentials. It cannot.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24452738">Paper</a><a href="https://doi.org/10.5281/zenodo.24452734">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Mirzakhani and Wright attach to the angles θ of a rational polygon the orbit closure ℳ(θ) of the unfolding of almost every polygon with these angles. They ask whether, for more than four sides, ℳ(θ) can be anything other than a connected component of a stratum of Abelian differentials or a locus of double covers of a component of a stratum of quadratic differentials. It cannot. For every choice of five or more angles, ℳ(θ) is the component of its stratum if the least common denominator k of the angles divided by π is odd, and the locus of holonomy double covers of the component of its quadratic stratum if k is even. When some s of the angles sum to (s − 1)π, Apisa and Aygun treat this case by a different method; our proof does not depend on theirs. We read the rank of ℳ(θ) off characters of the deck rotation of the unfolding and induct on the number of sides by colliding two vertices; where no collision applies, arithmetic modulo k takes its place. We also extend Mirzakhani and Wright's nonvanishing of the second fundamental form from triangles to every number of sides.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p25">
+        <div class="num">25<span class="when">24 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/scalene-triangles-every-denominator/"><span class="eyebrow">Orbit closures of scalene rational triangles:</span> <span class="big words">every denominator</span></a>
+          <p class="sum">Delecroix and Rüth conjectured that, apart from an explicit list, the unfoldings of rational triangles and quadrilaterals without a reflection symmetry have dense GL(2,ℝ)-orbits in their ambient strata, and proved this for the triangles with angles <i>p<sub>i</sub></i>π/<i>N</i> and <i>N</i> ≤ 58. We prove the conjecture for triangles.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24434358">Paper and Supplement</a><a href="https://doi.org/10.5281/zenodo.24434356">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Delecroix and Rüth conjectured that, apart from an explicit list, the unfoldings of rational triangles and quadrilaterals without a reflection symmetry have dense GL(2,ℝ)-orbits in their ambient strata, and proved this for the triangles with angles pᵢπ/N and N ≤ 58. We prove the conjecture for triangles. If a scalene rational triangle is not on their list of three infinite families and nine triangles, the orbit closure of its unfolding is the connected component of its stratum when N is odd, and the locus of holonomy double covers of a connected component of a stratum of quadratic differentials when N is even. With the first paper of this series, it follows that the orbit is not dense in that locus for the triangles on the list, except possibly for the triangle with angles (3π/20, π/5, 13π/20). Most of the proof concerns subgroups of the units modulo N; parts of it, including all of N ≤ 58, are computer-assisted.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p21">
+        <div class="num">21<span class="when">14 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/lattice-triangles/"><span class="big words">Obtuse rational lattice triangles</span></a>
+          <p class="sum">Answering a question of Hooper, we prove that an obtuse rational triangle is a lattice triangle if and only if its angles are (π/<i>n</i>, π/<i>n</i>, (<i>n</i> − 2)π/<i>n</i>) with <i>n</i> ≥ 5, (π/2<i>k</i>, π/<i>k</i>, (2<i>k</i> − 3)π/2<i>k</i>) with <i>k</i> ≥ 4, or (π/12, π/3, 7π/12).</p>
+          <div class="links"><span class="tag">Submitted</span><a href="https://doi.org/10.5281/zenodo.24223593">Paper</a><a href="https://doi.org/10.5281/zenodo.24223587">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>A rational triangle is a lattice triangle if the Veech group of its unfolding is a lattice. Answering a question of Hooper, we prove that an obtuse rational triangle is a lattice triangle if and only if its angles are (π/n, π/n, (n − 2)π/n) with n ≥ 5, (π/2k, π/k, (2k − 3)π/2k) with k ≥ 4, or (π/12, π/3, 7π/12). The idea is a first-order test on relative periods. By Möller&#x27;s theorem, on a Veech surface the difference of two zeros of the holomorphic form is torsion in the factor of the Jacobian with real multiplication, and stays torsion along the Teichmüller curve. So certain relative periods vanish along the Teichmüller disc, and on a triangle unfolding their first derivative is an integral over the plane that can be computed in closed form. For obtuse angle at most 2π/3 we determine for every denominator where the criterion of Mirzakhani and Wright is blind, and exclude all but four of the triangles there by relative periods and by cylinders whose moduli or areas cannot occur on a Veech surface. For obtuse angle above 2π/3 the proof uses a theorem of Larsen, Norton and Zykoski. Parts of the proof are computer-assisted.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p19">
+        <div class="num">19<span class="when">11 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/effective-ao/"><span class="eyebrow">An effective</span> <span class="big words">André–Oort theorem for Shimura varieties</span></a>
+          <p class="sum">We give effective bounds for the special subvarieties that are maximal in a subvariety of a Shimura variety. The bounds on the field and the level assume a zero-free half-plane, which a preprint of Cureton and Thorner, formalized in Lean, establishes.</p>
+          <div class="links"><span class="tag">Submitted</span><a href="https://doi.org/10.5281/zenodo.24136437">Paper</a><a href="https://doi.org/10.5281/zenodo.24136430">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We give effective bounds for the special subvarieties V that are maximal in a subvariety Z of a Shimura variety, where Z is geometrically irreducible and defined over a number field and the level is neat and of product form: for the degree of V, with no hypothesis; and for the discriminant of a number field L_V attached to V and the Klingler–Yafaev invariant α_V of the level, if for some δ &gt; 0 the Dedekind zeta function of L_V has no zero with real part greater than 1 − δ. The bound for the degree depends only on the degree of Z, and the other two on the degree of Z, the degree of its field of definition and δ; all three are effectively computable, given representatives of the connected components of the adjoint Shimura variety. Cureton and Thorner prove that such a half-plane exists with δ = 1/32 for every number field; with their theorem, all these bounds hold with no further hypothesis. For abelian type, an algorithm lists these subvarieties from the bounds, given a finite étale cover by a Shimura variety of Hodge type inside one of Mumford&#x27;s moduli spaces and equations for the preimage of Z.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p16">
+        <div class="num">16<span class="when">8 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/xns-121/"><span class="eyebrow">The rational points of</span> <span class="big words">the non-split Cartan modular curve of level 121</span></a>
+          <p class="sum">We prove that the modular curve <span class="eq"><i>X</i><sub>ns</sub><sup>+</sup>(121)</span>, of genus 511, has exactly seven rational points, all of them CM. This is the level 121 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 11-adic images of Galois of non-CM elliptic curves over ℚ.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24061906">Paper</a><a href="https://doi.org/10.5281/zenodo.24061904">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove that the modular curve X⁺ₙₛ(121) of the normalizer of a non-split Cartan subgroup of level 121, of genus 511, has exactly seven rational points, all of them CM. This is the level 121 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 11-adic images of Galois of non-CM elliptic curves over ℚ. The Jacobian has rank equal to the genus. At p = 17 and 43 one Hecke block of the Mordell–Weil group has logarithm divisible by p² but p-adic height of valuation one, and a comparison of valuations in the quadratic Chabauty identity then shows that each CM point is the only rational point in its residue disc, with no computation of the local height at p, no basis of the Mordell–Weil group and no equations for the curve. The inputs come from expansions of differentials at CM points and from a formula we prove for intersection numbers of CM divisors of coprime fundamental discriminants under Hecke operators on X⁺ₙₛ(ℓᵉ) (Theorem 1.3).</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p12">
+        <div class="num">12<span class="when">17 Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/z2z4-rank-6/"><span class="eyebrow">Infinitely many elliptic curves with</span> <span class="big words">torsion ℤ/2ℤ × ℤ/4ℤ and rank at least six</span></a>
+          <p class="sum">We show that there are infinitely many elliptic curves over ℚ with torsion subgroup ℤ/2ℤ × ℤ/4ℤ and rank at least 6. This answers the case ℤ/2ℤ × ℤ/4ℤ of Problem 2.6 in Dujella's list of open problems.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23437117">Paper</a><a href="https://doi.org/10.5281/zenodo.23437115">Programs and data</a><a href="https://palomar-registry.org/entry?id=PALOMAR-2026-10-28-000013&amp;version=1">Lean formalization</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We show that there are infinitely many elliptic curves over ℚ with torsion subgroup ℤ/2ℤ × ℤ/4ℤ and rank at least 6, answering the case ℤ/2ℤ × ℤ/4ℤ of Problem 2.6 in Dujella's list of open problems. The largest rank previously known to occur infinitely often with this torsion was 5, due to Eroshkin. The curves are fibers of a one-parameter family of Dujella and Peral, which we show has rank exactly 3 over the rational function field. The family is a base change of an elliptic K3 surface, and quadratic twists of that surface give it three further independent points over the function field of an elliptic curve of rank one. Congruences then carry the independence of the six points, and the torsion ℤ/2ℤ × ℤ/4ℤ, from one rational point of that curve to infinitely many. The result is unconditional. It contradicts the prediction of Park, Poonen, Voight and Wood that only finitely many curves with this torsion have rank greater than 5, although the curves form a sparse family. A second family, over an elliptic curve of rank two, gives another proof.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p06">
+        <div class="num">06<span class="when">2 Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/x3-y3-zn/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span></a>
+          <p class="sum">We prove that the equations <span class="eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span> and <span class="eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = 3<i>z<sup>n</sup></i></span> have no solution in coprime nonzero integers for any <i>n</i> ≥ 3.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23096423">Paper and Supplement</a><a href="https://doi.org/10.5281/zenodo.23096421">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove that the equations x³ + y³ = zⁿ and x³ + y³ = 3zⁿ have no solution in coprime nonzero integers for any n ≥ 3. For the first equation the open cases were prime exponents p ≡ 1 (mod 3) above 10⁹ outside a set of congruence classes treated by Chen and Siksek; in these cases the solution 1³ + 2³ = 3² blocks the modular method. We replace Kraus&#x27;s Frey curve by a hypergeometric motive of rank three over K = Q(√−3), whose parameter at a solution is 3-adically close enough to a point of maximally unipotent monodromy for inertia at √−3 to act unipotently; the parameter of 1³ + 2³ = 3² is not. By a theorem of Calegari, Emerton and Gee, the mod p representation of the fiber, twisted by a cubic character, is the reduction of a member of a compatible system of minimal ramification, and we show that the member at a prime above 3 is irreducible and ordinary at √−3. Ramification and unconditional discriminant bounds show that its reductions have trivial semisimplification, and as the Galois group of the maximal pro-3 extension of K unramified outside √−3 is generated by one inertia group, the member stabilizes its ordinary line, a contradiction. For x³ + y³ = 3zⁿ the same argument also works at the primes p ≡ 2 (mod 3), which are inert in K, and Frey curves and descents treat the remaining exponents.</p></details>
+        </div>
+      </article>
+      <details class="all" id="more">
+        <summary><span class="m">Show more</span><span class="l">Show less</span></summary>
+
+      <article class="paper" id="p29">
+        <div class="num">29<span class="when">24 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/generic-quadrilaterals/"><span class="eyebrow">Orbit closures of</span> <span class="big words">generic rational quadrilaterals</span></a>
+          <p class="sum">Delecroix and Rüth conjectured that their lists of admissible and reduced rational triangle and quadrilateral types whose unfoldings do not have dense orbits in their ambient strata are complete, and they proved this for quadrilaterals with angles 2π<i>a<sub>i</sub></i>/<i>N</i> when <i>N</i> ≤ 32. We prove the conjecture for quadrilaterals, for the generic quadrilateral with given angles.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24434365">Paper</a><a href="https://doi.org/10.5281/zenodo.24434360">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Delecroix and Rüth conjectured that their lists of admissible and reduced rational triangle and quadrilateral types whose unfoldings do not have dense orbits in their ambient strata are complete, and they proved this for quadrilaterals with angles 2πaᵢ/N when N ≤ 32. We prove the conjecture for quadrilaterals, for the generic quadrilateral with given angles. For every admissible and reduced type outside their seven quadrilateral exceptions, the orbit closure of the unfolding of the generic member is a connected component of a stratum of Abelian differentials if N is odd or N ≡ 2 (mod 4), and the locus of holonomy double covers of a component of a stratum of quadratic differentials if 4 divides N. The proof reads the rank of the orbit closure off a set of characters of the deck rotation of the unfolding, a cyclic cover of the sphere. Mirzakhani and Wright's rules, as extended for triangles in the two earlier papers of this series, constrain this set, and two further inputs bring in the orbit closures of triangles: the collision of two vertices, through Mirzakhani and Wright's boundary theorem, and symmetric members of the family of cyclic covers, which cover unfoldings of triangles. Parts of the proof, including a census up to N = 1000, are computer-assisted.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p27">
+        <div class="num">27<span class="when">21 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/rh-dirichlet-after-alpoge/"><span class="eyebrow">The Riemann hypothesis for</span> <span class="big words">Dirichlet <i>L</i>-functions [after Levent Alpöge]</span></a>
+          <p class="sum">A reader's guide to L. Alpöge's Lean 4 formalization of the Riemann hypothesis for <i>ζ</i> and for every Dirichlet <i>L</i>-function. It states in ordinary notation the five theorems of the archive's Main.lean, then follows the chain of declarations behind them, compares the classical inputs with their archive forms and sets Alpöge's twenty dated steps against the chain.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24410056">Paper</a></div>
+          <details class="abs"><summary>Abstract</summary><p>A reader's guide to L. Alpöge's Lean 4 formalization, announced on 20 November 2026, of the Riemann hypothesis for ζ and for every Dirichlet L-function. It states in ordinary notation the five theorems of the archive's Main.lean, then follows the chain of declarations behind them. The chain runs through the reduction to an inequality that excludes zeros to the right of 1/2, the analytic argument through ramp sums and Landau's theorem on windows, the origin of that inequality, and a bound for Tate–Shafarevich groups of Tate twists. The guide compares the classical inputs with their archive forms and sets Alpöge's twenty dated steps against the chain. The theorems and their proofs are Alpöge's, and the guide is a reading of his archive. A. Sutherland has compiled the archive and reports that Lean's kernel and two independent kernels accept it.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p26">
+        <div class="num">26<span class="when">20 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/euler-blowup-density/"><span class="eyebrow">Density of blow-up data and regularity at the blow-up time for</span> <span class="big words">the three-dimensional Euler equations</span></a>
+          <p class="sum">Alpöge, Buckmaster and Coiculescu have constructed smooth odd initial data on 𝕋<sup>3</sup> whose solutions of the incompressible Euler equations blow up in finite time. Running their construction without oddness, we show that data whose solutions blow up in arbitrarily short time are dense among smooth divergence-free fields in <i>L</i><sup>∞</sup>, <i>H</i><sup>1</sup> and <i>C<sup>α</sup></i>, 0 &lt; <i>α</i> &lt; 5/6.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24408617">Paper</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Alpöge, Buckmaster and Coiculescu have constructed smooth odd initial data on 𝕋³ whose solutions of the incompressible Euler equations blow up in finite time. Running their construction without oddness, with the singularity carried by a fluid particle, we show that data whose solutions blow up in arbitrarily short time are dense among smooth divergence-free fields in L^∞, H¹ and C^α, 0 &lt; α &lt; 5/6. The same holds inside classes of fields invariant under a finite group of isometries of 𝕋³, such as the Taylor–Green and Kida classes, with blow-up at the same time along a whole orbit. The Euler equations are not well posed in these topologies, and the result says nothing about instability in C^{1,α} or in Hˢ, s &gt; 5/2. For both our solutions and those of Alpöge, Buckmaster and Coiculescu, the velocity stays continuous up to the blow-up time T in H¹ and in C^α for every 0 &lt; α &lt; 5/6, so the enstrophy converges, while u(T) ∉ C^{5/6}, curl u(T) lies in no Lᵖ with p &gt; 2, and the vorticity on the particle grows faster than (T − t)⁻².</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p23">
+        <div class="num">23<span class="when">24 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/scalene-triangles-rank-one/"><span class="eyebrow">Orbit closures of scalene rational triangles:</span> <span class="big words">rank one and prime denominators</span></a>
+          <p class="sum">We determine the scalene rational triangles of rank one: besides the known lattice triangles, they are the two triangles found by Delecroix and Rüth's computer search, with angles (π/10, 3π/10, 3π/5) and (π/12, π/4, 2π/3). We also prove that for a scalene triangle with angles <i>p<sub>i</sub></i>π/<i>N</i>, <i>N</i> prime, the orbit closure of the unfolding is a connected component of its stratum.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24434354">Paper</a><a href="https://doi.org/10.5281/zenodo.24434352">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>The unfolding of a rational triangle is a translation surface, and the closure of its GL(2,ℝ)-orbit has a rank, which is one for lattice surfaces. We determine the scalene rational triangles of rank one: besides the known lattice triangles, which form three infinite families and four further triangles, they are the two triangles found by Delecroix and Rüth's computer search, with angles (π/10, 3π/10, 3π/5) and (π/12, π/4, 2π/3), whose unfoldings are Prym eigenforms. We also prove that for a scalene triangle with angles pᵢπ/N, N prime, the orbit closure of the unfolding is a connected component of its stratum. Delecroix and Rüth conjectured that the scalene triangles whose unfoldings do not have dense orbits in their ambient strata form an explicit list. The second theorem proves this for prime denominators, and by the first, every scalene triangle of rank one whose unfolding does not have a dense orbit in its ambient stratum is on their list. The proofs differentiate the holomorphic eigenforms of the unfolding's rotational symmetry along every direction of the orbit closure; at a prime denominator this leaves a statement about subgroups of the units modulo N, proved with character sums, a count of lattice points and a computation.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p20">
+        <div class="num">20<span class="when">12 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/wp-voronoi/"><span class="eyebrow">The maximum of</span> <span class="big words"><span class="eq">|<i>z</i><sup>2</sup>℘(<i>z</i>)|</span> on the Voronoi cell of a lattice</span></a>
+          <p class="sum">We show that the maximum of |<i>z</i><sup>2</sup>℘(<i>z</i>)| on the closed Voronoi cell of a lattice is the largest of its values at two half-periods and one vertex of the cell, using interval arithmetic for a compact set of shapes. This bounds |<i>x</i>(<i>P</i>)|·|<i>z</i>|<sup>2</sup> at every archimedean place for every point <i>P</i> of an elliptic curve, with <i>z</i> its elliptic logarithm nearest to 0.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24170483">Paper</a><a href="https://doi.org/10.5281/zenodo.24170481">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Let Λ be a lattice in ℂ, ℘ its Weierstrass function and V its closed Voronoi cell. We show that the maximum of |z²℘(z)| on V is the largest of its values at two half-periods and one vertex of V, using interval arithmetic for a compact set of shapes. We also give, by hand, an upper bound in elementary functions with the same leading term and, for real lattices, the supremum of |t²℘(t)| between 0 and the real half-period. Since x = ℘(z) − b₂/12, this bounds |x(P)|·|z|² at every archimedean place for every point P of an elliptic curve, with z its elliptic logarithm nearest to 0.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p18">
+        <div class="num">18<span class="when">11 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/z-in-q/"><span class="eyebrow">A proof that</span> <span class="big words">ℤ is Diophantine in ℚ through congruent-number twists</span></a>
+          <p class="sum">We give a proof of Glazer and collaborators&#x27; theorem that ℤ is Diophantine in ℚ, which builds on OpenAI&#x27;s proof that Hilbert&#x27;s tenth problem over ℚ has a negative answer. Where they use a restricted 2-converse theorem, this rests on published theorems.</p>
+          <div class="links"><span class="tag">Submitted</span><a href="https://doi.org/10.5281/zenodo.24135589">Paper</a><a href="https://doi.org/10.5281/zenodo.24135695">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We give a proof of Glazer and collaborators&#x27; theorem that ℤ is Diophantine in ℚ, which builds on OpenAI&#x27;s proof that Hilbert&#x27;s tenth problem over ℚ has a negative answer. Integers are represented by multiples of a point on an elliptic curve of rank one over ℚ(√2). An existential condition on two congruent-number twists forbids poles of odd order at odd primes. A height bound at six rational points, from a quaternionic Shimura curve and Serre&#x27;s conjecture (a theorem of Khare–Wintenberger and Kisin), and a prime pattern from the Green–Tao–Ziegler theorem turn congruences at chosen primes into identities between multiples, and the growth of a Lucas sequence forces integrality. Our contribution is the existence of the rational points that the condition on twists requires: for coprime squarefree integers β &gt; 1 and θ ≥ 1 with β ≡ θ ≡ 1 (mod 8), each a square modulo the primes of the other, there is an integer e such that y² = x³ − e²x and y² = x³ − e²θ²x both have rank one and a rational point with abscissa in β·(ℚ×)². Where Glazer and collaborators use a restricted 2-converse theorem, this rests on published theorems: the genus criterion of Tian, Yuan and Zhang, with Gross–Zagier.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p17">
+        <div class="num">17<span class="when">8 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/xns-25/"><span class="eyebrow">The rational points of</span> <span class="big words">the non-split Cartan modular curve of level 25</span></a>
+          <p class="sum">We prove that the modular curve <span class="eq"><i>X</i><sub>ns</sub><sup>+</sup>(25)</span>, of genus 14 and Jacobian rank 14, has exactly nine rational points, all of them CM. This is the level 25 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 5-adic images of Galois of elliptic curves over ℚ without complex multiplication.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24061910">Paper</a><a href="https://doi.org/10.5281/zenodo.24061908">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove that the modular curve X⁺ₙₛ(25) of the normalizer of a non-split Cartan subgroup of level 25, of genus 14 and Jacobian rank 14, has exactly nine rational points, all of them CM. This is the level 25 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 5-adic images of Galois of elliptic curves over ℚ without complex multiplication. A descent by the modular units of the curve, using no information on the Mordell–Weil group, places every rational point in the residue disc of a CM point at the prime 1151. Quadratic Chabauty at 1151, with two correspondences that change only the level structure, then shows that each of these discs holds one rational point. The local term at 5 of these correspondences vanishes, by a formula of Betts and Dogra, because their eigenvalues lie in √5 ℚ, and the height pairing is fixed by the nine CM points alone.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p15">
+        <div class="num">15<span class="when">6 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/mub-triplets/"><span class="eyebrow">Triplets of</span> <span class="big words">mutually unbiased bases in dimension six</span></a>
+          <p class="sum">We prove that every triplet of mutually unbiased bases of ℂ<sup>6</sup> is equivalent to a triplet from Zauner&#x27;s construction. This is Conjecture 1 of Matolcsi, Matszangosz, Varga and Weiner. The proof is computer-assisted and assumes stated hypotheses on the computations.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23991330">Paper</a><a href="https://doi.org/10.5281/zenodo.23991124">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove that every triplet of mutually unbiased bases of ℂ⁶ is equivalent, by a unitary map and a relabeling of the bases and of their vectors, up to phases, to a triplet from Zauner&#x27;s construction. This is Conjecture 1 of Matolcsi, Matszangosz, Varga and Weiner, which we call the Budapest conjecture: up to equivalence, each such triplet lies in exactly one of two cases, the two-parameter family described by Szöllősi or one isolated triplet. The four authors&#x27; Conjecture 2, which they regard as the main conjecture of their paper, holds as well. Cárdenes Wuttig and Tindall have posted a different computer-assisted proof of the Budapest conjecture. We show without a computer that a triplet comes from the construction exactly when it has a unitary symmetry of order three up to a scalar that fixes every vector of one basis up to a phase and permutes the vectors of the other two up to phases; we call such a symmetry a clock, as Sun does for the Fourier family. To show that every triplet has a clock, we follow it through a finite cover of the complex Hadamard matrices of order six up to equivalence by certified balls, along an acyclic directed graph, to a ball near the Fourier family, where its clock is certified. In addition, we determine which pairs of bases lie in a triplet, and we recover that there are no four mutually unbiased bases in ℂ⁶. The proof is computer-assisted and assumes stated hypotheses on the computations (Appendix A).</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p14">
+        <div class="num">14<span class="when">29 Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/xp-yp-z5/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big words"><span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>p</sup></i> = <i>z</i><sup>5</sup></span> and relative class numbers</span></a>
+          <p class="sum">We prove that the equation <span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>p</sup></i> = <i>z</i><sup>5</sup></span> has no solution in nonzero coprime integers for every prime <i>p</i> ≥ 13 such that <i>p</i> ≢ 1 (mod 5) and 5 ∤ <i>h</i><sup>−</sup>(ℚ(<i>ζ</i><sub>5<i>p</i></sub>)), using results of Chen and Koutsianas (to appear in Algebra &amp; Number Theory) on Darmon&#x27;s Frey surfaces. These conditions hold at 41 primes 13 ≤ <i>p</i> &lt; 1000 and at 2432 primes 13 ≤ <i>p</i> &lt; 10<sup>5</sup>.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23753739">Paper</a><a href="https://doi.org/10.5281/zenodo.23753558">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove that the equation xᵖ + yᵖ = z⁵ has no solution in nonzero coprime integers for every prime p ≥ 13 such that p ≢ 1 (mod 5) and 5 ∤ h⁻(ℚ(ζ₅ₚ)), using results of Chen and Koutsianas (to appear in Algebra &amp; Number Theory) on Darmon&#x27;s Frey surfaces. These conditions hold at 41 primes 13 ≤ p &lt; 1000 and at 2432 primes 13 ≤ p &lt; 10⁵. For every prime p ≥ 7 with p ≢ 1 (mod 5) and 5 ∤ h⁻(ℚ(ζ₅ₚ)) we prove, without these results, that no solution (a, b, c) has 10p ∣ ab. Such solutions are close, at each of 2, 5 and p, to one of the trivial solutions (1, 0, 1), (0, 1, 1), which survive every local test. To exclude such solutions we attach to a solution a curve of genus 2(p − 1) whose Jacobian has multiplication by ℤ[ζ₅, ζₚ + ζₚ⁻¹]. It belongs to a family of quotients, by an involution, of cyclic covers in a hypergeometric family of the kind used in Darmon&#x27;s program. The member of this family at the trivial solution is Y⁵ = Rᵖ − 1, which has complex multiplication, and we compare the 5-adic Tate modules of the two curves one power of 1 − ζ₅ at a time. The obstructions to extending this comparison lie in Selmer groups that vanish when 5 ∤ h⁻(ℚ(ζ₅ₚ)), as in Kummer&#x27;s theorem for regular primes; the local condition at 5 comes from Breuil–Kisin modules over a tamely ramified extension. The generalized Riemann hypothesis is not used.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p13">
+        <div class="num">13<span class="when">28 Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/z6-generic-rank-4/"><span class="eyebrow">Elliptic curves with</span> <span class="big words">torsion group ℤ/6ℤ and generic rank four</span></a>
+          <p class="sum">We give an elliptic curve over ℚ(t) with non-constant j-invariant, torsion subgroup ℤ/6ℤ and Mordell–Weil rank exactly 4. The largest rank previously known for such a curve was 3, due to Lecacheux and reached by several later families.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23735796">Paper</a><a href="https://doi.org/10.5281/zenodo.23735657">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We give an elliptic curve over ℚ(t) with non-constant j-invariant, torsion subgroup ℤ/6ℤ and Mordell–Weil rank exactly 4. The largest rank previously known for such a curve was 3, due to Lecacheux and reached by several later families. The curve is the pullback of the universal elliptic curve with a point of order 6 along an explicit rational function of degree 16 that is invariant under t ↦ −t and t ↦ 1/t. The upper bound for the rank comes from the specialization criterion of Gusić and Tadić and a 2-descent of a single fiber. The rank splits along the characters of the symmetry group: the curve descends to ℚ((t + 1/t)²), where it and three of its quadratic twists have rank exactly 1. All but finitely many rational fibers have torsion subgroup ℤ/6ℤ and rank at least 4. We also give an explicit family over an elliptic curve of rank two which shows that infinitely many elliptic curves over ℚ have torsion subgroup ℤ/6ℤ and rank at least 5, a bound that Dujella's tables credit to Eroshkin (2009, personal communication). One member of this family has rank exactly 6. Over ℚ(√2) the same kind of construction gives infinitely many curves with torsion subgroup ℤ/6ℤ and rank at least 6; whether the same holds over ℚ is open. All results are unconditional.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p11">
+        <div class="num">11<span class="when">14 Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/z2z6-rank-4/"><span class="eyebrow">Infinitely many elliptic curves with</span> <span class="big words">torsion ℤ/2ℤ × ℤ/6ℤ and rank at least four</span></a>
+          <p class="sum">We show that there are infinitely many elliptic curves over ℚ with torsion subgroup ℤ/2ℤ × ℤ/6ℤ and rank at least 4, one more than the largest rank previously known to occur infinitely often with this torsion.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23364156">Paper</a><a href="https://doi.org/10.5281/zenodo.23364150">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We show that there are infinitely many elliptic curves over ℚ with torsion subgroup ℤ/2ℤ × ℤ/6ℤ and rank at least 4, one more than the largest rank previously known to occur infinitely often with this torsion. The universal elliptic curve with this torsion acquires four independent points over the function field of an explicit elliptic curve of rank one, and Silverman's specialisation theorem gives the family. Three of the points come from quadratic twists by polynomials that become squares on that curve, as in the rank-3 constructions of Dujella and Peral and of Dujella, Kazalicki and Peral. The fourth comes from the twist by the product of two of them; it is pulled back from a quadratic twist of a rational elliptic surface, of which the universal curve is a base change along a double cover of the line. The family is sparse, but it contradicts the prediction of Park, Poonen, Voight and Wood that only finitely many curves with this torsion have rank greater than 3.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p10">
+        <div class="num">10<span class="when">13 Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/mub-dimension-6/"><span class="eyebrow">An independent certified computation excluding</span> <span class="big words">four mutually unbiased bases in dimension six</span></a>
+          <p class="sum">We show that there are no four mutually unbiased bases in ℂ<sup>6</sup>, so that the maximum number of such bases is three, as Zauner conjectured. The proof is computer-assisted, assumes that binary64 arithmetic was carried out correctly, and carries out the discretization proof of a recent preprint by OpenAI.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23255857">Paper</a><a href="https://doi.org/10.5281/zenodo.23255816">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We show that there are no four mutually unbiased bases in ℂ⁶, so that the maximum number of such bases is three, as Zauner conjectured. The proof is computer-assisted and assumes that the processor, compiler and C library of the computer that ran our computation carried out its binary64 (double-precision) arithmetic correctly. The computation carries out the discretization proof of a recent preprint by OpenAI, which has not appeared in a refereed journal; our programs are written from its text, and we prove every statement of the preprint that our proof uses. Four mutually unbiased bases could be taken to consist of the standard basis, the columns of a complex Hadamard matrix divided by √6, and two further bases. Finitely many balls in phase coordinates cover all complex Hadamard matrices of order six up to equivalence, and on each small ball a finite search excludes these two further bases. Every inequality that the programs decide in order to reject a case or to cover a set of matrices is decided in integer arithmetic or in interval arithmetic with outward rounding. The programs, logs and data of the computation are deposited.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p09">
+        <div class="num">09<span class="when">9 Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/class-number-3000/"><span class="eyebrow">Imaginary quadratic fields of</span> <span class="big words">class number at most 3000</span></a>
+          <p class="sum">Assume Kimura's explicit bound for real zeros of Dirichlet <i>L</i>-functions, which follows from the hypothesis that <i>L</i>(<i>σ</i>, <i>χ</i>) ≠ 0 for 7/8 &lt; <i>σ</i> &lt; 1 and every real primitive character <i>χ</i>. Then exactly 36 993 853 imaginary quadratic fields have class number at most 3000, and the largest absolute discriminant among them is 2 562 211 723.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23251443">Paper</a><a href="https://doi.org/10.5281/zenodo.23251366">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Assume Kimura's explicit bound for real zeros of Dirichlet L-functions (the second part of Theorem 1 of his preprint, Lean-checked according to its author but not refereed), which follows from the hypothesis (H) that L(σ, χ) ≠ 0 for 7/8 &lt; σ &lt; 1 and every real primitive character χ. Then exactly 36 993 853 imaginary quadratic fields have class number at most 3000, and the largest absolute discriminant among them is 2 562 211 723. We also list the imaginary quadratic orders of class number at most 1095, and so the singular moduli of degree at most 1095. Kimura's bound gives h(D) ≥ 3562 for |D| ≥ e^35.0131 by Hecke's integral representation of the Dedekind zeta function, and a sieve in the manner of Watkins, the tabulation of Mosunov and Jacobson and an unconditional computation with binary quadratic forms treat smaller |D|. Hypothesis (H) follows from the generalized Riemann hypothesis and is the real case of the zero-free half-plane Re s &gt; 7/8 announced by OpenAI in October 2026, whose Lean formalization is machine-checked but whose proof has not been refereed. Under (H) the sieve and the tabulation are not needed, h(D) &gt; √|D|/(5 log|D|) for every imaginary quadratic field, and several classifications known only up to one possible exception become complete, among them those of the imaginary quadratic fields with class group of exponent 2, 4 or 8 and of the real quadratic fields of extended Richaud–Degert type with class number 1. Our lists agree with those of Kimura (h ≤ 2000), of Cremona and Sutherland (h ≤ 1000, under the generalized Riemann hypothesis) and of a computation posted on October 8, 2026, in the repository zeta-lab (h ≤ 1500, assuming that L(s, χ_D) ≠ 0 for Re s &gt; 7/8), and with the counts of Garcia, Grenié, Lee and Molteni (h ≤ 2000, under the generalized Riemann hypothesis).</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p08">
+        <div class="num">08<span class="when">4 Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/x11-y11-z5/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>11</sup> + <i>y</i><sup>11</sup> = <i>z</i><sup>5</sup></span></a>
+          <p class="sum">We prove that <span class="eq"><i>x</i><sup>11</sup> + <i>y</i><sup>11</sup> = <i>z</i><sup>5</sup></span> has no solution in nonzero coprime integers, and that for every prime <i>p</i> ≥ 11 the solutions of <span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>p</sup></i> = <i>z</i><sup>5</sup></span> in nonzero coprime integers with <i>xy</i> prime to 10 have <span class="eq"><i>xy</i> ≡ −1 (mod 5)</span>.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23149241">Paper</a><a href="https://doi.org/10.5281/zenodo.23149239">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove that x¹¹ + y¹¹ = z⁵ has no solution in nonzero coprime integers, and that for every prime p ≥ 11 the solutions of xᵖ + yᵖ = z⁵ in nonzero coprime integers with xy prime to 10 have xy ≡ −1 (mod 5). To a solution Darmon attaches a Frey abelian surface over Q(√5), a twist of the member at t = xᵖ/z⁵ of a one-parameter family. For p = 11, results of Chen and Koutsianas and of Billerey, Chen, Dieulefait and Freitas leave only the solutions with 10 | xy and 11 ∤ z. For these, t gives a point on a quotient of Darmon&#x27;s modular curve X₀(𝔭), 𝔭 | 11, that is an elliptic curve of rank 1 over Q(√5), and Chabauty&#x27;s method in the restriction of scalars excludes such points. For general p and xy prime to 10, Chen and Koutsianas show that the Frey surface is congruent modulo p, up to a quadratic twist, to one of four surfaces with complex multiplication (or, for p = 19, to one more modular form); we test this congruence at the prime √5. When xy ≡ ±2 (mod 5), the fields cut out by inertia there differ or, in one subcase, a Frobenius trace does. When xy ≡ 1 (mod 5), the reduction at 2 determines the twist, and Frobenius traces exclude the congruence: at an auxiliary prime, and on the special fiber over F₅ that the genus-2 curves defining these surfaces share over a totally ramified extension of Q₅(√5). For 10 | xy, a uniform bound on rational points of order p on abelian surfaces over Q(√5) with real multiplication would exclude this class for large p.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p07">
+        <div class="num">07<span class="when">4 Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/x5-y3-zp/"><span class="eyebrow">Real multiplication and the generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>5</sup> + <i>y</i><sup>3</sup> = <i>z<sup>p</sup></i></span></a>
+          <p class="sum">Assuming statements of a preprint of Pacetti and Villagra Torcomian, we show that for every prime <i>p</i> outside an explicit finite set, <span class="eq"><i>x</i><sup>5</sup> + <i>y</i><sup>3</sup> = <i>z<sup>p</sup></i></span> has no primitive solutions in several families, among them those with 3 ∤ <i>xyz</i>.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23149237">Paper</a><a href="https://doi.org/10.5281/zenodo.23149235">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Let (X, Y, Z) be a primitive solution of x⁵ + y³ = zᵖ with p ≥ 7 prime. Pacetti and Villagra Torcomian attach to it a genus-2 Frey curve whose Jacobian Jₜ, t = −X⁵/Y³, has real multiplication by the integers of Q(√5). In a preprint they show that, if p lies outside an explicit finite set and 𝔭 is a prime above p, the mod-𝔭 representation of Jₜ is reducible, or congruent to a Hilbert newform with complex multiplication, or congruent to the Jacobian at t = −1/8 or t = 9/8, the parameters of 1⁵ + 2³ = 3² and (−3)⁵ + 6³ = (−3)³. Comparing the fields cut out by inertia at √5, we show that this last congruence forces 5 ∤ XYZ and restricts t to eight classes modulo 25, and, by comparing traces of Frobenius at an auxiliary prime, to four classes when p ≥ 17. A congruence multiplies the Weil pairings by a scalar, and by comparing this scalar at 3 and at √5 we show that the congruence cannot occur when 3 | Y and p ≡ 19, 29, 31, 41 (mod 60). Assuming statements of the preprint, we deduce that, for every prime p outside that explicit finite set, there are no solutions in several families of classes, among them those with 3 ∤ XYZ.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p05">
+        <div class="num">05<span class="when">1 Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/x2-y3-zn/"><span class="eyebrow">New exponents for the generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span></a>
+          <p class="sum">We determine the primitive solutions of <span class="eq"><i>x</i><sup>2</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span> for <i>n</i> = 11, 17 and 19 unconditionally; for <i>n</i> = 11 Freitas, Naskręcki and Stoll did so under the generalized Riemann hypothesis (GRH).</p>
+          <p class="meta">Some exponents assume GRH; one uses a preprint of Freitas and Stoll.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23088578">Paper and Supplement</a><a href="https://doi.org/10.5281/zenodo.23088536">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We determine the primitive solutions of x² + y³ = zⁿ for n = 11, 17 and 19 unconditionally; for n = 11 Freitas, Naskręcki and Stoll did so under the generalized Riemann hypothesis (GRH). For n = 25 we do not assume GRH but use a reduction of Freitas and Stoll that is available as a preprint, and for n = 13, 23, 26 and 29 we assume GRH. GRH enters only through the class numbers of eight fields of degree 24 and 30 and four of degree 56. The solutions are the trivial ones, with xyz = 0, and those coming from 3² − 2³ = 1. With earlier work this settles every exponent 6 ≤ n ≤ 36 except 31, under the same conditions. Following Freitas, Naskręcki and Stoll, and Freitas and Stoll for n = 25, we reduce to points over number fields on modular curves or on curves Y² = X⁵ + β. The new step is to find these points by descents that need only the class groups of their fields of definition or of small extensions, mostly along isogenies with kernel μ_ℓ, along 1 − σ for a diamond automorphism σ, and along 1 − ζ₅.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p04">
+        <div class="num">04<span class="when">30 Sep 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/seven-equations/"><span class="eyebrow">The primitive solutions of</span> <span class="big words">seven small generalized Fermat equations</span></a>
+          <p class="sum">Besides solutions with entries 0 and ±1, the only ones are (11, ±29, ±538) of <span class="eq"><i>x</i><sup>5</sup> + <i>y</i><sup>4</sup> = 3<i>z</i><sup>2</sup></span> and (±895, −6202, 4199) of <span class="eq"><i>x</i><sup>4</sup> + 3<i>y</i><sup>3</sup> + <i>z</i><sup>3</sup> = 0</span>.</p>
+          <p class="meta">Table 4 of version 9 of Grechuk's list of open problems (<a href="https://arxiv.org/abs/2404.08518v9">arXiv:2404.08518</a>).</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23055669">Paper</a><a href="https://doi.org/10.5281/zenodo.23055561">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Version 9 of Grechuk&#x27;s list of open Diophantine equations contains seven equations ax^p+by^q+cz^r=0 with 1/p+1/q+1/r&lt;1 and |a|2^p+|b|2^q+|c|2^r&lt;=60 for which the complete list of primitive solutions was not known. We determine the primitive solutions of all seven: x^5+y^4-2z^2=0, x^5+y^4-3z^2=0, x^5+y^4+3z^2=0, 2x^4-y^4+z^3=0, x^4+3y^3+2z^3=0, x^4+4y^3+z^3=0 and x^4+3y^3+z^3=0. Besides solutions with entries 0 and ±1, the only ones are (11,±29,±538) of x^5+y^4=3z^2 and (±895,-6202,4199) of x^4+3y^3+z^3=0. For the last equation this answers a question of Grechuk; J. Agbanwa has announced a proof in an unpublished manuscript, and ours is by a different method. The proofs combine descent over number fields of small degree with elliptic Chabauty and the Mordell-Weil sieve. For x^4+3y^3+z^3=0 we also use a covering by a curve of genus one over a number field of degree 12, whose Jacobian has unknown rank, and Stoll&#x27;s form of Chabauty&#x27;s method at the prime 2, which uses a Selmer group of a 2-isogeny in place of the Mordell-Weil group. No step assumes the generalized Riemann hypothesis. Programs and data: https://doi.org/10.5281/zenodo.23055561.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p03">
+        <div class="num">03<span class="when">28 Sep 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/x2-y5-z9/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>9</sup></span></a>
+          <p class="sum">We show that the equation <span class="eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>9</sup></span> has no solution in coprime nonzero integers. No step assumes the generalized Riemann hypothesis.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23004659">Paper</a><a href="https://doi.org/10.5281/zenodo.23004599">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We show that the equation x^2+y^5=z^9 has no solution in coprime nonzero integers. Equivalently, none of the equations x^2+y^5=z^9, x^2+y^9=z^5 and x^5+y^9=z^2 has such a solution. By Edwards&#x27; parametrization of the coprime solutions of a^2+b^3+c^5=0, a solution gives coprime integers u, v at which one of 27 binary forms g_i of degree 20 takes the value -z^3. A 2-adic argument and a descent modulo cubes over number fields of degree at most 10 exclude 22 of the 27 forms and, for each of the other five, determine the values of the factors of g_i up to cubes. These five forms lead to rational points on an elliptic curve over Q, on a curve of genus 2 over Q, and on elliptic curves over Q(5^(1/3)) and over Q(sqrt(-5)). We determine the relevant points by a 2-descent over Q, by elliptic Chabauty over a cubic field together with a Mordell-Weil sieve, by a descent via 3-isogeny over Q(5^(1/3)), and by elliptic Chabauty over Q(sqrt(-5)). No step assumes the generalized Riemann hypothesis. Programs and data: https://doi.org/10.5281/zenodo.23004599.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p02">
+        <div class="num">02<span class="when">27 Sep 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/x2-y5-z7/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>7</sup></span></a>
+          <p class="sum">We show that the equation <span class="eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>7</sup></span> has no solution in nonzero coprime integers, assuming a classification theorem from Putz's thesis, which has not appeared in a refereed journal.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.22983878">Paper</a><a href="https://doi.org/10.5281/zenodo.22983848">Programs and data</a><a href="https://palomar-registry.org/entry?id=PALOMAR-2026-10-09-000002&amp;version=1">Lean formalization</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We show that the equation x² + y⁵ = z⁷ has no solution in nonzero coprime integers, assuming a classification theorem from Putz&#x27;s thesis, which has not appeared in a refereed journal. Equivalently, none of the equations x² + y⁵ = z⁷, x² + y⁷ = z⁵, x⁵ + y⁷ = z² has a solution in nonzero coprime integers. Putz attaches to a solution an octic algebra, the fibre of a Belyi map of degree 8, and proves that it is always isomorphic to one fixed octic field L₈. We prove unconditionally that no solution has fibre isomorphic to L₈, by a fifth-power descent over a field L₂₄ of degree 24 that Putz introduced, completed by fifth-power residue symbols at five auxiliary primes. We also prove, without assuming the generalized Riemann hypothesis, that L₂₄ has class number 1, using a criterion of Belabas, Diaz y Diaz and Friedman.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p01">
+        <div class="num">01<span class="when">25 Sep 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/x5-y3-z7/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>X</i><sup>5</sup> + <i>Y</i><sup>3</sup> = <i>Z</i><sup>7</sup></span></a>
+          <p class="sum">Assuming the classification of Dahmen–Siksek and Putz, we show that <span class="eq"><i>X</i><sup>5</sup> + <i>Y</i><sup>3</sup> = <i>Z</i><sup>7</sup></span> has no solution in nonzero coprime integers.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.22949748">Paper</a><a href="https://doi.org/10.5281/zenodo.22949369">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>Assuming the classification of Dahmen–Siksek and Putz, we show that X^5+Y^3=Z^7 has no solution in nonzero coprime integers; equivalently, the generalized Fermat equation of signature (3,5,7) has no nontrivial primitive solution in any arrangement of the exponents. By that classification, a solution determines one of seven septic fields: six pure fields Q((3^a·5)^(1/7)), 1 ≤ a ≤ 6, and an exceptional field F. We exclude F by a fifth-power descent over F(√−35), where the equation becomes a norm identity for an explicit element; the identity and the element&#x27;s valuations above 3, 5 and 7 confine it to 125 classes modulo fifth powers, none compatible with its possible fifth-power residue symbols above 11 and 19. For the pure fields we use results from recent preprints on the genus-2 Frey curves of Pacetti and Villagra Torcomian, whose Jacobians have real multiplication by Q(√5). Level lowering shows that their 7-torsion is reducible, giving a rational point on a genus-15 double cover of the genus-8 curve of F_49-lines in the 7-torsion. The Prym variety of this cover contains an abelian surface of rank one, and Chabauty&#x27;s method at 13 confines the point to two explicit rational points, neither coming from a solution. Supplementary data and programs: https://doi.org/10.5281/zenodo.22949369. P. Chocian (arXiv:2609.26996) has proved the same theorem independently, by different methods.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="r3c">
+        <div class="num">00<span class="when">Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="https://doi.org/10.5281/zenodo.23289304"><span class="eyebrow">A lower bound for a sums–differences constant</span> <span class="big words"><i>C</i><sub>3c</sub> ≥ 1.674894211307116</span></a>
+          <p class="sum">An explicit entropy certificate for problem 3c of Tao's optimization-constants repository, a four-slope constant related to the arithmetic Kakeya conjecture. The previous record was 1.6747338950414058.</p>
+          <p class="meta">Certificate, 2026 · the current best lower bound in Tao's repository</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23289304">Certificate and checks</a><a href="https://github.com/teorth/optimizationproblems/blob/main/constants/3c.md">Tao's repository</a></div>
+        </div>
+      </article>
+      </details>
+    </section>
+
+    <section id="faq">
+      <h2>FAQ</h2>
+      <h3>Why AI for mathematics?</h3>
+      <p>I've been interested in both for a long time, so putting them together was natural. I ended up focusing on
+        generalized Fermat equations because I made a lot of progress there while working on a larger problem, but I still
+        work in other areas too.</p>
+      <h3>What is your part?</h3>
+      <p>I work on the system itself, mostly research and experiments, and I choose the problems and set the priorities. Sometimes I weigh in on mathematical strategy. The system is built from standard multi-agent techniques. Most of the effort
+        goes into filling their gaps and adapting them to mathematics.</p>
+      <h3>Which AI models do you use?</h3>
+      <p>The latest frontier models, at their highest reasoning settings when it helps. Mostly Claude Code or Codex, and
+        sometimes both, since different models catch different mistakes and come up with different ideas.</p>
+      <h3 id="checked">How are the results checked?</h3>
+      <p>Each result is checked several times in different ways, and the computations are rerun. Some of the main theorems
+        are also formalized in Lean. Let me know if you find a problem.</p>
+      <h3>Do you collaborate? Can I ask you something?</h3>
+      <p>Sure, email me.</p>
+    </section>
+
+    <footer>Updated 25 November 2026</footer>
+  </main>
+</div>
+<script>
+  const links = document.querySelectorAll('nav a'), secs = [...document.querySelectorAll('main section')];
+  function spy() {
+    let cur = secs[0];
+    for (const s of secs) if (s.getBoundingClientRect().top <= innerHeight * .34) cur = s;
+    // At the bottom of the page the last section may be too short to reach the line above, so it counts as current.
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) cur = secs[secs.length - 1];
+    links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + cur.id));
+  }
+  let ticking = false;
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(() => { spy(); ticking = false; }); } }, { passive: true });
+  spy();
+
+  // A link to a folded entry opens the list first.
+  function unfold() {
+    const t = location.hash.length > 1 && document.getElementById(location.hash.slice(1)), d = t && t.closest('details.all');
+    if (d && !d.open) { d.open = true; t.scrollIntoView({ behavior: 'instant' }); }
+  }
+  addEventListener('hashchange', unfold); unfold();
+
+  // Abstracts open and close smoothly in every browser (Safari and Firefox lack ::details-content).
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('details.abs').forEach(d => {
+    const p = d.querySelector('p'); let anim = null;
+    d.querySelector('summary').addEventListener('click', e => {
+      if (still.matches) return;
+      e.preventDefault();
+      const opening = !d.open || d.classList.contains('closing');
+      const from = d.open ? p.getBoundingClientRect().height : 0;
+      if (anim) anim.cancel();
+      d.classList.toggle('closing', !opening);
+      d.open = true;
+      const to = opening ? p.scrollHeight : 0;
+      p.style.overflow = 'hidden';
+      anim = p.animate([{ height: from + 'px', opacity: opening ? 0 : 1 }, { height: to + 'px', opacity: opening ? 1 : 0 }],
+                       { duration: 320, easing: 'ease' });
+      anim.onfinish = () => { anim = null; p.style.overflow = ''; if (!opening) { d.open = false; d.classList.remove('closing'); } };
+    });
+  });
+
+  // Water: a press on empty page is a fingertip on a shallow pool. The surface obeys the equations of small waves on water
+  // 2 cm deep (gravity and surface tension, at 40 pixels to the centimetre and two fifths of real speed). It is drawn in
+  // characters, and the words under it shift as they would seen through it.
+  {
+    function makeWater(iw, ih, o = {}) {
+      const SCALE = o.SCALE ?? 40, SLOW = o.SLOW ?? .4, DEPTH = o.DEPTH ?? 2, VISC = o.VISC ?? .03, TIP = o.TIP ?? 13, M = o.M ?? 16, SPONGE = o.SPONGE ?? .3, DT = o.DT ?? 1 / 60;
+      const wide = iw >= ih, W = wide ? 256 : 128, H = wide ? 128 : 256, N = W * H;
+      const C = Math.max(iw / (W - 2 * M), ih / (H - 2 * M)), OX = (W - iw / C) / 2, OY = (H - ih / C) / 2;
+      const g = 981 * SCALE * SLOW * SLOW, s = 74 * SCALE ** 3 * SLOW * SLOW, h = DEPTH * SCALE, nu = VISC * SCALE * SCALE * SLOW;
+      const eta = new Float64Array(N), phi = new Float64Array(N), prev = new Float64Array(N), mask = new Float64Array(N);
+      const kc = new Float64Array(N), k1 = new Float64Array(N), k2 = new Float64Array(N), p1 = new Float64Array(N), p2 = new Float64Array(N);
+      let unit = 0;
+      for (let n = 0; n < H; n++) for (let m = 0; m < W; m++) {
+        const kx = 2 * Math.PI * (m > W / 2 ? m - W : m) / (W * C), ky = 2 * Math.PI * (n > H / 2 ? n - H : n) / (H * C), k = Math.hypot(kx, ky), j = n * W + m;
+        if (!k) continue;
+        const A = k * Math.tanh(k * h), B = g + s * k * k, w = Math.sqrt(A * B), D = Math.exp(-2 * nu * k * k * DT), G = Math.exp(-k * k * TIP * TIP / 2);
+        kc[j] = Math.cos(w * DT) * D; k1[j] = A / w * Math.sin(w * DT) * D; k2[j] = B / w * Math.sin(w * DT) * D;
+        p1[j] = -(1 - Math.cos(w * DT)) / B * G * D; p2[j] = -Math.sin(w * DT) / w * G * D;
+        unit += G / B / N;
+      }
+      // A sponge outside the window soaks up the waves that leave it. Its strength is per sixtieth of a second.
+      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+        const d = Math.max((OX - x) / OX, (x - (W - 1 - OX)) / OX, (OY - y) / OY, (y - (H - 1 - OY)) / OY, 0);
+        mask[y * W + x] = (1 - SPONGE * d * d) ** (60 * DT) / N;
+      }
+      const plan = n => {
+        const rev = new Uint16Array(n), cos = new Float64Array(n / 2), sin = new Float64Array(n / 2), b = Math.log2(n);
+        for (let i = 0; i < n; i++) { let r = 0; for (let j = 0; j < b; j++) r |= ((i >> j) & 1) << (b - 1 - j); rev[i] = r; }
+        for (let i = 0; i < n / 2; i++) { cos[i] = Math.cos(2 * Math.PI * i / n); sin[i] = Math.sin(2 * Math.PI * i / n); }
+        return { n, rev, cos, sin };
+      };
+      const PW = plan(W), PH = plan(H), cr = new Float64Array(H), ci = new Float64Array(H);
+      // In-place transform of the n complex numbers at o, o + 1, ...; dir -1 forward, +1 back (unscaled).
+      function fft(re, im, o, p, dir) {
+        const n = p.n, rev = p.rev, cos = p.cos, sin = p.sin;
+        for (let i = 0; i < n; i++) { const j = rev[i]; if (j > i) { const a = o + i, b = o + j; let t = re[a]; re[a] = re[b]; re[b] = t; t = im[a]; im[a] = im[b]; im[b] = t; } }
+        for (let len = 2; len <= n; len <<= 1) {
+          const half = len >> 1, ts = n / len;
+          for (let i = o, end = o + n; i < end; i += len) for (let j = 0, t = 0; j < half; j++, t += ts) {
+            const wr = cos[t], wi = dir * sin[t], a = i + j, b = a + half;
+            const xr = re[b] * wr - im[b] * wi, xi = re[b] * wi + im[b] * wr;
+            re[b] = re[a] - xr; im[b] = im[a] - xi; re[a] += xr; im[a] += xi;
+          }
+        }
+      }
+      function fft2(dir) {
+        for (let y = 0; y < H; y++) fft(eta, phi, y * W, PW, dir);
+        // Columns are copied out, transformed and copied back: far faster than striding through the grid.
+        for (let x = 0; x < W; x++) {
+          for (let y = 0, j = x; y < H; y++, j += W) { cr[y] = eta[j]; ci[y] = phi[j]; }
+          fft(cr, ci, 0, PH, dir);
+          for (let y = 0, j = x; y < H; y++, j += W) { eta[j] = cr[y]; phi[j] = ci[y]; }
+        }
+      }
+      const ex = new Float64Array(2 * W), ey = new Float64Array(2 * H), pr = new Float64Array(N), pi = new Float64Array(N);
+      // One step of DT seconds. pts: [x, y, a, ...] in window pixels, the pressure patches at work during the step.
+      function step(pts) {
+        prev.set(eta);
+        const Q = pts.length / 3;
+        if (Q) {
+          pr.fill(0); pi.fill(0);
+          for (let q = 0; q < Q; q++) {
+            const X = pts[3 * q] / C + OX - .5, Y = pts[3 * q + 1] / C + OY - .5, a = pts[3 * q + 2];
+            for (let m = 0; m < W; m++) { const t = -2 * Math.PI * (m > W / 2 ? m - W : m) * X / W; ex[2 * m] = Math.cos(t); ex[2 * m + 1] = Math.sin(t); }
+            for (let n = 0; n <= H / 2; n++) { const t = -2 * Math.PI * n * Y / H; ey[2 * n] = a * Math.cos(t); ey[2 * n + 1] = a * Math.sin(t); }
+            for (let n = 0; n <= H / 2; n++) { const yr = ey[2 * n], yi = ey[2 * n + 1]; for (let m = 0, j = n * W; m < W; m++, j++) { pr[j] += ex[2 * m] * yr - ex[2 * m + 1] * yi; pi[j] += ex[2 * m] * yi + ex[2 * m + 1] * yr; } }
+          }
+        }
+        fft2(-1);
+        for (let n = 0; n <= H / 2; n++) for (let m = 0; m < W; m++) {
+          const j = n * W + m, j2 = ((H - n) % H) * W + (W - m) % W;
+          if (j2 < j) continue;
+          const zr = eta[j], zi = phi[j], yr = eta[j2], yi = phi[j2];
+          // The surface e and the potential f of this ripple, from the transform of e + i f.
+          const er = (zr + yr) / 2, ei = (zi - yi) / 2, fr = (zi + yi) / 2, fi = (yr - zr) / 2;
+          const c = kc[j], s1 = k1[j], s2 = k2[j];
+          let Er = c * er + s1 * fr, Ei = c * ei + s1 * fi, Fr = c * fr - s2 * er, Fi = c * fi - s2 * ei;
+          if (Q) { const a = pr[j], b = j2 === j ? 0 : pi[j]; Er += p1[j] * a; Ei += p1[j] * b; Fr += p2[j] * a; Fi += p2[j] * b; }
+          eta[j] = Er - Fi; phi[j] = Ei + Fr; eta[j2] = Er + Fi; phi[j2] = Fr - Ei;
+        }
+        fft2(1);
+        for (let i = 0; i < N; i++) { eta[i] *= mask[i]; phi[i] *= mask[i]; }
+      }
+      function clear() { eta.fill(0); phi.fill(0); prev.fill(0); }
+      return { W, H, C, OX, OY, DT, eta, phi, prev, step, clear, unit, g, s, nu };
+    }
+    // G: the cell a character is drawn in. DIP: the depth in pixels of the dimple under a resting fingertip. RISE, HOLD: the
+    // seconds a press takes to go in and the least time it stays. FADE: how slowly the fingertip lets go, slow enough that
+    // the water closes without a new ring. GLIDE: how closely the fingertip follows the pointer. REACH: the longest step
+    // between two prints of a moving fingertip, so the fastest drag is one line. CALM: the height below which water is
+    // drawn as still. BEND: the pixels a word shifts per unit of slope (2 cm of water, refractive index 4/3).
+    const G = 10, DIP = 4, RISE = .07, HOLD = .14, FADE = .3, GLIDE = .3, REACH = 13, CALM = .03, BEND = 20, LX = .61, LY = .79;
+    const RAMP = '.:-=+*#%@';
+    const WHOLE = 'h2, nav a, .pk, .ttl .big.eq, .links a, .abs summary, .tag';
+    const root = document.documentElement, cv = document.createElement('canvas'), cx = cv.getContext('2d');
+    const clamp = (v, r) => Math.max(-r, Math.min(r, v));
+    cv.className = 'ripple'; cv.setAttribute('aria-hidden', 'true'); document.body.prepend(cv);
+    let water = null, eta, prev, hz = 60, slow = false, P = 0, RW, RH, hs, jit, atlas, atlasKey = '', S = G, ink = '';
+    let measuredAt = 0, running = false, last = 0, acc = 0, mix = 1, cost = 0, units = [], wrapped = false, cur = null;
+    const fingers = [], pts = [];
+
+    function size() {
+      const dpr = devicePixelRatio || 1;
+      water = makeWater(innerWidth, innerHeight, { DT: 1 / hz }); eta = water.eta; prev = water.prev; P = DIP / water.unit;
+      // The drawn grid covers the window and one cell more on every side, for the slopes.
+      RW = Math.ceil(innerWidth / G) + 2; RH = Math.ceil(innerHeight / G) + 2; hs = new Float32Array(RW * RH);
+      jit = Float32Array.from(hs, () => Math.random() * 2 - 1);
+      cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    addEventListener('resize', () => { if (running) stop(); water = null; });
+
+    // The characters are drawn once into a strip and stamped from it each frame, which is far faster than drawing text.
+    function glyphs() {
+      const dpr = devicePixelRatio || 1, key = ink + dpr;
+      if (key === atlasKey) return;
+      atlasKey = key; S = G * dpr;
+      atlas = document.createElement('canvas'); atlas.width = Math.ceil(S * RAMP.length); atlas.height = Math.ceil(S);
+      const g = atlas.getContext('2d');
+      g.scale(dpr, dpr); g.fillStyle = ink; g.font = `500 ${G}px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`;
+      g.textAlign = 'center'; g.textBaseline = 'middle';
+      [...RAMP].forEach((t, k) => g.fillText(t, k * G + G / 2, G / 2));
+    }
+
+    // One step of the water. A fingertip is a patch of pressure. It goes in over RISE seconds and stays at least HOLD, so a
+    // tap is a short press; when it lets go the pressure fades slowly and no ring leaves. A new press never cuts an old one
+    // off. A moving fingertip prints its pressure along the path it covered in the step.
+    function tick() {
+      const dt = water.DT, k = 1 - (1 - GLIDE) ** (60 * dt);
+      pts.length = 0;
+      for (let n = fingers.length - 1; n >= 0; n--) {
+        const f = fingers[n];
+        f.t += dt;
+        if (f.on || f.t <= HOLD) f.a = Math.min(1, f.t / RISE);
+        else { f.a *= Math.exp(-dt / FADE); if (f.a < .01) { fingers.splice(n, 1); continue; } }
+        const nx = f.x + (f.tx - f.x) * k, ny = f.y + (f.ty - f.y) * k, len = Math.hypot(nx - f.x, ny - f.y);
+        const q = Math.min(32, Math.max(1, Math.ceil(len / REACH))), a = P * f.a / q;
+        for (let m = 0; m < q; m++) { const t = (m + .5) / q; pts.push(f.x + (nx - f.x) * t, f.y + (ny - f.y) * t, a); }
+        f.x = nx; f.y = ny;
+      }
+      water.step(pts);
+    }
+
+    // Height of the water at a point in the window, blended between cell centres. The screen rarely redraws exactly on a
+    // water step, so the height is also blended between the last two steps (mix).
+    const at = i => prev[i] + (eta[i] - prev[i]) * mix;
+    function hAt(px, py) {
+      const W = water.W, gx = Math.max(0, Math.min(W - 1.001, px / water.C + water.OX - .5)), gy = Math.max(0, Math.min(water.H - 1.001, py / water.C + water.OY - .5));
+      const x0 = gx | 0, y0 = gy | 0, u = gx - x0, v = gy - y0, i = y0 * W + x0;
+      return (at(i) * (1 - u) + at(i + 1) * u) * (1 - v) + (at(i + W) * (1 - u) + at(i + W + 1) * u) * v;
+    }
+
+    // Raised water is drawn, in denser characters the higher it stands, so one ring is one band. Light comes from the top
+    // left: the side of a ring that faces it is darker and denser, the far side fainter.
+    function draw() {
+      cx.clearRect(0, 0, innerWidth, innerHeight);
+      for (let y = 0; y < RH; y++) for (let x = 0; x < RW; x++) hs[y * RW + x] = hAt((x - .5) * G, (y - .5) * G);
+      let peak = 0;
+      for (let y = 1; y < RH - 1; y++) for (let x = 1; x < RW - 1; x++) {
+        const i = y * RW + x, h = hs[i], m = Math.abs(h);
+        if (m > peak) peak = m;
+        if (h < CALM) continue;
+        const gx = (hs[i + 1] - hs[i - 1]) / (2 * G), gy = (hs[i + RW] - hs[i - RW]) / (2 * G);
+        // A ring a quarter of a pixel high and a wake of several pixels both stay readable: the scale is compressed.
+        const v = (1 - Math.exp(-Math.sqrt(h - CALM) / .8)) * Math.max(.4, Math.min(1.5, 1 + 7 * (LX * gx + LY * gy)));
+        cx.globalAlpha = Math.min(.6, 1.1 * v);
+        cx.drawImage(atlas, Math.max(0, Math.min(RAMP.length - 1, v * 8.5 + jit[i] * .7 | 0)) * S, 0, S, S, (x - 1) * G, (y - 1) * G, G, G);
+      }
+      cx.globalAlpha = 1;
+      return peak;
+    }
+
+    // Every word gets its own span, so the water can move words one by one. The spans stay inline and move by relative
+    // offsets, which never change the layout: line breaks, spacing, copying and reading are exactly as before.
+    function wrap() {
+      if (wrapped) return;
+      wrapped = true;
+      document.querySelectorAll('main .eq').forEach(el => { if (!el.matches(WHOLE) && !el.closest(WHOLE)) el.classList.add('u'); });
+      const list = [], tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      for (let n; (n = tw.nextNode());) {
+        const el = n.parentElement;
+        if (/\S/.test(n.data) && el.closest('aside, header, main') && !el.closest('script, style, .eq, ' + WHOLE)) list.push(n);
+      }
+      for (const n of list) {
+        const frag = document.createDocumentFragment();
+        for (const p of n.data.split(/(\s+)/)) {
+          if (!p) continue;
+          if (/\s/.test(p[0])) { frag.append(p); continue; }
+          const w = document.createElement('span');
+          w.className = 'w'; w.textContent = p; frag.append(w);
+        }
+        n.replaceWith(frag);
+      }
+    }
+
+    // Only what lies within a screen of the window is measured and moved, and nothing inside a closed abstract (it is
+    // hidden but still has a box). A plain pass over the boxes: the page is not in one column from top to bottom (the
+    // links rows), so a search that assumes it is skipped whole stretches of words.
+    const shown = el => { const d = el.closest('details:not([open])'); return !d || el.closest('summary'); };
+    function nearby(list) {
+      const lo = -innerHeight, hi = 2 * innerHeight;
+      return list.filter(el => { if (!shown(el)) return false; const r = el.getBoundingClientRect(); return r.width && r.bottom > lo && r.top < hi; });
+    }
+
+    function measure() {
+      const sel = WHOLE + ', .w, .eq.u', aside = document.querySelector('aside');
+      const sticky = !!aside && getComputedStyle(aside).position === 'sticky';
+      const side = aside ? [...aside.querySelectorAll(sel)] : [];
+      units = side.concat(nearby([...document.querySelectorAll('header, main')].flatMap(el => [...el.querySelectorAll(sel)]))).map(el => {
+        const r = el.getBoundingClientRect();
+        if (!r.width) return null;
+        // Positions are kept relative to the page, so scrolling during a ripple needs no new measurements; the sidebar
+        // stays put while it is sticky.
+        const fixed = sticky && !!el.closest('aside');
+        return { el, fixed, inline: el.matches('.w, .eq.u'), x: r.left + r.width / 2 + (fixed ? 0 : scrollX),
+                 y: r.top + r.height / 2 + (fixed ? 0 : scrollY), t: '' };
+      }).filter(Boolean);
+      measuredAt = scrollY;
+    }
+
+    function clearText() {
+      for (const u of units) { u.el.style.transform = u.el.style.left = u.el.style.top = ''; }
+      units = []; root.classList.remove('rippling');
+    }
+
+    function prepText() {
+      clearText();
+      const cs = getComputedStyle(root);
+      ink = (cs.getPropertyValue('--water') || cs.getPropertyValue('--accent')).trim();
+      wrap(); measure();
+      root.classList.add('rippling');
+    }
+
+    // Seen from above through a tilted surface, a word on the bottom appears shifted against the slope, and a crest above
+    // it enlarges it a little as a lens does. Inline words can only shift, since scaling them would need a layout change.
+    function moveText() {
+      const sx = scrollX, sy = scrollY, d = 6;
+      for (const u of units) {
+        const px = u.fixed ? u.x : u.x - sx, py = u.fixed ? u.y : u.y - sy;
+        let t = '';
+        if (px > -G && py > -G && px < innerWidth + G && py < innerHeight + G) {
+          const h = hAt(px, py), e = hAt(px + d, py), w = hAt(px - d, py), s = hAt(px, py + d), n = hAt(px, py - d);
+          const dx = clamp(-BEND * (e - w) / (2 * d), 5), dy = clamp(-BEND * (s - n) / (2 * d), 5);
+          if (u.inline) { if (Math.abs(dx) + Math.abs(dy) > .05) t = `${dx.toFixed(2)}px ${dy.toFixed(2)}px`; }
+          else {
+            const z = 1 + clamp(-BEND * (e + w + s + n - 4 * h) / (d * d), .04);
+            if (Math.abs(dx) + Math.abs(dy) > .05 || Math.abs(z - 1) > .001) t = `translate(${dx.toFixed(2)}px, ${dy.toFixed(2)}px) scale(${z.toFixed(4)})`;
+          }
+        }
+        if (t !== u.t) {
+          u.t = t;
+          if (!u.inline) u.el.style.transform = t;
+          else { const [l, tp] = t ? t.split(' ') : ['', '']; u.el.style.left = l; u.el.style.top = tp; }
+        }
+      }
+    }
+
+    // Scrolling far during a ripple brings in words that were not measured: measure again around the new view.
+    addEventListener('scroll', () => {
+      if (running && Math.abs(scrollY - measuredAt) > innerHeight / 2) {
+        for (const u of units) { u.el.style.transform = u.el.style.left = u.el.style.top = ''; }
+        measure();
+      }
+    }, { passive: true });
+
+    function stop() {
+      running = false; last = acc = 0; fingers.length = 0; cur = null;
+      cx.clearRect(0, 0, innerWidth, innerHeight); clearText();
+      // On a slow machine the water steps half as often from the next press on; a step is exact, so it moves the same.
+      if (slow && hz === 60) { hz = 30; water = null; }
+      if (water) water.clear();
+    }
+
+    function frame(now) {
+      if (!running) return;
+      const T = 1000 / hz, t0 = performance.now();
+      acc += last ? Math.min(100, now - last) : 1000 / 60; last = now;
+      let n = 0;
+      for (; acc >= T && n < 3; n++) { tick(); acc -= T; }
+      if (n) { cost += ((performance.now() - t0) / n - cost) * .1; if (cost > 6) slow = true; }
+      acc %= T; mix = acc / T;
+      const peak = draw();
+      moveText();
+      if (peak > CALM || fingers.length) requestAnimationFrame(frame);
+      else stop();
+    }
+
+    function start() {
+      if (running) return;
+      if (!water) size();
+      running = true; prepText(); glyphs(); requestAnimationFrame(frame);
+    }
+
+    // True when the point is over an actual glyph, not just inside a text block's empty margin.
+    function onText(x, y) {
+      let node, off;
+      if (document.caretPositionFromPoint) { const c = document.caretPositionFromPoint(x, y); if (c) { node = c.offsetNode; off = c.offset; } }
+      else if (document.caretRangeFromPoint) { const r = document.caretRangeFromPoint(x, y); if (r) { node = r.startContainer; off = r.startOffset; } }
+      if (!node || node.nodeType !== 3) return false;
+      const r = document.createRange();
+      for (const o of [off - 1, off]) {
+        if (o < 0 || o >= node.length) continue;
+        r.setStart(node, o); r.setEnd(node, o + 1);
+        for (const q of r.getClientRects()) if (x >= q.left - 2 && x <= q.right + 2 && y >= q.top - 2 && y <= q.bottom + 2) return true;
+      }
+      return false;
+    }
+    const blocked = e => e.target.closest('a, button, summary, input, label') || onText(e.clientX, e.clientY);
+
+    // A press on empty page puts a fingertip in the water; dragging moves it; letting go lifts it out.
+    const lift = () => { if (cur) { cur.on = false; cur = null; } };
+    addEventListener('mousedown', e => {
+      // A press on empty page while text is selected only clears the selection.
+      if (still.matches || e.button !== 0 || !getSelection().isCollapsed || blocked(e)) return;
+      lift();
+      cur = { x: e.clientX, y: e.clientY, tx: e.clientX, ty: e.clientY, t: 0, a: 0, on: true };
+      fingers.push(cur); start();
+      e.preventDefault();
+    });
+    addEventListener('mousemove', e => {
+      // A pointer that only passes over the water leaves it alone (the boss, 15 Nov: new rings kept forming under it).
+      if (!cur) return;
+      if (!(e.buttons & 1)) { lift(); return; }
+      cur.tx = e.clientX; cur.ty = e.clientY;
+    });
+    addEventListener('mouseup', lift);
+    // A press that ends outside the window, or when the window loses focus, ends the drag.
+    addEventListener('blur', lift);
+    document.addEventListener('mouseleave', lift);
+
+    // Wrap the words while the page is idle, so the first press starts at once.
+    (window.requestIdleCallback || setTimeout)(wrap);
+  }
+</script>
+<script data-goatcounter="https://manvirjaswal.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

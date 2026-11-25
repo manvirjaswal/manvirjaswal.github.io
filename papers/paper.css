@@ -1,0 +1,108 @@
+/* Paper pages (made by website/papers.py): the reader, drawn by reader.js. Tokens follow the home page's inline styles. */
+:root {
+  color-scheme: light dark;
+  --bg: #f9f4ec; --panel: #fdfaf6; --ink: #1f1d1a; --muted: #5b5750; --faint: #716c65; --rule: #e4ddd3; --accent: #8d621d;
+  --lift: rgba(31, 29, 26, .10);
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a1816; --panel: #23211f; --ink: #ebe6df; --muted: #c8c3bb; --faint: #a7a29b; --rule: #34322f; --accent: #d8b069;
+    --lift: rgba(0, 0, 0, .35);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1a1816; --panel: #23211f; --ink: #ebe6df; --muted: #c8c3bb; --faint: #a7a29b; --rule: #34322f; --accent: #d8b069;
+  --lift: rgba(0, 0, 0, .35);
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body { margin: 0; padding-top: 52px; background: var(--bg); color: var(--ink); font: 18px/1.65 var(--serif); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; border-radius: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+.vh { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+sup { line-height: 0; font-size: .62em; }
+sub { line-height: 0; font-size: .7em; }
+
+/* The bar */
+.bar { position: fixed; inset: 0 0 auto 0; z-index: 10; height: 52px; padding: 0 16px; display: flex; align-items: center; gap: 16px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule); }
+.bar::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%; background: var(--accent);
+  transform: scaleX(var(--p, 0)); transform-origin: 0 50%; }
+.home { flex: none; font: 500 19px/1 var(--serif); letter-spacing: -.01em; color: var(--ink); transition: color .2s; }
+.home:hover { color: var(--accent); }
+.home .arrow { font: 400 14px/1 var(--sans); color: var(--faint); margin-right: 8px; }
+.short { margin: 0; min-width: 0; flex: 0 1 auto; padding-left: 16px; border-left: 1px solid var(--rule); font: 400 17px/1.3 var(--serif); color: var(--muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tools { margin-left: auto; flex: none; display: flex; align-items: center; gap: 8px; font: 500 12px/1 var(--sans); color: var(--muted); }
+.count { font-variant-numeric: tabular-nums; color: var(--faint); margin-right: 8px; white-space: nowrap; }
+.count b { font-weight: 500; color: var(--ink); }
+.zoom { display: flex; align-items: center; margin-right: 8px; }
+.zoom button { height: 28px; min-width: 28px; border-radius: 6px; transition: color .2s, background .2s; font-variant-numeric: tabular-nums; }
+.zoom #fit { min-width: 44px; }
+.zoom button:hover { color: var(--ink); background: var(--panel); }
+.tool { padding: 0 0 3px; margin-left: 10px; display: inline-flex; align-items: center; border-radius: 0; color: var(--ink);
+  font: 500 14px/1.4 var(--sans); border-bottom: 1px solid var(--rule); transition: border-color .2s; }
+.tool:hover { border-bottom-color: var(--accent); }
+
+
+/* The pages */
+#pages { width: max-content; min-width: 100%; padding: 24px 16px 72px; display: flex; flex-direction: column; align-items: center; gap: 16px; --w: min(880px, calc(100vw - 32px)); --ar: .7727; }
+.sheet { position: relative; width: var(--w); aspect-ratio: var(--ar); background: var(--panel); border-radius: 2px; overflow: hidden;
+  box-shadow: 0 0 0 1px var(--rule), 0 12px 32px -20px var(--lift); }
+.sheet canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity .35s ease; }
+.sheet.ready canvas { opacity: 1; }
+.links { position: absolute; inset: 0; pointer-events: none; }
+.links a { position: absolute; pointer-events: auto; border-radius: 2px; transition: background .15s; }
+.links a:hover { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+#pages.native { padding: 0; display: block; }
+#pages.native iframe { display: block; width: 100%; height: calc(100vh - 52px); border: 0; }
+.nojs { padding: 48px 16px; text-align: center; }
+.nojs a { border-bottom: 1px solid currentColor; }
+
+/* The text over each page; these rules are PDF.js's own, needed for the invisible text to line up with the drawing. */
+.textLayer { position: absolute; text-align: initial; inset: 0; overflow: clip; opacity: 1; line-height: 1; -webkit-text-size-adjust: none; text-size-adjust: none;
+  forced-color-adjust: none; transform-origin: 0 0; caret-color: CanvasText; z-index: 0; }
+.textLayer :is(span, br) { color: transparent; position: absolute; white-space: pre; cursor: text; transform-origin: 0% 0%; }
+.textLayer > :not(.markedContent), .textLayer .markedContent span:not(.markedContent) { z-index: 1; }
+.textLayer span.markedContent { top: 0; height: 0; }
+.textLayer ::selection { background: color-mix(in srgb, var(--accent) 30%, transparent); }
+.textLayer br::selection { background: transparent; }
+.textLayer .endOfContent { display: block; position: absolute; inset: 100% 0 0; z-index: 0; cursor: default; -webkit-user-select: none; user-select: none; }
+.textLayer.selecting .endOfContent { top: 0; }
+
+/* Cite */
+#cite { position: fixed; inset: 60px 16px auto auto; margin: 0; width: min(560px, calc(100vw - 32px)); padding: 24px; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 20px 48px -24px var(--lift); }
+#cite::backdrop { background: transparent; }
+#cite h2 { font: 500 11px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--faint); margin: 0 0 16px; }
+.ref { font: 400 14px/1.6 var(--sans); color: var(--muted); margin: 0 0 16px; text-wrap: pretty; }
+.ref a { border-bottom: 1px solid currentColor; }
+.ref a:hover { color: var(--ink); }
+.bib { position: relative; }
+.bib pre { margin: 0; padding: 16px 20px; background: var(--panel); border: 1px solid var(--rule); border-radius: 8px;
+  font: 400 12.5px/1.6 ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--ink); overflow-x: auto; white-space: pre; }
+.copy { position: absolute; top: 12px; right: 14px; font: 500 12px/1.4 var(--sans); color: var(--muted); padding: 0 0 2px;
+  border-radius: 0; border-bottom: 1px solid var(--rule); transition: border-color .2s, color .2s; }
+.copy:hover { border-bottom-color: var(--accent); color: var(--ink); }
+.posted { font: 400 13px/1.5 var(--sans); color: var(--faint); margin: 16px 0 0; }
+.posted .sep { margin: 0 4px; }
+
+@media (max-width: 640px) {
+  .zoom, .home .name { display: none; }
+  /* the page's h1: off the phone's bar but still read by screen readers and search engines */
+  .short { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .home .arrow { margin-right: 0; font-size: 18px; color: var(--ink); }
+  #pages { padding: 8px 8px 48px; gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+/* The abstract as page text under the paper (19 Nov): search engines and AI crawlers read the page's HTML, not the drawn PDF. */
+.foot { width: min(880px, calc(100vw - 32px)); margin: 0 auto; padding: 8px 0 72px; border-top: 1px solid var(--rule); }
+.foot h2 { font: 500 11px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--faint); margin: 24px 0 16px; }
+.foot p { margin: 0 0 16px; max-width: 68ch; color: var(--muted); }
+.foot .by { font: 400 14px/1.5 var(--sans); color: var(--faint); }
+.foot .by a { border-bottom: 1px solid var(--rule); }
+@media print { .bar, #cite, .foot { display: none !important; } body { padding: 0; } #pages { padding: 0; gap: 0; } .sheet { box-shadow: none; break-after: page; } }

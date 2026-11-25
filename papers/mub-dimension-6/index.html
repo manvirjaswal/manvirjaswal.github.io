@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f9f4ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1a1816" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f1d1a'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' text-anchor='middle' fill='%23f9f4ec'%3EMJ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../paper.css?v=2cb3a835">
+<title>An independent certified computation excluding four mutually unbiased bases in dimension six · Manvir Jaswal</title>
+<meta name="description" content="We show that there are no four mutually unbiased bases in ℂ⁶, so that the maximum number of such bases is three, as Zauner conjectured. The proof is computer-assisted, assumes that binary64 arithmetic was carried out correctly, and carries out the discretization proof of a recent preprint by OpenAI.">
+<link rel="canonical" href="https://manvirjaswal.github.io/papers/mub-dimension-6/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="An independent certified computation excluding four mutually unbiased bases in dimension six">
+<meta property="og:description" content="We show that there are no four mutually unbiased bases in ℂ⁶, so that the maximum number of such bases is three, as Zauner conjectured. The proof is computer-assisted, assumes that binary64 arithmetic was carried out correctly, and carries out the discretization proof of a recent preprint by OpenAI.">
+<meta property="og:url" content="https://manvirjaswal.github.io/papers/mub-dimension-6/">
+<meta name="twitter:card" content="summary">
+<meta name="citation_title" content="An independent certified computation excluding four mutually unbiased bases in dimension six">
+<meta name="citation_author" content="Jaswal, Manvir">
+<meta name="citation_publication_date" content="2026/10/13">
+<meta name="citation_online_date" content="2026/10/21">
+<meta name="citation_doi" content="10.5281/zenodo.23255857">
+<meta name="citation_pdf_url" content="https://manvirjaswal.github.io/papers/mub-dimension-6/jaswal-mub6.pdf">
+<meta name="citation_abstract_html_url" content="https://manvirjaswal.github.io/papers/mub-dimension-6/">
+<meta name="citation_publisher" content="Zenodo">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="mutually unbiased bases">
+<meta name="citation_keywords" content="complex Hadamard matrices">
+<meta name="citation_keywords" content="interval arithmetic">
+<meta name="citation_keywords" content="computer-assisted proof">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "headline": "An independent certified computation excluding four mutually unbiased bases in dimension six", "name": "An independent certified computation excluding four mutually unbiased bases in dimension six", "author": {"@type": "Person", "name": "Manvir Jaswal", "url": "https://manvirjaswal.github.io/", "sameAs": ["https://orcid.org/0009-0001-2880-9528"]}, "datePublished": "2026-10-13", "dateModified": "2026-10-21", "url": "https://manvirjaswal.github.io/papers/mub-dimension-6/", "sameAs": ["https://doi.org/10.5281/zenodo.23255857"], "identifier": {"@type": "PropertyValue", "propertyID": "DOI", "value": "10.5281/zenodo.23255857"}, "abstract": "We show that there are no four mutually unbiased bases in ℂ⁶, so that the maximum number of such bases is three, as Zauner conjectured. The proof is computer-assisted and assumes that the processor, compiler and C library of the computer that ran our computation carried out its binary64 (double-precision) arithmetic correctly. The computation carries out the discretization proof of a recent preprint by OpenAI, which has not appeared in a refereed journal; our programs are written from its text, and we prove every statement of the preprint that our proof uses. Four mutually unbiased bases could be taken to consist of the standard basis, the columns of a complex Hadamard matrix divided by √6, and two further bases. Finitely many balls in phase coordinates cover all complex Hadamard matrices of order six up to equivalence, and on each small ball a finite search excludes these two further bases. Every inequality that the programs decide in order to reject a case or to cover a set of matrices is decided in integer arithmetic or in interval arithmetic with outward rounding. The programs, logs and data of the computation are deposited.", "keywords": ["mutually unbiased bases", "complex Hadamard matrices", "interval arithmetic", "computer-assisted proof"], "inLanguage": "en", "isAccessibleForFree": true, "encoding": {"@type": "MediaObject", "contentUrl": "https://manvirjaswal.github.io/papers/mub-dimension-6/jaswal-mub6.pdf", "encodingFormat": "application/pdf"}, "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="../../#p10" aria-label="All preprints"><span class="arrow" aria-hidden="true">←</span><span class="name">Manvir Jaswal</span></a>
+  <h1 class="short">An independent certified computation excluding four mutually unbiased bases in dimension six</h1>
+  <div class="tools">
+    <span class="count"><b id="at">1</b> / <span id="of">–</span></span>
+    <div class="zoom">
+      <button type="button" id="out" aria-label="Zoom out">−</button>
+      <button type="button" id="fit" aria-label="Fit to width">100%</button>
+      <button type="button" id="in" aria-label="Zoom in">+</button>
+    </div>
+    <button type="button" class="tool" popovertarget="cite">Cite</button>
+    <a class="tool" href="jaswal-mub6.pdf" data-goatcounter-click="pdf-mub-dimension-6">PDF</a>
+  </div>
+</header>
+
+<main id="pages" data-pdf="jaswal-mub6.pdf">
+  <div class="sheet"></div>
+  <noscript><p class="nojs"><a href="jaswal-mub6.pdf">Read the paper (PDF)</a></p></noscript>
+</main>
+
+<section class="foot" aria-labelledby="abs-h">
+  <h2 id="abs-h">Abstract</h2>
+  <p>We show that there are no four mutually unbiased bases in ℂ⁶, so that the maximum number of such bases is three, as Zauner conjectured. The proof is computer-assisted and assumes that the processor, compiler and C library of the computer that ran our computation carried out its binary64 (double-precision) arithmetic correctly. The computation carries out the discretization proof of a recent preprint by OpenAI, which has not appeared in a refereed journal; our programs are written from its text, and we prove every statement of the preprint that our proof uses. Four mutually unbiased bases could be taken to consist of the standard basis, the columns of a complex Hadamard matrix divided by √6, and two further bases. Finitely many balls in phase coordinates cover all complex Hadamard matrices of order six up to equivalence, and on each small ball a finite search excludes these two further bases. Every inequality that the programs decide in order to reject a case or to cover a set of matrices is decided in integer arithmetic or in interval arithmetic with outward rounding. The programs, logs and data of the computation are deposited.</p>
+  <p class="by">Manvir Jaswal <span class="sep" aria-hidden="true">·</span> 13 October 2026 <span class="sep" aria-hidden="true">·</span> <a href="https://doi.org/10.5281/zenodo.23255857">doi:10.5281/zenodo.23255857</a></p>
+</section>
+
+<div id="cite" popover>
+  <h2>Cite</h2>
+  <p class="ref">M. Jaswal, An independent certified computation excluding four mutually unbiased bases in dimension six, preprint, 2026, doi:<a href="https://doi.org/10.5281/zenodo.23255857">10.5281/zenodo.23255857</a>.</p>
+  <div class="bib"><pre id="bib">@misc{jaswal2026mub,
+  author    = {Jaswal, Manvir},
+  title     = {An independent certified computation excluding four mutually unbiased bases in dimension six},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23255857},
+  url       = {https://doi.org/10.5281/zenodo.23255857},
+  note      = {Preprint}
+}</pre><button type="button" class="copy" data-goatcounter-click="bibtex-mub-dimension-6">Copy BibTeX</button></div>
+  <p class="posted">Preprint <span class="sep" aria-hidden="true">·</span> 13 October 2026</p>
+</div>
+
+<script type="module" src="../reader.js?v=62b592a1"></script>
+<script data-goatcounter="https://manvirjaswal.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
