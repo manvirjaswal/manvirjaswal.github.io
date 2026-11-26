@@ -210,6 +210,12 @@ details#more { margin: 28px 0 0; }
 #highlight .paper { border: 0; padding: 0; }
 #highlight .ttl .eyebrow, #highlight .ttl .big, #highlight .ttl .big.words { font-size: 32px; line-height: 1.22; }
 @media (max-width: 900px) { #highlight .ttl .eyebrow, #highlight .ttl .big, #highlight .ttl .big.words { font-size: 26px; } }
+/* 26 Nov: no paper numbers; the column holds the date only */
+@media (max-width: 900px) {
+  .num .when { margin-left: 0; }
+  #more .paper { grid-template-columns: 1fr; }
+  #more .num { display: none; }
+}
 </style>
 </head>
 <body>
@@ -244,7 +250,7 @@ details#more { margin: 28px 0 0; }
     <section id="highlight">
       <h2>Selected</h2>
       <article class="paper" id="p19">
-        <div class="num">19<span class="when">11 Nov 2026</span></div>
+        <div class="num"><span class="when">11 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/effective-ao/"><span class="eyebrow">An effective</span> <span class="big words">André–Oort theorem for Shimura varieties</span></a>
           <p class="sum">We give effective bounds for the special subvarieties that are maximal in a subvariety of a Shimura variety. The bounds on the field and the level assume a zero-free half-plane, which a preprint of Cureton and Thorner, formalized in Lean, establishes.</p>
@@ -258,7 +264,7 @@ details#more { margin: 28px 0 0; }
       <h2>Papers</h2>
 
       <article class="paper" id="p31">
-        <div class="num">31<span class="when">25 Nov 2026</span></div>
+        <div class="num"><span class="when">25 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/z-totally-real/"><span class="eyebrow">Diophantine definitions of</span> <span class="big words">ℤ in totally real fields from rank-one elliptic curves</span></a>
           <p class="sum">We prove that ℤ is Diophantine in a totally real field <i>K</i>, with 25 unknowns, if one of four explicit elliptic curves <i>E</i>: <i>y</i><sup>2</sup> = <i>x</i><sup>3</sup> − <i>Ax</i> over a real quadratic field <i>F</i> ⊈ <i>K</i> has rank one over <i>L</i> = <i>KF</i>, with torsion in <i>E</i>[2] and 2<i>E</i>(<i>L</i>) ⊆ <i>E</i>(<i>F</i>). For a suitable curve these conditions hold for every layer of the cyclotomic ℤ<sub>2</sub>-extension of ℚ and for infinitely many real quadratic fields.</p>
@@ -268,7 +274,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p30">
-        <div class="num">30<span class="when">24 Nov 2026</span></div>
+        <div class="num"><span class="when">24 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/generic-polygons/"><span class="eyebrow">Orbit closures of</span> <span class="big words">generic rational polygons with at least five sides</span></a>
           <p class="sum">Mirzakhani and Wright ask whether, for more than four sides, the orbit closure of the unfolding of almost every rational polygon with given angles can be anything other than a connected component of a stratum of Abelian differentials or a locus of double covers of a component of a stratum of quadratic differentials. It cannot.</p>
@@ -278,7 +284,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p25">
-        <div class="num">25<span class="when">24 Nov 2026</span></div>
+        <div class="num"><span class="when">24 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/scalene-triangles-every-denominator/"><span class="eyebrow">Orbit closures of scalene rational triangles:</span> <span class="big words">every denominator</span></a>
           <p class="sum">Delecroix and Rüth conjectured that, apart from an explicit list, the unfoldings of rational triangles and quadrilaterals without a reflection symmetry have dense GL(2,ℝ)-orbits in their ambient strata, and proved this for the triangles with angles <i>p<sub>i</sub></i>π/<i>N</i> and <i>N</i> ≤ 58. We prove the conjecture for triangles.</p>
@@ -288,7 +294,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p21">
-        <div class="num">21<span class="when">14 Nov 2026</span></div>
+        <div class="num"><span class="when">14 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/lattice-triangles/"><span class="big words">Obtuse rational lattice triangles</span></a>
           <p class="sum">Answering a question of Hooper, we prove that an obtuse rational triangle is a lattice triangle if and only if its angles are (π/<i>n</i>, π/<i>n</i>, (<i>n</i> − 2)π/<i>n</i>) with <i>n</i> ≥ 5, (π/2<i>k</i>, π/<i>k</i>, (2<i>k</i> − 3)π/2<i>k</i>) with <i>k</i> ≥ 4, or (π/12, π/3, 7π/12).</p>
@@ -298,7 +304,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p16">
-        <div class="num">16<span class="when">8 Nov 2026</span></div>
+        <div class="num"><span class="when">8 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/xns-121/"><span class="eyebrow">The rational points of</span> <span class="big words">the non-split Cartan modular curve of level 121</span></a>
           <p class="sum">We prove that the modular curve <span class="eq"><i>X</i><sub>ns</sub><sup>+</sup>(121)</span>, of genus 511, has exactly seven rational points, all of them CM. This is the level 121 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 11-adic images of Galois of non-CM elliptic curves over ℚ.</p>
@@ -308,7 +314,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p12">
-        <div class="num">12<span class="when">17 Oct 2026</span></div>
+        <div class="num"><span class="when">17 Oct 2026</span></div>
         <div>
           <a class="ttl" href="papers/z2z4-rank-6/"><span class="eyebrow">Infinitely many elliptic curves with</span> <span class="big words">torsion ℤ/2ℤ × ℤ/4ℤ and rank at least six</span></a>
           <p class="sum">We show that there are infinitely many elliptic curves over ℚ with torsion subgroup ℤ/2ℤ × ℤ/4ℤ and rank at least 6. This answers the case ℤ/2ℤ × ℤ/4ℤ of Problem 2.6 in Dujella's list of open problems.</p>
@@ -318,7 +324,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p06">
-        <div class="num">06<span class="when">2 Oct 2026</span></div>
+        <div class="num"><span class="when">2 Oct 2026</span></div>
         <div>
           <a class="ttl" href="papers/x3-y3-zn/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span></a>
           <p class="sum">We prove that the equations <span class="eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span> and <span class="eq"><i>x</i><sup>3</sup> + <i>y</i><sup>3</sup> = 3<i>z<sup>n</sup></i></span> have no solution in coprime nonzero integers for any <i>n</i> ≥ 3.</p>
@@ -330,7 +336,7 @@ details#more { margin: 28px 0 0; }
         <summary><span class="m">Show more</span><span class="l">Show less</span></summary>
 
       <article class="paper" id="p29">
-        <div class="num">29<span class="when">24 Nov 2026</span></div>
+        <div class="num"><span class="when">24 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/generic-quadrilaterals/"><span class="eyebrow">Orbit closures of</span> <span class="big words">generic rational quadrilaterals</span></a>
           <p class="sum">Delecroix and Rüth conjectured that their lists of admissible and reduced rational triangle and quadrilateral types whose unfoldings do not have dense orbits in their ambient strata are complete, and they proved this for quadrilaterals with angles 2π<i>a<sub>i</sub></i>/<i>N</i> when <i>N</i> ≤ 32. We prove the conjecture for quadrilaterals, for the generic quadrilateral with given angles.</p>
@@ -340,7 +346,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p27">
-        <div class="num">27<span class="when">21 Nov 2026</span></div>
+        <div class="num"><span class="when">21 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/rh-dirichlet-after-alpoge/"><span class="eyebrow">The Riemann hypothesis for</span> <span class="big words">Dirichlet <i>L</i>-functions [after Levent Alpöge]</span></a>
           <p class="sum">A reader's guide to L. Alpöge's Lean 4 formalization of the Riemann hypothesis for <i>ζ</i> and for every Dirichlet <i>L</i>-function. It states in ordinary notation the five theorems of the archive's Main.lean, then follows the chain of declarations behind them, compares the classical inputs with their archive forms and sets Alpöge's twenty dated steps against the chain.</p>
@@ -350,7 +356,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p26">
-        <div class="num">26<span class="when">20 Nov 2026</span></div>
+        <div class="num"><span class="when">20 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/euler-blowup-density/"><span class="eyebrow">Density of blow-up data and regularity at the blow-up time for</span> <span class="big words">the three-dimensional Euler equations</span></a>
           <p class="sum">Alpöge, Buckmaster and Coiculescu have constructed smooth odd initial data on 𝕋<sup>3</sup> whose solutions of the incompressible Euler equations blow up in finite time. Running their construction without oddness, we show that data whose solutions blow up in arbitrarily short time are dense among smooth divergence-free fields in <i>L</i><sup>∞</sup>, <i>H</i><sup>1</sup> and <i>C<sup>α</sup></i>, 0 &lt; <i>α</i> &lt; 5/6.</p>
@@ -360,7 +366,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p23">
-        <div class="num">23<span class="when">24 Nov 2026</span></div>
+        <div class="num"><span class="when">24 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/scalene-triangles-rank-one/"><span class="eyebrow">Orbit closures of scalene rational triangles:</span> <span class="big words">rank one and prime denominators</span></a>
           <p class="sum">We determine the scalene rational triangles of rank one: besides the known lattice triangles, they are the two triangles found by Delecroix and Rüth's computer search, with angles (π/10, 3π/10, 3π/5) and (π/12, π/4, 2π/3). We also prove that for a scalene triangle with angles <i>p<sub>i</sub></i>π/<i>N</i>, <i>N</i> prime, the orbit closure of the unfolding is a connected component of its stratum.</p>
@@ -370,7 +376,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p20">
-        <div class="num">20<span class="when">12 Nov 2026</span></div>
+        <div class="num"><span class="when">12 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/wp-voronoi/"><span class="eyebrow">The maximum of</span> <span class="big words"><span class="eq">|<i>z</i><sup>2</sup>℘(<i>z</i>)|</span> on the Voronoi cell of a lattice</span></a>
           <p class="sum">We show that the maximum of |<i>z</i><sup>2</sup>℘(<i>z</i>)| on the closed Voronoi cell of a lattice is the largest of its values at two half-periods and one vertex of the cell, using interval arithmetic for a compact set of shapes. This bounds |<i>x</i>(<i>P</i>)|·|<i>z</i>|<sup>2</sup> at every archimedean place for every point <i>P</i> of an elliptic curve, with <i>z</i> its elliptic logarithm nearest to 0.</p>
@@ -380,7 +386,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p18">
-        <div class="num">18<span class="when">11 Nov 2026</span></div>
+        <div class="num"><span class="when">11 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/z-in-q/"><span class="eyebrow">A proof that</span> <span class="big words">ℤ is Diophantine in ℚ through congruent-number twists</span></a>
           <p class="sum">We give a proof of Glazer and collaborators&#x27; theorem that ℤ is Diophantine in ℚ, which builds on OpenAI&#x27;s proof that Hilbert&#x27;s tenth problem over ℚ has a negative answer. Where they use a restricted 2-converse theorem, this rests on published theorems.</p>
@@ -390,7 +396,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p17">
-        <div class="num">17<span class="when">8 Nov 2026</span></div>
+        <div class="num"><span class="when">8 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/xns-25/"><span class="eyebrow">The rational points of</span> <span class="big words">the non-split Cartan modular curve of level 25</span></a>
           <p class="sum">We prove that the modular curve <span class="eq"><i>X</i><sub>ns</sub><sup>+</sup>(25)</span>, of genus 14 and Jacobian rank 14, has exactly nine rational points, all of them CM. This is the level 25 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 5-adic images of Galois of elliptic curves over ℚ without complex multiplication.</p>
@@ -400,7 +406,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p15">
-        <div class="num">15<span class="when">6 Nov 2026</span></div>
+        <div class="num"><span class="when">6 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/mub-triplets/"><span class="eyebrow">Triplets of</span> <span class="big words">mutually unbiased bases in dimension six</span></a>
           <p class="sum">We prove that every triplet of mutually unbiased bases of ℂ<sup>6</sup> is equivalent to a triplet from Zauner&#x27;s construction. This is Conjecture 1 of Matolcsi, Matszangosz, Varga and Weiner. The proof is computer-assisted and assumes stated hypotheses on the computations.</p>
@@ -410,7 +416,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p14">
-        <div class="num">14<span class="when">29 Oct 2026</span></div>
+        <div class="num"><span class="when">29 Oct 2026</span></div>
         <div>
           <a class="ttl" href="papers/xp-yp-z5/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big words"><span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>p</sup></i> = <i>z</i><sup>5</sup></span> and relative class numbers</span></a>
           <p class="sum">We prove that the equation <span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>p</sup></i> = <i>z</i><sup>5</sup></span> has no solution in nonzero coprime integers for every prime <i>p</i> ≥ 13 such that <i>p</i> ≢ 1 (mod 5) and 5 ∤ <i>h</i><sup>−</sup>(ℚ(<i>ζ</i><sub>5<i>p</i></sub>)), using results of Chen and Koutsianas (to appear in Algebra &amp; Number Theory) on Darmon&#x27;s Frey surfaces. These conditions hold at 41 primes 13 ≤ <i>p</i> &lt; 1000 and at 2432 primes 13 ≤ <i>p</i> &lt; 10<sup>5</sup>.</p>
@@ -420,7 +426,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p13">
-        <div class="num">13<span class="when">28 Oct 2026</span></div>
+        <div class="num"><span class="when">28 Oct 2026</span></div>
         <div>
           <a class="ttl" href="papers/z6-generic-rank-4/"><span class="eyebrow">Elliptic curves with</span> <span class="big words">torsion group ℤ/6ℤ and generic rank four</span></a>
           <p class="sum">We give an elliptic curve over ℚ(t) with non-constant j-invariant, torsion subgroup ℤ/6ℤ and Mordell–Weil rank exactly 4. The largest rank previously known for such a curve was 3, due to Lecacheux and reached by several later families.</p>
@@ -430,7 +436,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p11">
-        <div class="num">11<span class="when">14 Oct 2026</span></div>
+        <div class="num"><span class="when">14 Oct 2026</span></div>
         <div>
           <a class="ttl" href="papers/z2z6-rank-4/"><span class="eyebrow">Infinitely many elliptic curves with</span> <span class="big words">torsion ℤ/2ℤ × ℤ/6ℤ and rank at least four</span></a>
           <p class="sum">We show that there are infinitely many elliptic curves over ℚ with torsion subgroup ℤ/2ℤ × ℤ/6ℤ and rank at least 4, one more than the largest rank previously known to occur infinitely often with this torsion.</p>
@@ -440,7 +446,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p10">
-        <div class="num">10<span class="when">13 Oct 2026</span></div>
+        <div class="num"><span class="when">13 Oct 2026</span></div>
         <div>
           <a class="ttl" href="papers/mub-dimension-6/"><span class="eyebrow">An independent certified computation excluding</span> <span class="big words">four mutually unbiased bases in dimension six</span></a>
           <p class="sum">We show that there are no four mutually unbiased bases in ℂ<sup>6</sup>, so that the maximum number of such bases is three, as Zauner conjectured. The proof is computer-assisted, assumes that binary64 arithmetic was carried out correctly, and carries out the discretization proof of a recent preprint by OpenAI.</p>
@@ -450,7 +456,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p09">
-        <div class="num">09<span class="when">9 Oct 2026</span></div>
+        <div class="num"><span class="when">9 Oct 2026</span></div>
         <div>
           <a class="ttl" href="papers/class-number-3000/"><span class="eyebrow">Imaginary quadratic fields of</span> <span class="big words">class number at most 3000</span></a>
           <p class="sum">Assume Kimura's explicit bound for real zeros of Dirichlet <i>L</i>-functions, which follows from the hypothesis that <i>L</i>(<i>σ</i>, <i>χ</i>) ≠ 0 for 7/8 &lt; <i>σ</i> &lt; 1 and every real primitive character <i>χ</i>. Then exactly 36 993 853 imaginary quadratic fields have class number at most 3000, and the largest absolute discriminant among them is 2 562 211 723.</p>
@@ -460,7 +466,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p08">
-        <div class="num">08<span class="when">4 Oct 2026</span></div>
+        <div class="num"><span class="when">4 Oct 2026</span></div>
         <div>
           <a class="ttl" href="papers/x11-y11-z5/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>11</sup> + <i>y</i><sup>11</sup> = <i>z</i><sup>5</sup></span></a>
           <p class="sum">We prove that <span class="eq"><i>x</i><sup>11</sup> + <i>y</i><sup>11</sup> = <i>z</i><sup>5</sup></span> has no solution in nonzero coprime integers, and that for every prime <i>p</i> ≥ 11 the solutions of <span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>p</sup></i> = <i>z</i><sup>5</sup></span> in nonzero coprime integers with <i>xy</i> prime to 10 have <span class="eq"><i>xy</i> ≡ −1 (mod 5)</span>.</p>
@@ -470,7 +476,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p07">
-        <div class="num">07<span class="when">4 Oct 2026</span></div>
+        <div class="num"><span class="when">4 Oct 2026</span></div>
         <div>
           <a class="ttl" href="papers/x5-y3-zp/"><span class="eyebrow">Real multiplication and the generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>5</sup> + <i>y</i><sup>3</sup> = <i>z<sup>p</sup></i></span></a>
           <p class="sum">Assuming statements of a preprint of Pacetti and Villagra Torcomian, we show that for every prime <i>p</i> outside an explicit finite set, <span class="eq"><i>x</i><sup>5</sup> + <i>y</i><sup>3</sup> = <i>z<sup>p</sup></i></span> has no primitive solutions in several families, among them those with 3 ∤ <i>xyz</i>.</p>
@@ -480,7 +486,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p05">
-        <div class="num">05<span class="when">1 Oct 2026</span></div>
+        <div class="num"><span class="when">1 Oct 2026</span></div>
         <div>
           <a class="ttl" href="papers/x2-y3-zn/"><span class="eyebrow">New exponents for the generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span></a>
           <p class="sum">We determine the primitive solutions of <span class="eq"><i>x</i><sup>2</sup> + <i>y</i><sup>3</sup> = <i>z<sup>n</sup></i></span> for <i>n</i> = 11, 17 and 19 unconditionally; for <i>n</i> = 11 Freitas, Naskręcki and Stoll did so under the generalized Riemann hypothesis (GRH).</p>
@@ -491,7 +497,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p04">
-        <div class="num">04<span class="when">30 Sep 2026</span></div>
+        <div class="num"><span class="when">30 Sep 2026</span></div>
         <div>
           <a class="ttl" href="papers/seven-equations/"><span class="eyebrow">The primitive solutions of</span> <span class="big words">seven small generalized Fermat equations</span></a>
           <p class="sum">Besides solutions with entries 0 and ±1, the only ones are (11, ±29, ±538) of <span class="eq"><i>x</i><sup>5</sup> + <i>y</i><sup>4</sup> = 3<i>z</i><sup>2</sup></span> and (±895, −6202, 4199) of <span class="eq"><i>x</i><sup>4</sup> + 3<i>y</i><sup>3</sup> + <i>z</i><sup>3</sup> = 0</span>.</p>
@@ -502,7 +508,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p03">
-        <div class="num">03<span class="when">28 Sep 2026</span></div>
+        <div class="num"><span class="when">28 Sep 2026</span></div>
         <div>
           <a class="ttl" href="papers/x2-y5-z9/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>9</sup></span></a>
           <p class="sum">We show that the equation <span class="eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>9</sup></span> has no solution in coprime nonzero integers. No step assumes the generalized Riemann hypothesis.</p>
@@ -512,7 +518,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p02">
-        <div class="num">02<span class="when">27 Sep 2026</span></div>
+        <div class="num"><span class="when">27 Sep 2026</span></div>
         <div>
           <a class="ttl" href="papers/x2-y5-z7/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>7</sup></span></a>
           <p class="sum">We show that the equation <span class="eq"><i>x</i><sup>2</sup> + <i>y</i><sup>5</sup> = <i>z</i><sup>7</sup></span> has no solution in nonzero coprime integers, assuming a classification theorem from Putz's thesis, which has not appeared in a refereed journal.</p>
@@ -522,7 +528,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="p01">
-        <div class="num">01<span class="when">25 Sep 2026</span></div>
+        <div class="num"><span class="when">25 Sep 2026</span></div>
         <div>
           <a class="ttl" href="papers/x5-y3-z7/"><span class="eyebrow">The generalized Fermat equation</span> <span class="big eq"><i>X</i><sup>5</sup> + <i>Y</i><sup>3</sup> = <i>Z</i><sup>7</sup></span></a>
           <p class="sum">Assuming the classification of Dahmen–Siksek and Putz, we show that <span class="eq"><i>X</i><sup>5</sup> + <i>Y</i><sup>3</sup> = <i>Z</i><sup>7</sup></span> has no solution in nonzero coprime integers.</p>
@@ -532,7 +538,7 @@ details#more { margin: 28px 0 0; }
       </article>
 
       <article class="paper" id="r3c">
-        <div class="num">00<span class="when">Oct 2026</span></div>
+        <div class="num"><span class="when">Oct 2026</span></div>
         <div>
           <a class="ttl" href="https://doi.org/10.5281/zenodo.23289304"><span class="eyebrow">A lower bound for a sums–differences constant</span> <span class="big words"><i>C</i><sub>3c</sub> ≥ 1.674894211307116</span></a>
           <p class="sum">An explicit entropy certificate for problem 3c of Tao's optimization-constants repository, a four-slope constant related to the arithmetic Kakeya conjecture. The previous record was 1.6747338950414058.</p>
