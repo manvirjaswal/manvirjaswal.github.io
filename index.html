@@ -50,7 +50,6 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .wrap { max-width: 1160px; margin: 0 auto; padding: 0 32px; display: grid;
   grid-template-columns: 300px 1fr; gap: 72px clamp(72px, 8vw, 112px); }
 
-
 aside { position: sticky; top: 0; align-self: start; height: 100vh; padding: 72px 0 40px;
   display: flex; flex-direction: column; }
 h1 { font: 500 38px/1.1 var(--serif); margin: 0 0 16px; letter-spacing: -.015em; }
@@ -67,7 +66,6 @@ nav a:hover::before, nav a.on::before { width: 56px; }
 .contact a span:last-child { color: var(--faint); }
 .contact a:hover { color: var(--ink); }
 .contact a:hover span:last-child { color: var(--accent); }
-
 
 main { padding: 72px 0 40px; min-width: 0; }
 section { scroll-margin-top: 48px; }
@@ -216,6 +214,45 @@ details#more { margin: 28px 0 0; }
   #more .paper { grid-template-columns: 1fr; }
   #more .num { display: none; }
 }
+/* 27 Nov: compact. Smaller text and tighter spacing; the Selected entry is the same size as the list */
+aside, main { padding-top: 56px; }
+h1 { font-size: 34px; margin-bottom: 12px; }
+.role { margin-bottom: 26px; }
+h2 { margin-bottom: 22px; }
+.lede { font-size: 20px; margin-bottom: 16px; }
+#about p:not(.lede), #faq p { font-size: 15px; line-height: 1.6; margin-bottom: 12px; }
+#about, #selected, #more, #results, #highlight { margin-bottom: 52px; }
+#selected .paper { padding: 20px 0; }
+#selected .ttl .eyebrow, #selected .ttl .big, #selected .ttl .big.words,
+#highlight .ttl .eyebrow, #highlight .ttl .big, #highlight .ttl .big.words { font-size: 20px; line-height: 1.35; letter-spacing: -.005em; }
+#selected .sum, #highlight .sum { font-size: 15px; line-height: 1.55; margin-top: 6px; max-width: 43em; }
+#selected .links, #highlight .links { margin: 8px 16px 0 0; gap: 16px; }
+#selected .links a, #selected .abs summary, #highlight .links a, #highlight .abs summary { font-size: 13px; }
+#selected .abs, #highlight .abs { margin-top: 8px; }
+#selected .abs p, #highlight .abs p { font-size: 13.5px; margin-top: 10px; }
+#selected .tag, #highlight .tag { font-size: 10px; }
+.also { clear: both; margin: 0; padding-top: 10px; font: 400 13px/1.6 var(--sans); color: var(--faint); }
+.also a { color: var(--muted); border-bottom: 1px solid var(--rule); transition: border-color .2s, color .2s; }
+.also a:hover { color: var(--ink); border-bottom-color: var(--accent); }
+details#more { margin: 20px 0 0; }
+.all[open] > summary { margin-bottom: 16px; }
+#more .paper { padding: 8px 0; align-items: baseline; }
+#more .ttl .eyebrow, #more .ttl .big, #more .ttl .big.words { font-size: 16px; line-height: 1.45; letter-spacing: 0; }
+#more .links { margin: 2px 14px 0 0; gap: 14px; }
+#more .links a { font-size: 12.5px; font-weight: 400; color: var(--muted); }
+#more .tag { font-size: 9.5px; }
+#faq h3 { font-size: 17px; margin-bottom: 6px; }
+#faq p { margin-bottom: 22px; }
+footer { margin-top: 28px; }
+@media (max-width: 900px) {
+  aside { padding-top: 40px; }
+  main { padding-top: 44px; }
+  h1 { font-size: 30px; }
+  .lede { font-size: 18px; }
+  #selected .ttl .eyebrow, #selected .ttl .big, #selected .ttl .big.words,
+  #highlight .ttl .eyebrow, #highlight .ttl .big, #highlight .ttl .big.words { font-size: 19px; }
+  #more .ttl .eyebrow, #more .ttl .big, #more .ttl .big.words { font-size: 16px; }
+}
 </style>
 </head>
 <body>
@@ -253,15 +290,35 @@ details#more { margin: 28px 0 0; }
         <div class="num"><span class="when">11 Nov 2026</span></div>
         <div>
           <a class="ttl" href="papers/effective-ao/"><span class="eyebrow">An effective</span> <span class="big words">André–Oort theorem for Shimura varieties</span></a>
-          <p class="sum">We give effective bounds for the special subvarieties that are maximal in a subvariety of a Shimura variety. The bounds on the field and the level assume a zero-free half-plane, which a preprint of Cureton and Thorner, formalized in Lean, establishes.</p>
+          <p class="sum">We prove an effective André–Oort theorem for every Shimura variety. Let <i>Z</i> be a subvariety defined over a number field. For every special subvariety maximal in <i>Z</i> we bound its degree, and the discriminant and level invariant that Klingler and Yafaev attach to it, by effectively computable constants, polynomial in the degree of <i>Z</i> and that of its field of definition.</p>
           <div class="links"><span class="tag">Submitted</span><a href="https://doi.org/10.5281/zenodo.24136437">Paper</a><a href="https://doi.org/10.5281/zenodo.24136430">Programs and data</a></div>
-          <details class="abs"><summary>Abstract</summary><p>We give effective bounds for the special subvarieties V that are maximal in a subvariety Z of a Shimura variety, where Z is geometrically irreducible and defined over a number field and the level is neat and of product form: for the degree of V, with no hypothesis; and for the discriminant of a number field L_V attached to V and the Klingler–Yafaev invariant α_V of the level, if for some δ &gt; 0 the Dedekind zeta function of L_V has no zero with real part greater than 1 − δ. The bound for the degree depends only on the degree of Z, and the other two on the degree of Z, the degree of its field of definition and δ; all three are effectively computable, given representatives of the connected components of the adjoint Shimura variety. Cureton and Thorner prove that such a half-plane exists with δ = 1/32 for every number field; with their theorem, all these bounds hold with no further hypothesis. For abelian type, an algorithm lists these subvarieties from the bounds, given a finite étale cover by a Shimura variety of Hodge type inside one of Mumford&#x27;s moduli spaces and equations for the preimage of Z.</p></details>
+          <details class="abs"><summary>Abstract</summary><p>We prove an effective André–Oort theorem for every Shimura variety. Let Z be a subvariety defined over a number field. For every special subvariety maximal in Z we bound its degree, and the discriminant and level invariant that Klingler and Yafaev attach to it, by effectively computable constants, polynomial in the degree of Z and that of its field of definition. The proof follows Edixhoven, Klingler, Ullmo and Yafaev through Hecke correspondences. For the discriminant and level bounds, a zero-free half-plane for one Dedekind zeta function suffices in place of the generalized Riemann hypothesis, and Cureton and Thorner prove such a half-plane for every number field. In Mumford&#x27;s moduli spaces of abelian varieties an algorithm lists the special subvarieties maximal in Z from equations for its closure.</p></details>
         </div>
       </article>
     </section>
 
     <section id="selected">
       <h2>Papers</h2>
+
+      <article class="paper" id="p34">
+        <div class="num"><span class="when">28 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/z-real-quadratic/"><span class="big words">ℤ is Diophantine in every real quadratic field</span></a>
+          <p class="sum">We prove that ℤ is Diophantine in every real quadratic field, so that Hilbert's tenth problem over each of them has a negative answer; for ℚ(√2), ℚ(√3) and ℚ(√6) this is due to Sun. We let the curve in Sun's construction vary with the field.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24619052">Paper</a><a href="https://doi.org/10.5281/zenodo.24619048">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove that ℤ is Diophantine in every real quadratic field, so that Hilbert&#x27;s tenth problem over each of them has a negative answer; for ℚ(√2), ℚ(√3) and ℚ(√6) this is due to Sun. We let the curve in Sun&#x27;s construction vary with the field. For each odd squarefree d &gt; 1 we build a curve y² = x³ − Ax over ℚ(ζ₈) of ℤ[i]-rank one whose twist by d has rank zero, from prime elements in a linear pattern found with Kai&#x27;s estimates, so that the rank stays one over ℚ(ζ₈, √d). Run on such a curve, Sun&#x27;s construction proves that ℤ is Diophantine in a totally real Galois field K with √3 ∉ K and K ∩ ℚ(ζ₈) = ℚ whenever the rank is one over K(ζ₈) as well, with conditions on torsion and quadratic characters; this gives ℚ(√(2d)) and, for d ≠ 3, ℚ(√d). With two marked primes the same descents give ℚ(√(5a), √(13b)) for positive odd squarefree a and b prime to 65.</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p33">
+        <div class="num"><span class="when">28 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/zilber-pink-y13/"><span class="eyebrow">The Zilber–Pink conjecture for</span> <span class="big words">curves in <i>Y</i>(1)<sup>3</sup></span></a>
+          <p class="sum">We prove the Zilber–Pink conjecture for curves in <i>Y</i>(1)<sup>3</sup>. By known results it reduces to a conjecture of Daw, Orr and Papas, that an irreducible curve over Q̄ in <i>Y</i>(1)<sup>3</sup>, not contained in a proper special subvariety, has only finitely many points whose coordinates are <i>j</i>-invariants of pairwise isogenous elliptic curves.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.24619054">Paper</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We prove the Zilber–Pink conjecture for curves in Y(1)³. By known results it reduces to a conjecture of Daw, Orr and Papas, that an irreducible curve over Q̄ in Y(1)³, not contained in a proper special subvariety, has only finitely many points whose coordinates are j-invariants of pairwise isogenous elliptic curves. We prove this conjecture by the G-function method, which bounds the height of every such point polynomially in its degree. The obstacle is the places of supersingular reduction, where the period equations involve a trace that changes with the place. Pairing each period equation with its Frobenius conjugate, as in OpenAI&#x27;s preprint on curves in 𝒜₂, eliminates the place-dependent trace.</p></details>
+        </div>
+      </article>
 
       <article class="paper" id="p31">
         <div class="num"><span class="when">25 Nov 2026</span></div>
@@ -293,16 +350,6 @@ details#more { margin: 28px 0 0; }
         </div>
       </article>
 
-      <article class="paper" id="p21">
-        <div class="num"><span class="when">14 Nov 2026</span></div>
-        <div>
-          <a class="ttl" href="papers/lattice-triangles/"><span class="big words">Obtuse rational lattice triangles</span></a>
-          <p class="sum">Answering a question of Hooper, we prove that an obtuse rational triangle is a lattice triangle if and only if its angles are (π/<i>n</i>, π/<i>n</i>, (<i>n</i> − 2)π/<i>n</i>) with <i>n</i> ≥ 5, (π/2<i>k</i>, π/<i>k</i>, (2<i>k</i> − 3)π/2<i>k</i>) with <i>k</i> ≥ 4, or (π/12, π/3, 7π/12).</p>
-          <div class="links"><span class="tag">Submitted</span><a href="https://doi.org/10.5281/zenodo.24223593">Paper</a><a href="https://doi.org/10.5281/zenodo.24223587">Programs and data</a></div>
-          <details class="abs"><summary>Abstract</summary><p>A rational triangle is a lattice triangle if the Veech group of its unfolding is a lattice. Answering a question of Hooper, we prove that an obtuse rational triangle is a lattice triangle if and only if its angles are (π/n, π/n, (n − 2)π/n) with n ≥ 5, (π/2k, π/k, (2k − 3)π/2k) with k ≥ 4, or (π/12, π/3, 7π/12). The idea is a first-order test on relative periods. By Möller&#x27;s theorem, on a Veech surface the difference of two zeros of the holomorphic form is torsion in the factor of the Jacobian with real multiplication, and stays torsion along the Teichmüller curve. So certain relative periods vanish along the Teichmüller disc, and on a triangle unfolding their first derivative is an integral over the plane that can be computed in closed form. For obtuse angle at most 2π/3 we determine for every denominator where the criterion of Mirzakhani and Wright is blind, and exclude all but four of the triangles there by relative periods and by cylinders whose moduli or areas cannot occur on a Veech surface. For obtuse angle above 2π/3 the proof uses a theorem of Larsen, Norton and Zykoski. Parts of the proof are computer-assisted.</p></details>
-        </div>
-      </article>
-
       <article class="paper" id="p16">
         <div class="num"><span class="when">8 Nov 2026</span></div>
         <div>
@@ -310,6 +357,16 @@ details#more { margin: 28px 0 0; }
           <p class="sum">We prove that the modular curve <span class="eq"><i>X</i><sub>ns</sub><sup>+</sup>(121)</span>, of genus 511, has exactly seven rational points, all of them CM. This is the level 121 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 11-adic images of Galois of non-CM elliptic curves over ℚ.</p>
           <div class="links"><a href="https://doi.org/10.5281/zenodo.24061906">Paper</a><a href="https://doi.org/10.5281/zenodo.24061904">Programs and data</a></div>
           <details class="abs"><summary>Abstract</summary><p>We prove that the modular curve X⁺ₙₛ(121) of the normalizer of a non-split Cartan subgroup of level 121, of genus 511, has exactly seven rational points, all of them CM. This is the level 121 case of a conjecture of Rouse, Sutherland and Zureick-Brown, and with their theorem it determines the 11-adic images of Galois of non-CM elliptic curves over ℚ. The Jacobian has rank equal to the genus. At p = 17 and 43 one Hecke block of the Mordell–Weil group has logarithm divisible by p² but p-adic height of valuation one, and a comparison of valuations in the quadratic Chabauty identity then shows that each CM point is the only rational point in its residue disc, with no computation of the local height at p, no basis of the Mordell–Weil group and no equations for the curve. The inputs come from expansions of differentials at CM points and from a formula we prove for intersection numbers of CM divisors of coprime fundamental discriminants under Hecke operators on X⁺ₙₛ(ℓᵉ) (Theorem 1.3).</p></details>
+        </div>
+      </article>
+
+      <article class="paper" id="p13">
+        <div class="num"><span class="when">28 Oct 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/z6-generic-rank-4/"><span class="eyebrow">Elliptic curves with</span> <span class="big words">torsion group ℤ/6ℤ and generic rank four</span></a>
+          <p class="sum">We give an elliptic curve over ℚ(t) with non-constant j-invariant, torsion subgroup ℤ/6ℤ and Mordell–Weil rank exactly 4. The largest rank previously known for such a curve was 3, due to Lecacheux and reached by several later families. <a href="https://arxiv.org/abs/2611.28977">Dujella and Peral</a> adapt its doubling step to torsion ℤ/5ℤ.</p>
+          <div class="links"><a href="https://doi.org/10.5281/zenodo.23735796">Paper</a><a href="https://doi.org/10.5281/zenodo.23735657">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>We give an elliptic curve over ℚ(t) with non-constant j-invariant, torsion subgroup ℤ/6ℤ and Mordell–Weil rank exactly 4. The largest rank previously known for such a curve was 3, due to Lecacheux and reached by several later families. The curve is the pullback of the universal elliptic curve with a point of order 6 along an explicit rational function of degree 16 that is invariant under t ↦ −t and t ↦ 1/t. The upper bound for the rank comes from the specialization criterion of Gusić and Tadić and a 2-descent of a single fiber. The rank splits along the characters of the symmetry group: the curve descends to ℚ((t + 1/t)²), where it and three of its quadratic twists have rank exactly 1. All but finitely many rational fibers have torsion subgroup ℤ/6ℤ and rank at least 4. We also give an explicit family over an elliptic curve of rank two which shows that infinitely many elliptic curves over ℚ have torsion subgroup ℤ/6ℤ and rank at least 5, a bound that Dujella's tables credit to Eroshkin (2009, personal communication). One member of this family has rank exactly 6. Over ℚ(√2) the same kind of construction gives infinitely many curves with torsion subgroup ℤ/6ℤ and rank at least 6; whether the same holds over ℚ is open. All results are unconditional.</p></details>
         </div>
       </article>
 
@@ -375,6 +432,16 @@ details#more { margin: 28px 0 0; }
         </div>
       </article>
 
+      <article class="paper" id="p21">
+        <div class="num"><span class="when">14 Nov 2026</span></div>
+        <div>
+          <a class="ttl" href="papers/lattice-triangles/"><span class="big words">Obtuse rational lattice triangles</span></a>
+          <p class="sum">Answering a question of Hooper, we prove that an obtuse rational triangle is a lattice triangle if and only if its angles are (π/<i>n</i>, π/<i>n</i>, (<i>n</i> − 2)π/<i>n</i>) with <i>n</i> ≥ 5, (π/2<i>k</i>, π/<i>k</i>, (2<i>k</i> − 3)π/2<i>k</i>) with <i>k</i> ≥ 4, or (π/12, π/3, 7π/12).</p>
+          <div class="links"><span class="tag">Submitted</span><a href="https://doi.org/10.5281/zenodo.24223593">Paper</a><a href="https://doi.org/10.5281/zenodo.24223587">Programs and data</a></div>
+          <details class="abs"><summary>Abstract</summary><p>A rational triangle is a lattice triangle if the Veech group of its unfolding is a lattice. Answering a question of Hooper, we prove that an obtuse rational triangle is a lattice triangle if and only if its angles are (π/n, π/n, (n − 2)π/n) with n ≥ 5, (π/2k, π/k, (2k − 3)π/2k) with k ≥ 4, or (π/12, π/3, 7π/12). The idea is a first-order test on relative periods. By Möller&#x27;s theorem, on a Veech surface the difference of two zeros of the holomorphic form is torsion in the factor of the Jacobian with real multiplication, and stays torsion along the Teichmüller curve. So certain relative periods vanish along the Teichmüller disc, and on a triangle unfolding their first derivative is an integral over the plane that can be computed in closed form. For obtuse angle at most 2π/3 we determine for every denominator where the criterion of Mirzakhani and Wright is blind, and exclude all but four of the triangles there by relative periods and by cylinders whose moduli or areas cannot occur on a Veech surface. For obtuse angle above 2π/3 the proof uses a theorem of Larsen, Norton and Zykoski. Parts of the proof are computer-assisted.</p></details>
+        </div>
+      </article>
+
       <article class="paper" id="p20">
         <div class="num"><span class="when">12 Nov 2026</span></div>
         <div>
@@ -422,16 +489,6 @@ details#more { margin: 28px 0 0; }
           <p class="sum">We prove that the equation <span class="eq"><i>x<sup>p</sup></i> + <i>y<sup>p</sup></i> = <i>z</i><sup>5</sup></span> has no solution in nonzero coprime integers for every prime <i>p</i> ≥ 13 such that <i>p</i> ≢ 1 (mod 5) and 5 ∤ <i>h</i><sup>−</sup>(ℚ(<i>ζ</i><sub>5<i>p</i></sub>)), using results of Chen and Koutsianas (to appear in Algebra &amp; Number Theory) on Darmon&#x27;s Frey surfaces. These conditions hold at 41 primes 13 ≤ <i>p</i> &lt; 1000 and at 2432 primes 13 ≤ <i>p</i> &lt; 10<sup>5</sup>.</p>
           <div class="links"><a href="https://doi.org/10.5281/zenodo.23753739">Paper</a><a href="https://doi.org/10.5281/zenodo.23753558">Programs and data</a></div>
           <details class="abs"><summary>Abstract</summary><p>We prove that the equation xᵖ + yᵖ = z⁵ has no solution in nonzero coprime integers for every prime p ≥ 13 such that p ≢ 1 (mod 5) and 5 ∤ h⁻(ℚ(ζ₅ₚ)), using results of Chen and Koutsianas (to appear in Algebra &amp; Number Theory) on Darmon&#x27;s Frey surfaces. These conditions hold at 41 primes 13 ≤ p &lt; 1000 and at 2432 primes 13 ≤ p &lt; 10⁵. For every prime p ≥ 7 with p ≢ 1 (mod 5) and 5 ∤ h⁻(ℚ(ζ₅ₚ)) we prove, without these results, that no solution (a, b, c) has 10p ∣ ab. Such solutions are close, at each of 2, 5 and p, to one of the trivial solutions (1, 0, 1), (0, 1, 1), which survive every local test. To exclude such solutions we attach to a solution a curve of genus 2(p − 1) whose Jacobian has multiplication by ℤ[ζ₅, ζₚ + ζₚ⁻¹]. It belongs to a family of quotients, by an involution, of cyclic covers in a hypergeometric family of the kind used in Darmon&#x27;s program. The member of this family at the trivial solution is Y⁵ = Rᵖ − 1, which has complex multiplication, and we compare the 5-adic Tate modules of the two curves one power of 1 − ζ₅ at a time. The obstructions to extending this comparison lie in Selmer groups that vanish when 5 ∤ h⁻(ℚ(ζ₅ₚ)), as in Kummer&#x27;s theorem for regular primes; the local condition at 5 comes from Breuil–Kisin modules over a tamely ramified extension. The generalized Riemann hypothesis is not used.</p></details>
-        </div>
-      </article>
-
-      <article class="paper" id="p13">
-        <div class="num"><span class="when">28 Oct 2026</span></div>
-        <div>
-          <a class="ttl" href="papers/z6-generic-rank-4/"><span class="eyebrow">Elliptic curves with</span> <span class="big words">torsion group ℤ/6ℤ and generic rank four</span></a>
-          <p class="sum">We give an elliptic curve over ℚ(t) with non-constant j-invariant, torsion subgroup ℤ/6ℤ and Mordell–Weil rank exactly 4. The largest rank previously known for such a curve was 3, due to Lecacheux and reached by several later families.</p>
-          <div class="links"><a href="https://doi.org/10.5281/zenodo.23735796">Paper</a><a href="https://doi.org/10.5281/zenodo.23735657">Programs and data</a></div>
-          <details class="abs"><summary>Abstract</summary><p>We give an elliptic curve over ℚ(t) with non-constant j-invariant, torsion subgroup ℤ/6ℤ and Mordell–Weil rank exactly 4. The largest rank previously known for such a curve was 3, due to Lecacheux and reached by several later families. The curve is the pullback of the universal elliptic curve with a point of order 6 along an explicit rational function of degree 16 that is invariant under t ↦ −t and t ↦ 1/t. The upper bound for the rank comes from the specialization criterion of Gusić and Tadić and a 2-descent of a single fiber. The rank splits along the characters of the symmetry group: the curve descends to ℚ((t + 1/t)²), where it and three of its quadratic twists have rank exactly 1. All but finitely many rational fibers have torsion subgroup ℤ/6ℤ and rank at least 4. We also give an explicit family over an elliptic curve of rank two which shows that infinitely many elliptic curves over ℚ have torsion subgroup ℤ/6ℤ and rank at least 5, a bound that Dujella's tables credit to Eroshkin (2009, personal communication). One member of this family has rank exactly 6. Over ℚ(√2) the same kind of construction gives infinitely many curves with torsion subgroup ℤ/6ℤ and rank at least 6; whether the same holds over ℚ is open. All results are unconditional.</p></details>
         </div>
       </article>
 
@@ -568,7 +625,7 @@ details#more { margin: 28px 0 0; }
       <p>Sure, email me.</p>
     </section>
 
-    <footer>Updated 25 November 2026</footer>
+    <footer>Updated 28 November 2026</footer>
   </main>
 </div>
 <script>
